@@ -1,5 +1,7 @@
 import {Outlet} from "react-router";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
+
 
 const Sharedlayout=()=>{
     return <>
@@ -8,7 +10,7 @@ const Sharedlayout=()=>{
 
         <Outlet/>
 
-        {/*<Footer/>*/}
+        <Footer/>
 
     </>
 }
