@@ -20,5 +20,6 @@ const Wrapper=styled.footer`
   background-color: black;
   color: white;
   text-align: center;
+  font-size: 1.5rem;
 `
 export default Footer
