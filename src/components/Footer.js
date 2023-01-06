@@ -22,7 +22,7 @@ const Footer=()=>{
              <BsPinterest className='ic'></BsPinterest>
          </div>
      </div>
-       <h5>© 2023 The Furniture Shop All rights reserved </h5>
+
 
     </Wrapper>
     </>
@@ -39,7 +39,7 @@ const Wrapper=styled.footer`
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    font-size: 1.8em;
+    font-size: 1.6em;
   }
   .follow{
     width: 100%;
@@ -47,9 +47,7 @@ const Wrapper=styled.footer`
     
     justify-content: space-evenly;
   }
-  h5{
-    margin: 0.5rem;
-  }
+ 
   position: fixed;
   left: 0;
   right: 0;
@@ -59,6 +57,6 @@ const Wrapper=styled.footer`
   background-color: black;
   color: white;
   text-align: center;
-  font-size: 1.5rem;
+  font-size: 1rem;
 `
 export default Footer

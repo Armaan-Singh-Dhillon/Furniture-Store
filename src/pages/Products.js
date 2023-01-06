@@ -3,24 +3,24 @@ import styled from "styled-components";
 import { TfiLayoutGrid2Alt } from 'react-icons/tfi';
 
 const Products=()=>{
-    const [loader,setloader]=useState(false)
+    const [loader,setloader]=useState(true)
     const [data,setdata]=useState([])
 
-    // const fetchdata=async ()=>{
-    //     await fetch('https://course-api.com/react-store-products').then((res)=>{
-    //         res.json().then((data)=>{
-    //             setdata(data)
-    //             setloader(false)
-    //         })
-    //     })
-    //
-    // }
-    // useEffect(()=>{
-    //
-    //     fetchdata()
-    //     console.log(data)
-    //
-    // },[])
+    const fetchdata=async ()=>{
+        await fetch('https://course-api.com/react-store-products').then((res)=>{
+            res.json().then((data)=>{
+                setdata(data)
+                setloader(false)
+            })
+        })
+
+    }
+    useEffect(()=>{
+
+        fetchdata()
+
+
+    },[])
 
     if(loader){
         return<>
@@ -29,6 +29,8 @@ const Products=()=>{
     }
     else{
         return <>
+
+            {console.log(data)}
             <Wrapper>
                  <div className='main'>
                      <div className='search'>
@@ -41,7 +43,16 @@ const Products=()=>{
                      </div>
 
                       <div className='sort'>
-                       Sort
+                       <div className='inner-sort'>
+                           <label htmlFor="Sort">Sort By : </label>
+                           <select name="Sort" className='select'>
+                               <option value="Price(Lowest)" selected>Price(Lowest)</option>
+                               <option value="Price(Highest)">Price(Highest)</option>
+                               <option value="Name(a-z)">Name(a-z)</option>
+                               <option value="Name(z-a)">Name(z-a)</option>
+
+                           </select>
+                       </div>
                       </div>
                      </div>
                      <div className='middle'>
@@ -114,7 +125,45 @@ const Products=()=>{
 
                          </div>
                          <div className='products'>
-                                Products
+                             {
+                                 data.map((obj)=>{
+                                   return<>
+                                       <div className='card'>
+                                           <div className='image'>
+                                               <img src={obj.image} alt=""/>
+                                           </div>
+
+                                           <div className='text'>
+                                               <div>
+                                                   {obj.name}
+                                               </div>
+                                               <div>
+                                                   {obj.price}
+                                               </div>
+                                           </div>
+                                       </div>
+
+                                   </>
+
+                                 })
+
+                             }
+                               {/*<div className='card'>*/}
+                               {/*    <div className='image'>*/}
+                               {/*        <img src="https://v5.airtableusercontent.com/v1/14/14/1673049600000/Q-suEEz-ZbZOt-yTKb6lYw/6UmYJcJETvHgmC7I97hFk7eLxLwXlDphAjgB_8gFRUdkFV2yAbSuyVSXI7rB0Nfu9Vni2yADto4mu3jWvBCczw/3YkMn380xrJlf5KVPr1N1t87F96Mvi-YMz0zMOcn9AI" alt=""/>*/}
+                               {/*    </div>*/}
+
+                               {/*    <div className='text'>*/}
+                               {/*      <div>*/}
+                               {/*         Name*/}
+                               {/*      </div>*/}
+                               {/*        <div>*/}
+                               {/*         Price*/}
+                               {/*        </div>*/}
+                               {/*    </div>*/}
+                               {/*</div>*/}
+
+
                          </div>
                      </div>
                  </div>
@@ -124,7 +173,45 @@ const Products=()=>{
 
 }
 
+
 const Wrapper=styled.div`
+ .text{
+   display: flex;
+   justify-content: space-between;
+   font-size: 1.2rem;
+   margin: 1.2rem;
+ }
+  .products{
+    display: flex;
+    flex-wrap: wrap;
+    width: 78.5%;
+    background: aliceblue;
+  }
+  
+
+   img {
+    
+    width: 100%;
+     height: 20rem;
+     object-fit: cover;
+    border-radius: 1.2rem; 
+   }
+
+  
+  .card {
+    flex-direction: column;
+    width: 29.5%;
+    
+    justify-content: space-evenly;
+    align-items: center;
+    padding: 1.2rem;
+    margin: 0.5rem;
+    
+  }
+  .inner-sort{
+    width: 40%;
+    font-size: 1.2rem;
+  }
   .view{
     display: flex;
     align-items: center;
@@ -134,6 +221,7 @@ const Wrapper=styled.div`
   
   .icon{
     font-size: 1.2rem;
+    color: #39A1AE;
   }
   
   input{
@@ -144,6 +232,9 @@ const Wrapper=styled.div`
   }
   .sort{
     width: 65%;
+    display: flex;
+    justify-content: right;
+    align-items: center;
   }
   .input{
     display: flex;
@@ -165,6 +256,8 @@ const Wrapper=styled.div`
   .select{
     font-size: 1.2rem;
     border: none;
+    width: 40%;
+   padding: 0.3rem;
     
   }
   
@@ -188,7 +281,7 @@ const Wrapper=styled.div`
     color: #39A1AE;
   }
   .search{
-    background: aquamarine;
+    background: aliceblue;
   }
 .main{
   display: flex;
@@ -208,10 +301,7 @@ const Wrapper=styled.div`
     width: 20%;
     background: aliceblue;
   }
-  .products{
-    width: 78.5%;
-    background: blanchedalmond;
-  }
+ 
 `
 
 

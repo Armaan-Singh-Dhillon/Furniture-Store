@@ -159,7 +159,7 @@ const Home=()=>{
               <div className='text1'>
                   <div>
 
-                  <h1>Join Our Newsletter And Get 20% Off</h1>
+                  <h1>Join Our Newsletter</h1>
                       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid atque blanditiis debitis eius et, explicabo fugit ipsum minus molestiae optio pariatur porro, quidem ullam vel voluptas voluptate. A cumque distinctio harum nam quos?</p>
                   </div>
 
