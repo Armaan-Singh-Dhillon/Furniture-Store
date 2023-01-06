@@ -1,6 +1,6 @@
 import {useEffect, useState} from "react";
 import styled from "styled-components";
-
+import { TfiLayoutGrid2Alt } from 'react-icons/tfi';
 
 const Products=()=>{
     const [loader,setloader]=useState(false)
@@ -32,7 +32,17 @@ const Products=()=>{
             <Wrapper>
                  <div className='main'>
                      <div className='search'>
-                     Search
+                     <div className='input'>
+                         <input type="text" placeholder='Search'/>
+                         <div className='view'>
+                          Grid Enabled
+                         <TfiLayoutGrid2Alt className='icon'></TfiLayoutGrid2Alt>
+                         </div>
+                     </div>
+
+                      <div className='sort'>
+                       Sort
+                      </div>
                      </div>
                      <div className='middle'>
                          <div className='category'>
@@ -74,12 +84,32 @@ const Products=()=>{
                                  </div>
                              </div>
 
-                             <div>
-                                 <h2>Company</h2>
+
+
+                               <div>
+
+                             <div >
+                                 <div className='heading'>
+                                     <h2>Company</h2>
+                                 </div>
+                                 <div className='company' >
+                                     <label htmlFor="membership">Select : </label>
+                                     <select name="membership" className='select'>
+                                         <option value="all" selected>all</option>
+                                         <option value="marcos">marcos</option>
+                                         <option value="liddy">liddy</option>
+                                         <option value="ikea">ikea</option>
+                                         <option value="caressa">caressa</option>
+                                     </select>
+                                 </div>
+                               </div>
+
                              </div>
 
                              <div>
-                                 <h2>Colors</h2>
+                                 <button className='clear'>
+                                     Clear Filters
+                                 </button>
                              </div>
 
                          </div>
@@ -95,6 +125,49 @@ const Products=()=>{
 }
 
 const Wrapper=styled.div`
+  .view{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    width: 30%;
+  }
+  
+  .icon{
+    font-size: 1.2rem;
+  }
+  
+  input{
+    width: 75%;
+    border: none;
+    font-size: 1.2rem;
+    padding: 0.5rem;
+  }
+  .sort{
+    width: 65%;
+  }
+  .input{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 30%;
+  }
+  .search{
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 1.2rem 0;
+  }
+  
+  .company{
+    font-size: 1.2rem;
+    margin: 1.2rem;
+  }
+  
+  .select{
+    font-size: 1.2rem;
+    border: none;
+    
+  }
+  
  .heading{
    padding: 1.2rem;
  }
@@ -106,6 +179,9 @@ const Wrapper=styled.div`
     padding: 1.2rem;
     font-size: 1.25rem;
     
+  }
+  .clear{
+    color: #39A1AE;
   }
   button:hover{
     cursor: pointer;
@@ -120,17 +196,20 @@ const Wrapper=styled.div`
  
   
   margin: 1.4rem;
-  background: aliceblue;
+
 }
   .middle{
     display: flex;
     justify-content: space-between;
+    background: #39A1AE;
+    
   }
   .category{
-    width: 30%;
+    width: 20%;
+    background: aliceblue;
   }
   .products{
-    width: 95%;
+    width: 78.5%;
     background: blanchedalmond;
   }
 `
