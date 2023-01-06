@@ -67,7 +67,7 @@ const Nav=styled.div`
   h4{
     padding: 0;
     margin: 0;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
   }
   .links{
     text-decoration: none;
@@ -75,7 +75,7 @@ const Nav=styled.div`
     
   }
   .links :hover{
-    color: #61dafb;
+    color: #39A1AE;
   }
   .header{
     width: 25%;
@@ -96,7 +96,7 @@ const Nav=styled.div`
   }
   .carti{
     width: 100%;
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
   @media only screen and (max-width: 900px) {
    

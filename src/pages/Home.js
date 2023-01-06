@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 
 const Home=()=>{
     return <>
-        <div className='background'>
+
 
       <Wrapper>
           <div className='main'>
@@ -154,14 +154,43 @@ const Home=()=>{
                </div>
            </div>
        </Wrapper2>
-        </div>
+        <Wrapper3>
+          <div className='letter'>
+              <div className='text1'>
+                  <div>
+
+                  <h1>Join Our Newsletter And Get 20% Off</h1>
+                      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aliquid atque blanditiis debitis eius et, explicabo fugit ipsum minus molestiae optio pariatur porro, quidem ullam vel voluptas voluptate. A cumque distinctio harum nam quos?</p>
+                  </div>
+
+
+
+
+              </div>
+              <div className='text'>
+                    <div className='inner'>
+                        <form action="">
+                            <input type="email" placeholder="Enter Email"/>
+                            <button type='submit' className='btn'>Subscribe</button>
+                        </form>
+
+
+                    </div>
+
+              </div>
+          </div>
+
+
+            
+        </Wrapper3>
+
 
     </>
 }
 
 const Wrapper=styled.div`
   background: aliceblue;
-  margin: 0 1.4rem;
+  margin: 1.4rem;
   padding: 1.2rem;
   
   .main{
@@ -253,7 +282,7 @@ const Wrapper2=styled.div`
     padding: 1.2rem;
     flex-direction: column;
     align-items: center;
-    font-size: 1.45rem;
+    font-size: 1.5rem;
     text-align: center;
     line-height: 2rem;
     background: aliceblue;
@@ -283,10 +312,67 @@ const Wrapper2=styled.div`
    width: 30.5%;
     
     line-height: 2rem;
-    font-size: 1.45rem;
+    font-size: 1.5rem;
     text-align: center;
     
   }
+`
+const Wrapper3=styled.div`
+  background: aliceblue;
+  margin: 1.4rem;
+
+  form {
+    display: flex;
+    width: 80%;
+    
+  }
+
+  .inner {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .text1 {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    font-size: 1.2rem;
+    line-height: 1.5rem;
+  }
+
+  .text {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .letter {
+
+    height: 50vh;
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+  }
+
+  .btn {
+    margin: 0;
+    border-radius: 0;
+
+  }
+
+  input {
+    width: 100%;
+    border-style: solid;
+    
+    font-size: 1.4rem;
+    padding: 1.2rem;
+  }
+
 `
 
 export default Home
