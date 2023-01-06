@@ -57,7 +57,8 @@ const Nav=styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin: 0 1.2rem 0 1.2rem;
+  margin: 0 1.4rem;
+  background: aliceblue;
   .body{
     width: 55%;
     display: flex;
