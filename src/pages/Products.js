@@ -8,6 +8,7 @@ const Products = () => {
   const [data, setdata] = useState([]);
   const [alldata, allsetdata] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
+  const [sortBy, setSortBy] = useState("Price(Lowest)");
 
   const fetchdata = async () => {
     const response = await fetch("https://course-api.com/react-store-products");
@@ -54,6 +55,38 @@ const Products = () => {
       return obj.name.includes(searchTerm);
     });
     setdata(filteredData);
+  };
+
+  const handleSort = (e) => {
+    setSortBy(e.target.value);
+
+    let sortedData;
+    if (sortBy === "Price(Lowest)") {
+      sortedData = alldata.sort((a, b) => a.price - b.price);
+    } else if (sortBy === "Price(Highest)") {
+      sortedData = alldata.sort((a, b) => b.price - a.price);
+    } else if (sortBy === "Name(a-z)") {
+      sortedData = alldata.sort((a, b) => {
+        if (a.name < b.name) {
+          return -1;
+        }
+        if (a.name > b.name) {
+          return 1;
+        }
+        return 0;
+      });
+    } else if (sortBy === "Name(z-a)") {
+      sortedData = alldata.sort((a, b) => {
+        if (a.name > b.name) {
+          return -1;
+        }
+        if (a.name < b.name) {
+          return 1;
+        }
+        return 0;
+      });
+    }
+    setdata(sortedData);
   };
 
   if (loader) {
@@ -148,7 +181,7 @@ const Products = () => {
                     </div>
                     <div className="company">
                       <label>Select : </label>
-                      <select className="select" onChange={handleSelect}>
+                      <select className="select">
                         <option value="all" selected>
                           all
                         </option>
@@ -201,7 +234,7 @@ const Products = () => {
               <div className="sort">
                 <div className="inner-sort">
                   <label htmlFor="Sort">Sort By : </label>
-                  <select name="Sort" className="select">
+                  <select name="Sort" className="select" onChange={handleSort}>
                     <option value="Price(Lowest)" selected>
                       Price(Lowest)
                     </option>
