@@ -1,26 +1,27 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
 import { TfiLayoutGrid2Alt } from "react-icons/tfi";
 import Loader from "../components/Loader";
+import MyContext from "../MyContext";
+import { Link } from "react-router-dom";
 
 const Products = () => {
-  const [loader, setloader] = useState(true);
-  const [data, setdata] = useState([]);
-  const [alldata, allsetdata] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [sortBy, setSortBy] = useState("Price(Lowest)");
-
-  const fetchdata = async () => {
-    const response = await fetch("https://course-api.com/react-store-products");
-    const data = await response.json();
-    setdata(data);
-    setloader(false);
-    allsetdata(data);
-  };
-
-  useEffect(() => {
-    fetchdata();
-  }, []);
+  const {
+    cartItems,
+    setCartItems,
+    total,
+    setTotal,
+    loader,
+    setloader,
+    data,
+    setdata,
+    alldata,
+    allsetdata,
+    searchTerm,
+    setSearchTerm,
+    sortBy,
+    setSortBy,
+  } = useContext(MyContext);
 
   const clickHandler = (e) => {
     const val = e.target.value;
@@ -89,268 +90,145 @@ const Products = () => {
     setdata(sortedData);
   };
 
-  if (loader) {
-    return (
-      <>
-        <Wrapper>
-          <div className="main">
-            <div className="search">
-              <div className="input">
-                <input
-                  type="text"
-                  placeholder="Search"
-                  onChange={handleSearch}
-                  value={searchTerm}
-                />
-                <div className="view">
-                  Grid Enabled
-                  <TfiLayoutGrid2Alt className="icon"></TfiLayoutGrid2Alt>
-                </div>
-              </div>
-
-              <div className="sort">
-                <div className="inner-sort">
-                  <label htmlFor="Sort">Sort By : </label>
-                  <select name="Sort" className="select">
-                    <option value="Price(Lowest)" selected>
-                      Price(Lowest)
-                    </option>
-                    <option value="Price(Highest)">Price(Highest)</option>
-                    <option value="Name(a-z)">Name(a-z)</option>
-                    <option value="Name(z-a)">Name(z-a)</option>
-                  </select>
-                </div>
+  return (
+    <>
+      <Wrapper>
+        <div className="main">
+          <div className="search">
+            <div className="input">
+              <input
+                type="text"
+                placeholder="Search"
+                onChange={handleSearch}
+                value={searchTerm}
+              />
+              <div className="view">
+                Grid Enabled
+                <TfiLayoutGrid2Alt className="icon"></TfiLayoutGrid2Alt>
               </div>
             </div>
-            <div className="middle">
-              <div className="category">
-                <div className="category-cat">
-                  <div className="heading">
-                    <h2>Category</h2>
-                  </div>
-                  <div className="inner-cat">
-                    <div>
-                      <button value="all" onClick={(e) => clickHandler(e)}>
-                        All
-                      </button>
-                    </div>
-                    <div>
-                      <button value="office" onClick={(e) => clickHandler(e)}>
-                        Office
-                      </button>
-                    </div>
 
-                    <div>
-                      <button
-                        value="living room"
-                        onClick={(e) => clickHandler(e)}
-                      >
-                        Living Room
-                      </button>
-                    </div>
-
-                    <div>
-                      <button value="kitchen" onClick={(e) => clickHandler(e)}>
-                        Kitchen
-                      </button>
-                    </div>
-
-                    <div>
-                      <button value="bedroom" onClick={(e) => clickHandler(e)}>
-                        Bedroom
-                      </button>
-                    </div>
-
-                    <div>
-                      <button value="dining" onClick={(e) => clickHandler(e)}>
-                        Dining
-                      </button>
-                    </div>
-                    <div>
-                      <button value="kids" onClick={(e) => clickHandler(e)}>
-                        Kids
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="company-cat">
-                  <div>
-                    <div className="heading">
-                      <h2>Company</h2>
-                    </div>
-                    <div className="company">
-                      <label>Select : </label>
-                      <select className="select">
-                        <option value="all" selected>
-                          all
-                        </option>
-                        <option value="marcos">marcos</option>
-                        <option value="liddy">liddy</option>
-                        <option value="ikea">ikea</option>
-                        <option value="caressa">caressa</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="clear-cat">
-                  <button
-                    className="clear"
-                    value="all"
-                    onClick={(e) => clickHandler(e)}
-                  >
-                    Clear Filters
-                  </button>
-                </div>
-              </div>
-              <div className="products">
-                <Loader></Loader>
+            <div className="sort">
+              <div className="inner-sort">
+                <label htmlFor="Sort">Sort By : </label>
+                <select name="Sort" className="select" onChange={handleSort}>
+                  <option value="Price(Lowest)" selected>
+                    Price(Lowest)
+                  </option>
+                  <option value="Price(Highest)">Price(Highest)</option>
+                  <option value="Name(a-z)">Name(a-z)</option>
+                  <option value="Name(z-a)">Name(z-a)</option>
+                </select>
               </div>
             </div>
           </div>
-        </Wrapper>
-      </>
-    );
-  } else {
-    return (
-      <>
-        <Wrapper>
-          <div className="main">
-            <div className="search">
-              <div className="input">
-                <input
-                  type="text"
-                  placeholder="Search"
-                  onChange={handleSearch}
-                  value={searchTerm}
-                />
-                <div className="view">
-                  Grid Enabled
-                  <TfiLayoutGrid2Alt className="icon"></TfiLayoutGrid2Alt>
+          <div className="middle">
+            <div className="category">
+              <div className="category-cat">
+                <div className="heading">
+                  <h2>Category</h2>
+                </div>
+                <div className="inner-cat">
+                  <div>
+                    <button value="all" onClick={(e) => clickHandler(e)}>
+                      All
+                    </button>
+                  </div>
+                  <div>
+                    <button value="office" onClick={(e) => clickHandler(e)}>
+                      Office
+                    </button>
+                  </div>
+
+                  <div>
+                    <button
+                      value="living room"
+                      onClick={(e) => clickHandler(e)}
+                    >
+                      Living Room
+                    </button>
+                  </div>
+
+                  <div>
+                    <button value="kitchen" onClick={(e) => clickHandler(e)}>
+                      Kitchen
+                    </button>
+                  </div>
+
+                  <div>
+                    <button value="bedroom" onClick={(e) => clickHandler(e)}>
+                      Bedroom
+                    </button>
+                  </div>
+
+                  <div>
+                    <button value="dining" onClick={(e) => clickHandler(e)}>
+                      Dining
+                    </button>
+                  </div>
+                  <div>
+                    <button value="kids" onClick={(e) => clickHandler(e)}>
+                      Kids
+                    </button>
+                  </div>
                 </div>
               </div>
 
-              <div className="sort">
-                <div className="inner-sort">
-                  <label htmlFor="Sort">Sort By : </label>
-                  <select name="Sort" className="select" onChange={handleSort}>
-                    <option value="Price(Lowest)" selected>
-                      Price(Lowest)
-                    </option>
-                    <option value="Price(Highest)">Price(Highest)</option>
-                    <option value="Name(a-z)">Name(a-z)</option>
-                    <option value="Name(z-a)">Name(z-a)</option>
-                  </select>
+              <div className="company-cat">
+                <div>
+                  <div className="heading">
+                    <h2>Company</h2>
+                  </div>
+                  <div className="company">
+                    <label>Select : </label>
+                    <select className="select" onChange={handleSelect}>
+                      <option value="all" selected>
+                        all
+                      </option>
+                      <option value="marcos">marcos</option>
+                      <option value="liddy">liddy</option>
+                      <option value="ikea">ikea</option>
+                      <option value="caressa">caressa</option>
+                    </select>
+                  </div>
                 </div>
+              </div>
+
+              <div className="clear-cat">
+                <button
+                  className="clear"
+                  value="all"
+                  onClick={(e) => clickHandler(e)}
+                >
+                  Clear Filters
+                </button>
               </div>
             </div>
-            <div className="middle">
-              <div className="category">
-                <div className="category-cat">
-                  <div className="heading">
-                    <h2>Category</h2>
-                  </div>
-                  <div className="inner-cat">
-                    <div>
-                      <button value="all" onClick={(e) => clickHandler(e)}>
-                        All
-                      </button>
-                    </div>
-                    <div>
-                      <button value="office" onClick={(e) => clickHandler(e)}>
-                        Office
-                      </button>
-                    </div>
-
-                    <div>
-                      <button
-                        value="living room"
-                        onClick={(e) => clickHandler(e)}
-                      >
-                        Living Room
-                      </button>
-                    </div>
-
-                    <div>
-                      <button value="kitchen" onClick={(e) => clickHandler(e)}>
-                        Kitchen
-                      </button>
-                    </div>
-
-                    <div>
-                      <button value="bedroom" onClick={(e) => clickHandler(e)}>
-                        Bedroom
-                      </button>
-                    </div>
-
-                    <div>
-                      <button value="dining" onClick={(e) => clickHandler(e)}>
-                        Dining
-                      </button>
-                    </div>
-                    <div>
-                      <button value="kids" onClick={(e) => clickHandler(e)}>
-                        Kids
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="company-cat">
-                  <div>
-                    <div className="heading">
-                      <h2>Company</h2>
-                    </div>
-                    <div className="company">
-                      <label>Select : </label>
-                      <select className="select" onChange={handleSelect}>
-                        <option value="all" selected>
-                          all
-                        </option>
-                        <option value="marcos">marcos</option>
-                        <option value="liddy">liddy</option>
-                        <option value="ikea">ikea</option>
-                        <option value="caressa">caressa</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="clear-cat">
-                  <button
-                    className="clear"
-                    value="all"
-                    onClick={(e) => clickHandler(e)}
-                  >
-                    Clear Filters
-                  </button>
-                </div>
-              </div>
-              <div className="products">
-                {data.map((obj) => {
-                  return (
-                    <>
-                      <div className="card">
-                        <div className="image">
+            <div className="products">
+              {data.map((obj) => {
+                return (
+                  <>
+                    <div className="card">
+                      <div className="image">
+                        <Link to={`/products/${obj.id}`}>
                           <img src={obj.image} alt="" />
-                        </div>
-
-                        <div className="text">
-                          <div>{obj.name}</div>
-                          <div>-${obj.price}</div>
-                        </div>
+                        </Link>
                       </div>
-                    </>
-                  );
-                })}
-              </div>
+
+                      <div className="text">
+                        <div>{obj.name}</div>
+                        <div>-${obj.price}</div>
+                      </div>
+                    </div>
+                  </>
+                );
+              })}
             </div>
           </div>
-        </Wrapper>
-      </>
-    );
-  }
+        </div>
+      </Wrapper>
+    </>
+  );
 };
 
 const Wrapper = styled.div`
