@@ -21,7 +21,6 @@ const Products = () => {
 
   const clickHandler = (e) => {
     const val = e.target.value;
-    console.log(val);
 
     if (val == "all") {
       setdata(alldata);
@@ -30,6 +29,19 @@ const Products = () => {
 
     const newdata = alldata.filter((obj) => {
       return obj.category == val;
+    });
+    setdata(newdata);
+  };
+  const handleSelect = (e) => {
+    const val = e.target.value;
+
+    if (val == "all") {
+      setdata(alldata);
+      return;
+    }
+
+    const newdata = alldata.filter((obj) => {
+      return obj.company == val;
     });
     setdata(newdata);
   };
@@ -124,8 +136,8 @@ const Products = () => {
                       <h2>Company</h2>
                     </div>
                     <div className="company">
-                      <label htmlFor="membership">Select : </label>
-                      <select name="membership" className="select">
+                      <label>Select : </label>
+                      <select className="select" onChange={handleSelect}>
                         <option value="all" selected>
                           all
                         </option>
@@ -139,7 +151,13 @@ const Products = () => {
                 </div>
 
                 <div>
-                  <button className="clear">Clear Filters</button>
+                  <button
+                    className="clear"
+                    value="all"
+                    onClick={(e) => clickHandler(e)}
+                  >
+                    Clear Filters
+                  </button>
                 </div>
               </div>
               <div className="products">
