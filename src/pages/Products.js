@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { TfiLayoutGrid2Alt } from "react-icons/tfi";
+import Loader from "../components/Loader";
 
 const Products = () => {
   const [loader, setloader] = useState(true);
   const [data, setdata] = useState([]);
   const [alldata, allsetdata] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const fetchdata = async () => {
     const response = await fetch("https://course-api.com/react-store-products");
@@ -46,20 +48,27 @@ const Products = () => {
     setdata(newdata);
   };
 
+  const handleSearch = (e) => {
+    setSearchTerm(e.target.value);
+    const filteredData = alldata.filter((obj) => {
+      return obj.name.includes(searchTerm);
+    });
+    setdata(filteredData);
+  };
+
   if (loader) {
-    return (
-      <>
-        <h1>Loading</h1>
-      </>
-    );
-  } else {
     return (
       <>
         <Wrapper>
           <div className="main">
             <div className="search">
               <div className="input">
-                <input type="text" placeholder="Search" />
+                <input
+                  type="text"
+                  placeholder="Search"
+                  onChange={handleSearch}
+                  value={searchTerm}
+                />
                 <div className="view">
                   Grid Enabled
                   <TfiLayoutGrid2Alt className="icon"></TfiLayoutGrid2Alt>
@@ -86,51 +95,53 @@ const Products = () => {
                   <div className="heading">
                     <h2>Category</h2>
                   </div>
-                  <div>
-                    <button value="all" onClick={(e) => clickHandler(e)}>
-                      All
-                    </button>
-                  </div>
-                  <div>
-                    <button value="office" onClick={(e) => clickHandler(e)}>
-                      Office
-                    </button>
-                  </div>
+                  <div className="inner-cat">
+                    <div>
+                      <button value="all" onClick={(e) => clickHandler(e)}>
+                        All
+                      </button>
+                    </div>
+                    <div>
+                      <button value="office" onClick={(e) => clickHandler(e)}>
+                        Office
+                      </button>
+                    </div>
 
-                  <div>
-                    <button
-                      value="living room"
-                      onClick={(e) => clickHandler(e)}
-                    >
-                      Living Room
-                    </button>
-                  </div>
+                    <div>
+                      <button
+                        value="living room"
+                        onClick={(e) => clickHandler(e)}
+                      >
+                        Living Room
+                      </button>
+                    </div>
 
-                  <div>
-                    <button value="kitchen" onClick={(e) => clickHandler(e)}>
-                      Kitchen
-                    </button>
-                  </div>
+                    <div>
+                      <button value="kitchen" onClick={(e) => clickHandler(e)}>
+                        Kitchen
+                      </button>
+                    </div>
 
-                  <div>
-                    <button value="bedroom" onClick={(e) => clickHandler(e)}>
-                      Bedroom
-                    </button>
-                  </div>
+                    <div>
+                      <button value="bedroom" onClick={(e) => clickHandler(e)}>
+                        Bedroom
+                      </button>
+                    </div>
 
-                  <div>
-                    <button value="dining" onClick={(e) => clickHandler(e)}>
-                      Dining
-                    </button>
-                  </div>
-                  <div>
-                    <button value="kids" onClick={(e) => clickHandler(e)}>
-                      Kids
-                    </button>
+                    <div>
+                      <button value="dining" onClick={(e) => clickHandler(e)}>
+                        Dining
+                      </button>
+                    </div>
+                    <div>
+                      <button value="kids" onClick={(e) => clickHandler(e)}>
+                        Kids
+                      </button>
+                    </div>
                   </div>
                 </div>
 
-                <div>
+                <div className="company-cat">
                   <div>
                     <div className="heading">
                       <h2>Company</h2>
@@ -150,7 +161,130 @@ const Products = () => {
                   </div>
                 </div>
 
-                <div>
+                <div className="clear-cat">
+                  <button
+                    className="clear"
+                    value="all"
+                    onClick={(e) => clickHandler(e)}
+                  >
+                    Clear Filters
+                  </button>
+                </div>
+              </div>
+              <div className="products">
+                <Loader></Loader>
+              </div>
+            </div>
+          </div>
+        </Wrapper>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <Wrapper>
+          <div className="main">
+            <div className="search">
+              <div className="input">
+                <input
+                  type="text"
+                  placeholder="Search"
+                  onChange={handleSearch}
+                  value={searchTerm}
+                />
+                <div className="view">
+                  Grid Enabled
+                  <TfiLayoutGrid2Alt className="icon"></TfiLayoutGrid2Alt>
+                </div>
+              </div>
+
+              <div className="sort">
+                <div className="inner-sort">
+                  <label htmlFor="Sort">Sort By : </label>
+                  <select name="Sort" className="select">
+                    <option value="Price(Lowest)" selected>
+                      Price(Lowest)
+                    </option>
+                    <option value="Price(Highest)">Price(Highest)</option>
+                    <option value="Name(a-z)">Name(a-z)</option>
+                    <option value="Name(z-a)">Name(z-a)</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div className="middle">
+              <div className="category">
+                <div className="category-cat">
+                  <div className="heading">
+                    <h2>Category</h2>
+                  </div>
+                  <div className="inner-cat">
+                    <div>
+                      <button value="all" onClick={(e) => clickHandler(e)}>
+                        All
+                      </button>
+                    </div>
+                    <div>
+                      <button value="office" onClick={(e) => clickHandler(e)}>
+                        Office
+                      </button>
+                    </div>
+
+                    <div>
+                      <button
+                        value="living room"
+                        onClick={(e) => clickHandler(e)}
+                      >
+                        Living Room
+                      </button>
+                    </div>
+
+                    <div>
+                      <button value="kitchen" onClick={(e) => clickHandler(e)}>
+                        Kitchen
+                      </button>
+                    </div>
+
+                    <div>
+                      <button value="bedroom" onClick={(e) => clickHandler(e)}>
+                        Bedroom
+                      </button>
+                    </div>
+
+                    <div>
+                      <button value="dining" onClick={(e) => clickHandler(e)}>
+                        Dining
+                      </button>
+                    </div>
+                    <div>
+                      <button value="kids" onClick={(e) => clickHandler(e)}>
+                        Kids
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="company-cat">
+                  <div>
+                    <div className="heading">
+                      <h2>Company</h2>
+                    </div>
+                    <div className="company">
+                      <label>Select : </label>
+                      <select className="select" onChange={handleSelect}>
+                        <option value="all" selected>
+                          all
+                        </option>
+                        <option value="marcos">marcos</option>
+                        <option value="liddy">liddy</option>
+                        <option value="ikea">ikea</option>
+                        <option value="caressa">caressa</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="clear-cat">
                   <button
                     className="clear"
                     value="all"
@@ -171,7 +305,7 @@ const Products = () => {
 
                         <div className="text">
                           <div>{obj.name}</div>
-                          <div>{obj.price}</div>
+                          <div>-${obj.price}</div>
                         </div>
                       </div>
                     </>
@@ -187,37 +321,50 @@ const Products = () => {
 };
 
 const Wrapper = styled.div`
+  h2 {
+    color: #39a1ae;
+  }
+  .clear-cat {
+    display: flex;
+  }
+  .company-cat {
+    width: 30%;
+  }
   .text {
     display: flex;
     justify-content: space-between;
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     margin: 1.2rem;
   }
   .products {
     display: flex;
     flex-wrap: wrap;
-    width: 78.5%;
+    width: 100%;
     background: aliceblue;
+    justify-content: space-evenly;
   }
 
   img {
     width: 100%;
-    height: 20rem;
+    height: 25rem;
     object-fit: cover;
     border-radius: 1.2rem;
+  }
+  img:hover {
+    opacity: 80%;
+    cursor: pointer;
   }
 
   .card {
     flex-direction: column;
     width: 29.5%;
-
     justify-content: space-evenly;
+
     align-items: center;
     padding: 1.2rem;
     margin: 0.5rem;
   }
   .inner-sort {
-    width: 40%;
     font-size: 1.2rem;
   }
   .view {
@@ -253,7 +400,7 @@ const Wrapper = styled.div`
   .search {
     display: flex;
     justify-content: space-between;
-    margin: 0 0 1.2rem 0;
+    padding: 1.2rem;
   }
 
   .company {
@@ -264,7 +411,7 @@ const Wrapper = styled.div`
   .select {
     font-size: 1.2rem;
     border: none;
-    width: 40%;
+
     padding: 0.3rem;
   }
 
@@ -298,11 +445,21 @@ const Wrapper = styled.div`
   .middle {
     display: flex;
     justify-content: space-between;
+    flex-direction: column;
     background: #39a1ae;
   }
   .category {
-    width: 20%;
+    width: 100%;
+    display: flex;
     background: aliceblue;
+    justify-content: space-between;
+  }
+  .category-cat {
+    display: flex;
+    flex-direction: column;
+  }
+  .inner-cat {
+    display: flex;
   }
 `;
 
