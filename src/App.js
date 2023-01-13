@@ -30,6 +30,7 @@ function App() {
   useEffect(() => {
     fetchdata();
   }, []);
+
   if (loader) {
     return <Loader></Loader>;
   } else {
@@ -59,10 +60,18 @@ function App() {
             <Route path="/products" element={<Products />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
             {data.map((el) => {
+              const product = {
+                id: el.id,
+                name: el.name,
+                price: el.price,
+                image: el.image,
+                company: el.company,
+                description: el.description,
+              };
               return (
                 <Route
                   path={`/products/${el.id}`}
-                  element={<ProductPage />}
+                  element={<ProductPage product={product} />}
                 ></Route>
               );
             })}
