@@ -52,9 +52,9 @@ const Wrapper=styled.footer`
   left: 0;
   right: 0;
   bottom: 0;
-  margin: 0 1.2rem;
   max-width: 100%;
   background-color: black;
+  margin: 0 1.2rem;
   color: white;
   text-align: center;
   font-size: 1rem;
