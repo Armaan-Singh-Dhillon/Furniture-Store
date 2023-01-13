@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { GrFormSubtract } from "react-icons/gr";
 import { IoMdAdd } from "react-icons/io";
-function QuantityCounter() {
-  const [quantity, setQuantity] = useState(0);
-
+const QuantityCounter = ({ data }) => {
+  const { quantity, setQuantity } = data;
   const handleIncrement = () => {
     setQuantity(quantity + 1);
   };
@@ -29,7 +28,7 @@ function QuantityCounter() {
       </div>
     </Wrapper>
   );
-}
+};
 const Wrapper = styled.div`
   font-size: 1.4rem;
   .quantity {

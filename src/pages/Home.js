@@ -2,7 +2,10 @@ import styled from "styled-components";
 import { ImQuotesLeft } from "react-icons/im";
 import { ImQuotesRight } from "react-icons/im";
 import { Link } from "react-router-dom";
-
+import MainTile from "../logos/main-title-tv.jpg";
+import side1 from "../logos/TVC-600x600.jpg";
+import side2 from "../logos/Center-Table-Set-of-3-600x600.jpg";
+import side3 from "../logos/side3.jpg";
 const Home = () => {
   return (
     <>
@@ -25,10 +28,7 @@ const Home = () => {
             </Link>
           </div>
           <div>
-            <img
-              src="https://static.asianpaints.com/content/dam/asianpaintsbeautifulhomes/home-decor-advice/design-and-style/five-important-interior-design-concepts/title-tv-unit-and-wall-panel-design.jpg"
-              alt=""
-            />
+            <img src={MainTile} alt="" />
           </div>
         </div>
       </Wrapper>
@@ -39,10 +39,8 @@ const Home = () => {
 
         <div className="products">
           <div className="product">
-            <img
-              src="https://www.ikea.com/in/en/images/products/aepplaroe-table-2-folding-chairs-outdoor-brown-stained-froesoen-duvholmen-beige__0801501_pe768160_s5.jpg?f=s"
-              alt=""
-            />
+            <img src={side3} alt="" />
+
             <div className="text">
               <div>
                 <h2>Modern Chair </h2>
@@ -54,10 +52,7 @@ const Home = () => {
           </div>
 
           <div className="product">
-            <img
-              src="https://www.driftingwood.in/wp-content/uploads/2022/02/TVC-600x600.jpg"
-              alt=""
-            />
+            <img src={side1} alt="" />
             <div className="text">
               <div>
                 <h2> Living Room Table </h2>
@@ -69,10 +64,7 @@ const Home = () => {
           </div>
 
           <div className="product">
-            <img
-              src="https://www.eshopregal.in/wp-content/uploads/2022/07/Center-Table-Set-of-3-600x600.jpg"
-              alt=""
-            />
+            <img src={side2} alt="" />
             <div className="text">
               <div>
                 <h2>Low Height Table </h2>
@@ -179,10 +171,11 @@ const Home = () => {
             <div>
               <h1>Join Our Newsletter</h1>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad
-                aliquid atque blanditiis debitis eius et, explicabo fugit ipsum
-                minus molestiae optio pariatur porro, quidem ullam vel voluptas
-                voluptate. A cumque distinctio harum nam quos?
+                Stay updated with our latest collections and exclusive discounts
+                by joining our newsletter! Simply enter your email address below
+                and hit 'Subscribe' to receive updates on sales and new
+                arrivals. As a thank you for subscribing, you'll also receive a
+                special discount code to use on your next purchase
               </p>
             </div>
           </div>
@@ -221,7 +214,7 @@ const Wrapper = styled.div`
   .text {
     line-height: 2.5rem;
 
-    font-size: 1.8rem;
+    font-size: 1.4rem;
   }
   .quotes {
     font-size: 1rem;
@@ -281,7 +274,7 @@ const Wrapper2 = styled.div`
     padding: 1.2rem;
     flex-direction: column;
     align-items: center;
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     text-align: center;
     line-height: 2rem;
     background: aliceblue;
@@ -306,7 +299,7 @@ const Wrapper2 = styled.div`
     width: 30.5%;
 
     line-height: 2rem;
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     text-align: center;
   }
 `;
@@ -332,8 +325,9 @@ const Wrapper3 = styled.div`
     justify-content: space-evenly;
     align-items: center;
     text-align: center;
-    font-size: 1.2rem;
+    font-size: 1.25rem;
     line-height: 1.5rem;
+    padding: 1.2rem;
   }
 
   .text {

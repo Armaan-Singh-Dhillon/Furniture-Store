@@ -1,51 +1,100 @@
 import styled from "styled-components";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import MyContext from "../MyContext";
 import { BsTrashFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 const Cart = () => {
   const { cartItems, setCartItems, total, setTotal } = useContext(MyContext);
+  useEffect(() => {
+    console.log(cartItems);
+  }, [cartItems.length]);
 
-  return (
-    <>
-      <Wrapper>
-        <div className="container">
-          <div className="category">
-            <div className="holders">
-              item
-              <div className="image-container">
-                <img
-                  src="https://media.istockphoto.com/photos/wooden-chairs-at-table-in-bright-open-space-interior-with-lamp-next-picture-id968086564?b=1&k=20&m=968086564&s=612x612&w=0&h=n4ihvhMTaMQDoIxIxEj8tPAl6A0OinvYx0l51Wh9FQg="
-                  alt=""
-                />
-              </div>
-            </div>
-            <div className="holders">
-              price
-              <div className="inner-holder">-$ 12599</div>
-            </div>
+  const ClickHandler = (elId) => {
+    setCartItems(
+      cartItems.filter(({ id }) => {
+        return elId != id;
+      })
+    );
+  };
 
-            <div className="holders">
-              quantity
-              <div className="inner-holder">3</div>
-            </div>
-            <div className="holders">
-              subtotal
-              <div className="inner-holder">-$3389</div>
-            </div>
-            <div className="holders">
-              Remove-item
-              <div className="inner-holder">
-                <BsTrashFill></BsTrashFill>
-              </div>
+  if (cartItems.length == 0) {
+    return (
+      <>
+        <Wrapper1>
+          <div className="main">
+            <div>Your Cart IS Empty</div>
+            <div>
+              <Link to="/products">
+                <button className="btn">Fill it</button>
+              </Link>
             </div>
           </div>
-        </div>
-      </Wrapper>
-    </>
-  );
+        </Wrapper1>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <Wrapper>
+          {cartItems.map(
+            ({ id, name, price, image, company, description, quantity }) => {
+              return (
+                <>
+                  <div className="container">
+                    <div className="category">
+                      <div className="holders">
+                        <h3>Items</h3>
+                        <div className="image-container">
+                          <img src={image} alt="" />
+                        </div>
+                        <div>{name}</div>
+                      </div>
+                      <div className="holders">
+                        <h3>Price</h3>
+                        <div className="inner-holder">-$ {price}</div>
+                      </div>
+
+                      <div className="holders">
+                        <h3>Quantity</h3>
+                        <div className="inner-holder">{quantity}</div>
+                      </div>
+                      <div className="holders">
+                        <h3>Subtotal</h3>
+                        <div className="inner-holder">-$3389</div>
+                      </div>
+                      <div className="holders">
+                        <h3>Remove-item</h3>
+                        <div className="inner-holder">
+                          <button
+                            className="btn"
+                            onClick={() => ClickHandler(id)}
+                          >
+                            <BsTrashFill></BsTrashFill>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  ;
+                </>
+              );
+            }
+          )}
+        </Wrapper>
+      </>
+    );
+  }
 };
 
 const Wrapper = styled.div`
+  .btn {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    display: flex;
+    background: aliceblue;
+    color: #39a1ae;
+  }
   .inner-holder {
     margin: 1.2rem;
   }
@@ -72,25 +121,21 @@ const Wrapper = styled.div`
   }
   .container {
     display: flex;
-    margin: 1.2rem;
-    background: blanchedalmond;
+    margin: 0 1.4rem;
+    background: aliceblue;
     flex-direction: column;
   }
 `;
-
+const Wrapper1 = styled.div`
+  .main {
+    display: flex;
+    margin: 1.4rem;
+    background: blanchedalmond;
+    height: 30vh;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    font-size: 1.8rem;
+  }
+`;
 export default Cart;
-// {
-//   "id": "recd1jIVIEChmiwhe",
-//     "name": "armchair",
-//     "price": 12599,
-//     "image": "https://v5.airtableusercontent.com/v1/14/14/1673596800000/Stjd9FMsYVm_r8QCWHys-g/ER1kmlgP9V_NqIAQw1AMuRuW0mG3jh8AGiFLQO-uRYD6fLPblmPzt6MvY1x3ipokQx-gwewm-hTh3gP_yYjiRg/cnCdEYYZK7VWqsPuAA5Nu1Gtyd6yMTBmr32F3ItImYY",
-//     "colors": [
-//   "#000",
-//   "#00ff00",
-//   "#0000ff"
-// ],
-//     "company": "marcos",
-//     "description": "Cloud bread VHS hell of banjo bicycle rights jianbing umami mumblecore etsy 8-bit pok pok +1 wolf. Vexillologist yr dreamcatcher waistcoat, authentic chillwave trust fund. Viral typewriter fingerstache pinterest pork belly narwhal. Schlitz venmo everyday carry kitsch pitchfork chillwave iPhone taiyaki trust fund hashtag kinfolk microdosing gochujang live-edge",
-//     "category": "bedroom",
-//     "shipping": true
-// }

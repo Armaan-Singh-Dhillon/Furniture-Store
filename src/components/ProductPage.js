@@ -1,10 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import styled from "styled-components";
 import QuantityCounter from "./QuantityCounter";
+import MyContext from "../MyContext";
+import { Link } from "react-router-dom";
 const ProductPage = (data) => {
   const product = data.product;
+  const { cartItems, setCartItems, total, setTotal } = useContext(MyContext);
   const { id, name, price, image, company, description } = product;
-  console.log(id, name, price, image, company, description);
+  const [quantity, setQuantity] = useState(0);
+  const clickHandler = () => {
+    setCartItems([
+      ...cartItems,
+      { id, name, price, image, company, description, quantity },
+    ]);
+  };
+  const obj = {
+    quantity,
+    setQuantity,
+  };
   return (
     <>
       <Wrapper>
@@ -18,11 +31,16 @@ const ProductPage = (data) => {
 
             <div> Price : -${price}</div>
             <div className="product-quantity">
-              <QuantityCounter></QuantityCounter>
+              <QuantityCounter data={obj}></QuantityCounter>
             </div>
             <div>Company : {company}</div>
             <div>
-              <button className="btn">Add to Cart</button>
+              <button className="btn" onClick={clickHandler}>
+                Add to Cart
+              </button>
+              <Link to="/cart">
+                <button className="btn">Check Out Cart</button>
+              </Link>
             </div>
           </div>
         </div>
@@ -33,7 +51,8 @@ const ProductPage = (data) => {
 
 const Wrapper = styled.div`
   .btn {
-    margin: 0;
+    padding: 0.3rem;
+    border-radius: 0;
   }
   .product-info {
     padding: 1.8rem;

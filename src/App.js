@@ -71,7 +71,7 @@ function App() {
               return (
                 <Route
                   path={`/products/${el.id}`}
-                  element={<ProductPage product={product} />}
+                  element={<ProductPage key={el.id} product={product} />}
                 ></Route>
               );
             })}
