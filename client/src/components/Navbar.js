@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { BsFillCartFill } from "react-icons/bs";
 import { FaUserAlt } from "react-icons/fa";
+import mainLogo from '../logos/furniture_shop_liscard_logo.png'
+
 import { useState } from "react";
 
 const Navbar = () => {
@@ -11,7 +13,7 @@ const Navbar = () => {
         <div className="header">
           <Link to="/">
             <img
-              src="http://www.furniture-wirral.com/wp-content/uploads/2018/02/furniture_shop_liscard_logo.png"
+              src={mainLogo}
               alt=""
             />
           </Link>
