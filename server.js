@@ -1,17 +1,16 @@
 import express from 'express'
 import dotenv from 'dotenv'
 import connectDB from './utils/connectDB.js'
-import notFoundMiddleware from './middleware/notFoundMiddleware.js'
-import errorHandlerMiddleware from './middleware/auth.js'
-import 'express-async-errors'
+import productRoute from './Routes/products.js'
+import userRoute from './Routes/user.js'
+
 
 dotenv.config()
 const app = express()
 app.use(express.json())
 
-app.use('')
-app.use(notFoundMiddleware)
-app.use(errorHandlerMiddleware)
+app.use('/api/v1/products', productRoute)
+app.use('/api/v1/user', userRoute)
 
 const port = process.env.PORT || 5000
 
