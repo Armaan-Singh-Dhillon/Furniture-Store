@@ -9,7 +9,7 @@ import MyContext from "./MyContext";
 import { useEffect, useState } from "react";
 import Loader from "./components/Loader";
 import ProductPage from "./components/ProductPage";
-
+import Login from './pages/Login.js'
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(0);
@@ -59,6 +59,7 @@ function App() {
             <Route path="/about" element={<About />}></Route>
             <Route path="/products" element={<Products />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
+            <Route path="/login" element={<Login />}></Route>
             {data.map((el) => {
               const product = {
                 id: el.id,

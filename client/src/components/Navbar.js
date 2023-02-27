@@ -42,14 +42,14 @@ const Navbar = () => {
 
         <div className="footer">
           <div className="cart">
-            <Link to={"/cart"} className="links">
-              {" "}
-              <BsFillCartFill className="carti"></BsFillCartFill>{" "}
+            <Link to="/cart" className="links">
+              
+              <BsFillCartFill className="carti"></BsFillCartFill>
             </Link>
           </div>
           <div className="cart">
-            <Link to={"/products"} className="links">
-              {" "}
+            <Link to="/login" className="links">
+              
               <FaUserAlt className="carti"></FaUserAlt>
             </Link>
           </div>
