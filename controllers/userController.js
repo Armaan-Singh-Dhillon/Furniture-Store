@@ -1,11 +1,14 @@
 import User from '../models/user.js'
 
 const register = async (req, res) => {
-
-    const data = await User.create(req.body)
+    
+    const user = await User.create(req.body)
+    const token = user.createJWT()
+    
     res.send({
         "message":"registered successfully",
-        data
+        user,
+        token
     })
 }
 const login = async (req, res) => {

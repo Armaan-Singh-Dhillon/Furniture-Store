@@ -1,4 +1,4 @@
-import "./App.css";
+
 import { Route, Routes } from "react-router-dom";
 import Sharedlayout from "./components/Sharedlayout";
 import Home from "./pages/Home";
@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 import Loader from "./components/Loader";
 import ProductPage from "./components/ProductPage";
 import Login from './pages/Login.js'
+import User from "./components/User";
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(0);
@@ -18,6 +19,11 @@ function App() {
   const [alldata, allsetdata] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("Price(Lowest)");
+
+  const [token, setToken] = useState(''||localStorage.getItem('token'))
+  const [user, setUser] = useState({} || localStorage.getItem('user'))
+  
+  
 
   const fetchdata = async () => {
     const response = await fetch("https://course-api.com/react-store-products");
@@ -51,6 +57,10 @@ function App() {
           setSearchTerm,
           sortBy,
           setSortBy,
+          token,
+          setToken,
+          user,
+          setUser
         }}
       >
         <Routes>
@@ -60,6 +70,7 @@ function App() {
             <Route path="/products" element={<Products />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="/login" element={<Login />}></Route>
+            <Route path='/user' element={<User></User>}></Route>
             {data.map((el) => {
               const product = {
                 id: el.id,

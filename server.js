@@ -3,10 +3,10 @@ import dotenv from 'dotenv'
 import connectDB from './utils/connectDB.js'
 import productRoute from './Routes/products.js'
 import userRoute from './Routes/user.js'
-
-
+import cors from 'cors'
 dotenv.config()
 const app = express()
+app.use(cors())
 app.use(express.json())
 
 app.use('/api/v1/products', productRoute)
