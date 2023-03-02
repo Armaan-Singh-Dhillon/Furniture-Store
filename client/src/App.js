@@ -11,6 +11,10 @@ import Loader from "./components/Loader";
 import ProductPage from "./components/ProductPage";
 import Login from './pages/Login.js'
 import User from "./components/User";
+import EditProfile from './pages/user/EditProfile'
+import Offer from './pages/user/Offers'
+import Order from './pages/user/Orders'
+import YourProducts from './pages/user/YourProducts'
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(0);
@@ -70,7 +74,12 @@ function App() {
             <Route path="/products" element={<Products />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="/login" element={<Login />}></Route>
-            <Route path='/user' element={<User></User>}></Route>
+            <Route path='/user' element={<User></User>}>
+              <Route path='/user/edit' element={<EditProfile></EditProfile>}></Route>
+              <Route path='/user/offer' element={<Offer></Offer>}></Route>
+              <Route path='/user/product' element={<Order></Order>}></Route>
+              <Route path='/user/order' element={<YourProducts></YourProducts>}></Route>
+            </Route>
             {data.map((el) => {
               const product = {
                 id: el.id,

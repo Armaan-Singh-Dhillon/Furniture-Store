@@ -2,6 +2,8 @@ import styled from "styled-components"
 import { useContext } from "react";
 import userImage from '../assets/user.png'
 import MyContext from "../MyContext";
+import { Link } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 const User = () => {
   const { user } = useContext(MyContext);
   return (
@@ -40,24 +42,32 @@ const User = () => {
         </div>
         <div className="lower">
           <div className="section">
-            <div className="links">
+            <div >
+              <Link to='/user/product' className="links">
               Your Products/Furniture
+              </Link>
             </div>
-            <div className="links">
+            <div >
+              <Link to='/user/order' className="links">
               Orders
+              </Link>
             </div>
-            <div className="links">
+            <div >
+              <Link to='/user/offer' className="links">
               Offers And Coupons
+              </Link>
             </div>
-            <div className="links">
+            <div >
+              <Link to='/user/edit' className="links">
               Edit Profile
+              </Link>
             </div>
             <div >
               <button className="btn">Logout</button>
             </div>
           </div>
           <div className="outlet">
-            Outlet
+           <Outlet/>
           </div>
         </div>
       </Wrapper>
@@ -68,6 +78,7 @@ const Wrapper = styled.div`
 .links{
   color:#39A1AE ;
   margin: 0.8rem;
+  text-decoration: none;
 }
 .links:hover{
   cursor: pointer;
