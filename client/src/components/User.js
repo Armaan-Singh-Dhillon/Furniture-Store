@@ -7,6 +7,7 @@ import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
 const User = () => {
   const { user ,token } = useContext(MyContext);
+  
   const navigate =useNavigate()
   useEffect(()=>{
     if(!token){
@@ -24,21 +25,21 @@ const User = () => {
           <div className="address-section">
             <div className="name">
               <div>
-                Name:
+                Name: {user.name}
               </div>
               <div>
-                Email:
+                Email: {user.email}
               </div>
               <div>
-                Mobile:
+                Mobile: {user.phone}
               </div>
             </div>
             <div className="address">
               <div>
-                address 1
+                address 1: {user.address1}
               </div>
               <div>
-                address 2
+                address 2 {user.address2 }
               </div>
 
 

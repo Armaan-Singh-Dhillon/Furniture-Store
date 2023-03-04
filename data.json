@@ -1,0 +1,282 @@
+
+    [
+        {
+            "name": "Sawyer",
+            "price": 300,
+            "image": "https://i0.wp.com/magnoliahome.co.in/wp-content/uploads/2021/07/Sawyer-Bookshelf-1.1-1.jpg",
+            "company": "Furniture Co.",
+            "description": "A sturdy bookshelf made from solid wood",
+            "category": "Furniture",
+            "shipping": true,
+            "offers": [
+                {
+                    "offerName": "15% off",
+                    "discount": "15%"
+                },
+                {
+                    "offerName": "Free Assembly",
+                    "discount": "100%"
+                }
+            ],
+            "used": false,
+            "woodType": [
+                "Mahogany"
+            ],
+            "refundable": true
+        },
+        {
+            "name": "Rug",
+            "price": 200,
+            "image": "https://wakefitdev.gumlet.io/img/rug/WRUGNETW152213BL/8.jpg?w=732",
+            "company": "Flooring Co.",
+            "description": "A high-quality rug that adds warmth to any room",
+            "category": "Flooring",
+            "shipping": true,
+            "offers": [
+                {
+                    "offerName": "10% off",
+                    "discount": "10%"
+                }
+            ],
+            "used": false,
+            "woodType": [],
+            "refundable": true
+        },
+        {
+            "name": "Lamp",
+            "price": 75,
+            "image": "https://images.woodenstreet.de/image/data/home-decors/lamps-lighting/floor-lamps/beige-wooden-floor-lamp-with-natural-jute-shade/beige-wooden-floor-lamp-with-natural-jute-shade/1.jpg",
+            "company": "Lighting Co.",
+            "description": "A stylish lamp that provides ample lighting",
+            "category": "Lighting",
+            "shipping": true,
+            "offers": [
+                {
+                    "offerName": "Free Bulb Replacement",
+                    "discount": "100%"
+                }
+            ],
+            "used": true,
+            "woodType": [],
+            "refundable": false
+        }
+        ,
+        {
+            "name": "Desk",
+            "price": 200,
+            "image": "https://m.media-amazon.com/images/I/61tBgPGDdpL._SX425_.jpg",
+            "company": "Furniture Co.",
+            "description": "A spacious desk with drawers",
+            "category": "Furniture",
+            "shipping": true,
+            "offers": [],
+            "used": true,
+            "woodType": [
+                "Oak"
+            ],
+            "refundable": false
+        },
+        {
+            "name": "Sconce",
+            "price": 50,
+            "image": "https://m.media-amazon.com/images/I/71VWwkLFuYL._SL1500_.jpg",
+            "company": "Lighting Co.",
+            "description": "A simple yet elegant wall sconce",
+            "category": "Lighting",
+            "shipping": true,
+            "offers": [
+                {
+                    "offerName": "Free Shipping",
+                    "discount": "100%"
+                }
+            ],
+            "used": false,
+            "woodType": [],
+            "refundable": true
+        },
+        
+        {
+            "name": "Curtains",
+            "price": 100,
+            "image": "https://5.imimg.com/data5/FZ/OW/UD/SELLER-3686580/classic-and-modern-contemporary-curtains-500x500.jpg",
+            "company": "Textiles Co.",
+            "description": "Elegant curtains for your living room",
+            "category": "Textiles",
+            "shipping": true,
+            "offers": [
+                {
+                    "offerName": "Free Shipping",
+                    "discount": "100%"
+                }
+            ],
+            "used": false,
+            "woodType": [],
+            "refundable": true
+        },
+        {
+            "name": "Chandelier",
+            "price": 500,
+            "image": "http://cdn.shopify.com/s/files/1/0047/8022/8698/products/3s-crystal-staircase-chandelier-1.png?v=1599907872",
+            "company": "Lighting Co.",
+            "description": "A stunning chandelier to elevate your space",
+            "category": "Lighting",
+            "shipping": true,
+            "offers": [],
+            "used": false,
+            "woodType": [],
+            "refundable": true
+        },
+        {
+            "name": "Modern Sofa",
+            "price": 600,
+            "image": "https://sc02.alicdn.com/kf/HTB1ZP.fa.KF3KVjSZFEq6xExFXaR/238842455/HTB1ZP.fa.KF3KVjSZFEq6xExFXaR.jpg",
+            "company": "Furniture Co.",
+            "description": "A stylish modern sofa with a chaise lounge",
+            "category": "Furniture",
+            "shipping": true,
+            "offers": [
+                {
+                    "offerName": "20% off",
+                    "discount": "20%"
+                },
+                {
+                    "offerName": "Free Shipping",
+                    "discount": "100%"
+                }
+            ],
+            "used": false,
+            "woodType": [
+                "Birch",
+                "Maple"
+            ],
+            "refundable": true
+        },
+        {
+            "name": "Side Table",
+            "price": 75,
+            "image": "https://cdn.shopify.com/s/files/1/0044/1208/0217/products/FremontBedsideTable-1_035516_6c1d8851-22cd-41a1-a4cc-6da789a79b8b_900x.jpg?v=1668497301",
+            "company": "Furniture Co.",
+            "description": "A small wooden side table",
+            "category": "Furniture",
+            "shipping": true,
+            "offers": [
+                {
+                    "offerName": "10% off",
+                    "discount": "10%"
+                }
+            ],
+            "used": false,
+            "woodType": [
+                "Oak",
+                "Pine"
+            ],
+            "refundable": true
+        },
+        
+        {
+            "name": "TV Stand",
+            "price": 120,
+            "image": "https://m.media-amazon.com/images/I/818f0tvJT-L._SL1500_.jpg",
+            "company": "Furniture Co.",
+            "description": "A sleek black TV stand with two shelves",
+            "category": "Furniture",
+            "shipping": false,
+            "offers": [],
+            "used": true,
+            "woodType": [
+                "Pine",
+                "Birch"
+            ],
+            "refundable": false
+        },
+        {
+            "name": "Bookcase",
+            "price": 180,
+            "image": "https://m.media-amazon.com/images/I/61w6tslU7yL._SL1024_.jpg",
+            "company": "Furniture Co.",
+            "description": "A wide bookcase with six shelves",
+            "category": "Furniture",
+            "shipping": true,
+            "offers": [
+                {
+                    "offerName": "20% off",
+                    "discount": "20%"
+                }
+            ],
+            "used": false,
+            "woodType": [
+                "Oak",
+                "Birch"
+            ],
+            "refundable": true
+        },
+        {
+            "name": "Table",
+            "price": 250,
+            "image": "https://m.media-amazon.com/images/I/71Tjo4UiDFL._SL1200_.jpg",
+            "company": "Furniture Co.",
+            "description": "A beautiful wooden table with four chairs",
+            "category": "Furniture",
+            "shipping": true,
+            "offers": [
+                {
+                    "offerName": "10% off",
+                    "discount": "10%"
+                },
+                {
+                    "offerName": "Free Shipping",
+                    "discount": "100%"
+                }
+            ],
+            "used": false,
+            "woodType": [
+                "Oak",
+                "Maple"
+            ],
+            "refundable": true
+        },
+        {
+            "name": "Sofa",
+            "price": 500,
+            "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-sofa-in-a-box-1666302170.png?crop=0.612xw:0.925xh;0.340xw,0.0315xh&resize=640:*",
+            "company": "Furniture Co.",
+            "description": "A comfortable sofa with a chaise lounge",
+            "category": "Furniture",
+            "shipping": true,
+            "offers": [
+                {
+                    "offerName": "20% off",
+                    "discount": "20%"
+                }
+            ],
+            "used": false,
+            "woodType": [
+                "Birch"
+            ],
+            "refundable": true
+        },
+        
+        {
+            "name": "Desk",
+            "price": 200,
+            "image": "https://www.thespruce.com/thmb/l7vA36dSr_QQczazu7um_Oo-SEY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/annlivingsmalldesk-d9b22390b0c74cfb9fe2d872b76f417d.jpg",
+            "company": "Furniture Co.",
+            "description": "A sturdy wooden desk with drawers",
+            "category": "Furniture",
+            "shipping": true,
+            "offers": [
+                {
+                    "offerName": "15% off",
+                    "discount": "15%"
+                }
+            ],
+            "used": false,
+            "woodType": [
+                "Oak",
+                "Birch"
+            ],
+            "refundable": true
+        }
+        
+    ]
+    

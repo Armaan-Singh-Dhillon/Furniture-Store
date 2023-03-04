@@ -17,9 +17,16 @@ const Login = () => {
         
         const token =data.token
         const user = data.user
-        console.log(user)
+        
         localStorage.setItem('token',token)
-        localStorage.setItem('user',user)
+        localStorage.setItem('name',user.name)
+        localStorage.setItem('email',user.email)
+        localStorage.setItem('address1',user.address1)
+        localStorage.setItem('address2',user.address2)
+        localStorage.setItem('phone',user.phone)
+        localStorage.setItem('orders',user.orders)
+        localStorage.setItem('offers',user.offers)
+        localStorage.setItem('products',user.products)
         setUser(user)
         setToken(token)
         navigate('/user')

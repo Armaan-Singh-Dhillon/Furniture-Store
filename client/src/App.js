@@ -16,6 +16,7 @@ import Offer from './pages/user/Offers'
 import Order from './pages/user/Orders'
 import YourProducts from './pages/user/YourProducts'
 import Register from './pages/Register.js'
+import axios from "axios";
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(0);
@@ -26,16 +27,25 @@ function App() {
   const [sortBy, setSortBy] = useState("Price(Lowest)");
 
   const [token, setToken] = useState(''||localStorage.getItem('token'))
-  const [user, setUser] = useState(null || localStorage.getItem('user'))
+  const [user, setUser] = useState({
+    name: '' || localStorage.getItem('name'),
+    email: '' || localStorage.getItem('email'),
+    address1: '' || localStorage.getItem('address1'),
+    address2: '' || localStorage.getItem('address2'),
+    phone: '' || localStorage.getItem('phone'),
+    orders: '' || localStorage.getItem('orders'),
+    offers: '' || localStorage.getItem('offers'),
+    products: '' || localStorage.getItem('products'),
+  })
   
   
 
   const fetchdata = async () => {
-    const response = await fetch("https://course-api.com/react-store-products");
-    const data = await response.json();
-    setdata(data);
+    const {data} = await axios.get('http://localhost:2000/api/v1/products/getAll');
+    console.log(data)
+    setdata(data.data);
     setloader(false);
-    allsetdata(data);
+    allsetdata(data.data);
   };
 
   useEffect(() => {

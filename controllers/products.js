@@ -11,7 +11,11 @@ const create= async (req,res)=>{
     })
 }
 const getAll = async (req, res)=>{
-  res.send('i get a product')
+    const data =await productModel.find({})
+    res.send({
+        data
+    })
+
 }
 const update = async (req, res)=>{
     res.send('i update a product')
