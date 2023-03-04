@@ -3,10 +3,14 @@ import { Link } from "react-router-dom";
 import { BsFillCartFill } from "react-icons/bs";
 import { FaUserAlt } from "react-icons/fa";
 import mainLogo from '../logos/furniture_shop_liscard_logo.png'
-
+import { useContext } from "react";
+import MyContext from "../MyContext";
 import { useState } from "react";
+import { useEffect } from "react";
 
 const Navbar = () => {
+  const { user } = useContext(MyContext);
+ 
   return (
     <>
       <Nav>
@@ -22,22 +26,29 @@ const Navbar = () => {
         <div className="body">
           <div>
             <Link to={"/"} className="links">
-              {" "}
-              <h4>Home</h4>{" "}
+              
+              <h4>Home</h4>
             </Link>
           </div>
           <div>
             <Link to={"/about"} className="links">
-              {" "}
-              <h4>About</h4>{" "}
+              
+              <h4>About</h4>
             </Link>
           </div>
           <div>
             <Link to={"/products"} className="links">
-              {" "}
-              <h4>Products</h4>{" "}
+              
+              <h4>Products</h4>
             </Link>
           </div>
+          {user && <div>
+            <Link to={"/products"} className="links">
+
+              <h4>User</h4>
+            </Link>
+          </div>}
+          
         </div>
 
         <div className="footer">
@@ -48,7 +59,8 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="cart">
-            <Link to="/login" className="links">
+
+            <Link to='/login' className="links">
               
               <FaUserAlt className="carti"></FaUserAlt>
             </Link>

@@ -4,6 +4,7 @@ import userImage from '../assets/user.png'
 import MyContext from "../MyContext";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
+
 const User = () => {
   const { user } = useContext(MyContext);
   return (

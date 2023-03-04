@@ -25,7 +25,7 @@ function App() {
   const [sortBy, setSortBy] = useState("Price(Lowest)");
 
   const [token, setToken] = useState(''||localStorage.getItem('token'))
-  const [user, setUser] = useState({} || localStorage.getItem('user'))
+  const [user, setUser] = useState(null || localStorage.getItem('user'))
   
   
 

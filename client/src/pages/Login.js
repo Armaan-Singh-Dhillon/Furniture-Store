@@ -17,12 +17,12 @@ const Login = () => {
         
         const token =data.token
         const user = data.user
-        
+        console.log(user)
         localStorage.setItem('token',token)
         localStorage.setItem('user',user)
         setUser(user)
         setToken(token)
-        navigate('')
+        navigate('/user')
     }
     return (
         <Wrapper>
