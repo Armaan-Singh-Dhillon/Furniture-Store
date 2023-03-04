@@ -2,11 +2,17 @@ import styled from "styled-components"
 import { useContext } from "react";
 import userImage from '../assets/user.png'
 import MyContext from "../MyContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
-
+import { useEffect } from "react";
 const User = () => {
-  const { user } = useContext(MyContext);
+  const { user ,token } = useContext(MyContext);
+  const navigate =useNavigate()
+  useEffect(()=>{
+    if(!token){
+      navigate('/login')
+    }
+  },[])
   return (
     <>
       <Wrapper>

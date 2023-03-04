@@ -4,16 +4,16 @@ import axios from 'axios'
 import { useNavigate } from "react-router-dom";
 import { useContext } from 'react';
 import MyContext from '../MyContext';
+import { Link } from 'react-router-dom';
 const Login = () => {
-    const [toggle, settoggle] = useState(false)
-    const [name, setName] = useState('')
+
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const { token,setToken ,setUser } = useContext(MyContext);
     const navigate=useNavigate()
 
     const submitHandler = async() => {
-        const {data} = await axios.post('http://localhost:2000/api/v1/user/register',{name,email,password})
+        const {data} = await axios.post('http://localhost:2000/api/v1/user/login',{email,password})
         
         const token =data.token
         const user = data.user
@@ -30,22 +30,10 @@ const Login = () => {
             <div className='main'>
                 <div className='card'>
                     <div className='title'>
-                        <h4>
-                             {toggle ? 'Register':'Login'}
-                        </h4>
+                        Login
+                        
                     </div>
-                    {
-                        toggle && <>
-                            <div className='text' >
-                                Name
-                            </div>
-                            <div className='input text'>
-                                <input type="text" onChange={(e) => setName(e.target.value)} />
-                            </div>
-                        </>
-
-
-                    }
+                 
                     <div className='text' >
                         Email
                     </div>
@@ -60,7 +48,11 @@ const Login = () => {
                         <input type="text" onChange={(e) => setPassword(e.target.value)} />
                     </div>
                     <div>
-                        <button className='toggle'onClick={()=>settoggle(!toggle)}>{toggle ? 'Already Have an account ?':"Don't have an account ?"}</button>
+                        <button className='toggle'>
+                            <Link to='/register' className='link'>
+                            Don't have an account ?
+                            </Link>
+                            </button>
                     </div>
                     <div className='input text'>
 
@@ -73,6 +65,10 @@ const Login = () => {
 }
 
 const Wrapper = styled.div`
+.link{
+    text-decoration: none;
+    color: #39A1AE;
+}
 
 .text{
     margin-top: 1.2rem;

@@ -42,12 +42,6 @@ const Navbar = () => {
               <h4>Products</h4>
             </Link>
           </div>
-          {user && <div>
-            <Link to={"/products"} className="links">
-
-              <h4>User</h4>
-            </Link>
-          </div>}
           
         </div>
 
@@ -59,8 +53,7 @@ const Navbar = () => {
             </Link>
           </div>
           <div className="cart">
-
-            <Link to='/login' className="links">
+            <Link to={user ? '/user':'/login'} className="links">
               
               <FaUserAlt className="carti"></FaUserAlt>
             </Link>

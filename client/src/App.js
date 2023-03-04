@@ -15,6 +15,7 @@ import EditProfile from './pages/user/EditProfile'
 import Offer from './pages/user/Offers'
 import Order from './pages/user/Orders'
 import YourProducts from './pages/user/YourProducts'
+import Register from './pages/Register.js'
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(0);
@@ -74,6 +75,7 @@ function App() {
             <Route path="/products" element={<Products />}></Route>
             <Route path="/cart" element={<Cart />}></Route>
             <Route path="/login" element={<Login />}></Route>
+            <Route path="/register" element={<Register></Register>}></Route>
             <Route path='/user' element={<User></User>}>
               <Route path='/user/edit' element={<EditProfile></EditProfile>}></Route>
               <Route path='/user/offer' element={<Offer></Offer>}></Route>
