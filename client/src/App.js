@@ -17,6 +17,7 @@ import Order from './pages/user/Orders'
 import YourProducts from './pages/user/YourProducts'
 import Register from './pages/Register.js'
 import axios from "axios";
+import AddYourProduct from "./pages/user/AddYourProduct";
 function App() {
   const [cartItems, setCartItems] = useState([]);
   const [total, setTotal] = useState(0);
@@ -42,7 +43,7 @@ function App() {
 
   const fetchdata = async () => {
     const {data} = await axios.get('http://localhost:2000/api/v1/products/getAll');
-    console.log(data)
+    
     setdata(data.data);
     setloader(false);
     allsetdata(data.data);
@@ -89,8 +90,9 @@ function App() {
             <Route path='/user' element={<User></User>}>
               <Route path='/user/edit' element={<EditProfile></EditProfile>}></Route>
               <Route path='/user/offer' element={<Offer></Offer>}></Route>
-              <Route path='/user/product' element={<Order></Order>}></Route>
-              <Route path='/user/order' element={<YourProducts></YourProducts>}></Route>
+              <Route path='/user/order' element={<Order></Order>}></Route>
+              <Route path='/user/product' element={<YourProducts></YourProducts>}></Route>
+              <Route path='/user/addyourproduct' element={<AddYourProduct></AddYourProduct>}></Route>
             </Route>
             {data.map((el) => {
               const product = {

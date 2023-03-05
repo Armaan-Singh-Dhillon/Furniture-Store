@@ -41,7 +41,7 @@ const productSchema = new mongoose.Schema({
     }],
     used: {
         type: Boolean,
-        
+        default:false
     },
     woodType: [{
         type: String,
@@ -49,6 +49,7 @@ const productSchema = new mongoose.Schema({
     }],
     refundable: {
         type: Boolean,
+        default: true
         
     },
     reviews: [{
@@ -70,12 +71,15 @@ const productSchema = new mongoose.Schema({
             type: Date,
             default: Date.now
         }
-    }]
+    }],
+    Owner:{
+        type:Object
+    }
 
         
     
 
-});
+},{timestamps:true});
 
 const Product = mongoose.model('Product', productSchema);
 

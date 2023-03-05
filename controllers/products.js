@@ -3,10 +3,10 @@ import productModel from '../models/products.js'
 
 const create= async (req,res)=>{
     
-    const {name,price ,photo} =req.body
-    const data = await productModel.create({name,price,photo})
+    
+    const data = await productModel.create({ ...req.body })
     res.send({
-        "message":"product created",
+        
         data
     })
 }

@@ -50,27 +50,32 @@ const User = () => {
         </div>
         <div className="lower">
           <div className="section">
-            <div >
+            <div className="links" >
               <Link to='/user/product' className="links">
               Your Products/Furniture
               </Link>
             </div>
-            <div >
+            <div className="links">
+              <Link to='/user/addyourproduct' className="links">
+              Sell Products/Furniture
+              </Link>
+            </div>
+            <div className="links">
               <Link to='/user/order' className="links">
               Orders
               </Link>
             </div>
-            <div >
+            <div className="links">
               <Link to='/user/offer' className="links">
               Offers And Coupons
               </Link>
             </div>
-            <div >
+            <div className="links">
               <Link to='/user/edit' className="links">
               Edit Profile
               </Link>
             </div>
-            <div >
+            <div className="links" >
               <button className="btn">Logout</button>
             </div>
           </div>
@@ -85,7 +90,7 @@ const User = () => {
 const Wrapper = styled.div`
 .links{
   color:#39A1AE ;
-  margin: 0.8rem;
+  margin: 1rem;
   text-decoration: none;
 }
 .links:hover{
