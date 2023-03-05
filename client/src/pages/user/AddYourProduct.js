@@ -27,12 +27,17 @@ const AddYourProduct = () => {
     };
 
 
-
+    
     const handleSubmit = async(e) => {
        e.preventDefault();
+       let { _id}=user
+       
        const {data} =await axios.post('http://localhost:2000/api/v1/products/create',{...formData,user}); 
        
-       console.log(user)
+       user.products = [...user.products, data.data]
+       const {products} = user
+       await axios.post('http://localhost:2000/api/v1/user/update',{_id,products}); 
+       
 
 
 

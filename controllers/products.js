@@ -3,8 +3,8 @@ import productModel from '../models/products.js'
 
 const create= async (req,res)=>{
     
-    
-    const data = await productModel.create({ ...req.body })
+    const{user}=req.body
+    const data = await productModel.create({ ...req.body,Owner:user })
     res.send({
         
         data

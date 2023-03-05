@@ -3,7 +3,9 @@ import MyContext from "../../MyContext";
 import { useState } from "react";
 const YourProducts = () => {
   const { user } = useContext(MyContext);
-  
+  useEffect(()=>{
+      console.log(user)
+  },[user])
 
   if (user.products.length == 0) {
     return (

@@ -12,9 +12,9 @@ const register = async (req, res) => {
     })
 }
 const login = async (req, res) => {
-    console.log(req.body)
+    
     try {
-        const user = await User.findOne({email:req.body.email})
+        const user = await User.findOne({ email: req.body.email }).select('+password')
        
         
        if(! await user.comparePassword(req.body.password)){
@@ -25,7 +25,7 @@ const login = async (req, res) => {
         const token = user.createJWT()
 
         res.json({
-            "message": "logged in successfully",
+           
             user,
             token
         })
@@ -39,6 +39,27 @@ const login = async (req, res) => {
     }
     
 }
+const update = async (req, res) => {
+
+    const {_id,products} =req.body
+    try {
+        const user = await User.findOneAndUpdate(_id,{ products })
+       console.log(user)
+        res.json({
+           
+            user,
+            
+        })
+        
+    } catch (error) {
+        
+        res.json({
+            "message": "Error ",
+            
+        })
+    }
+    
+}
 
 
-export { register, login }
+export { register, login, update }
