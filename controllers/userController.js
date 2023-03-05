@@ -60,6 +60,29 @@ const update = async (req, res) => {
     }
     
 }
+const getById = async (req, res) => {
+
+    
+    const { _id } =req.body
+    try {
+        const user = await User.findOne({_id})
+       console.log(user)
+        res.json({
+           
+            user,
+            
+        })
+        
+    } catch (error) {
+        
+        res.json({
+            "message": "Error ",
+            
+        })
+    }
+    
+}
 
 
-export { register, login, update }
+
+export { register, login, update, getById }

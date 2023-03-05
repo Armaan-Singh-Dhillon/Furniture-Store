@@ -33,6 +33,7 @@ const Register = () => {
         const token = data.token
         const user = data.user
         localStorage.setItem('token', token)
+        localStorage.setItem('_id', user._id)
         localStorage.setItem('name', user.name)
         localStorage.setItem('email', user.email)
         localStorage.setItem('address1', user.address1)

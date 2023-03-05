@@ -29,6 +29,7 @@ function App() {
 
   const [token, setToken] = useState(''||localStorage.getItem('token'))
   const [user, setUser] = useState({
+    _id: '' || localStorage.getItem('_id'),
     name: '' || localStorage.getItem('name'),
     email: '' || localStorage.getItem('email'),
     address1: '' || localStorage.getItem('address1'),

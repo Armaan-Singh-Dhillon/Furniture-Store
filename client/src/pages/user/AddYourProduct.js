@@ -38,9 +38,6 @@ const AddYourProduct = () => {
        const {products} = user
        await axios.post('http://localhost:2000/api/v1/user/update',{_id,products}); 
        
-
-
-
     };
     return (
         <Wrapper>
