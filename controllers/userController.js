@@ -44,7 +44,7 @@ const update = async (req, res) => {
     const {_id,products} =req.body
     try {
         const user = await User.findOneAndUpdate(_id,{ products })
-       console.log(user)
+       
         res.json({
            
             user,

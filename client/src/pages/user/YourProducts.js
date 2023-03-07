@@ -21,11 +21,18 @@ const YourProducts = () => {
   useEffect(()=>{
        fetchData()
   },[user])
+  
 
   const clickHandler = async(e) => {
+    const id=e.target.value
+    
     products=products.filter((obj)=>{
-      return obj._id != e.target.value
+      return obj._id != id
     })
+     
+    const res = await axios.post('http://localhost:2000/api/v1/products/delete', { id })
+    
+
     const { data }=await axios.post('http://localhost:2000/api/v1/user/update', { _id, products }); 
     setproducts(data.user.products)
     setLoading(false)

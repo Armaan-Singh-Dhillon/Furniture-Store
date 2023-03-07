@@ -19,28 +19,28 @@ const productSchema = new mongoose.Schema({
     },
     description: {
         type: String,
-        required: true
+        
     },
     category: {
         type: String,
-        required: true
+        
     },
     shipping: {
-        type: Boolean,
-        required: true
+        type: String,
+        
     },
     offers: [{
         offerName: {
             type: String,
-            required: true
+            
         },
         discount: {
             type: String,
-            required: true
+            
         }
     }],
     used: {
-        type: Boolean,
+        type: String,
         default:false
     },
     woodType: [{
@@ -48,7 +48,7 @@ const productSchema = new mongoose.Schema({
         
     }],
     refundable: {
-        type: Boolean,
+        type: String,
         default: true
         
     },

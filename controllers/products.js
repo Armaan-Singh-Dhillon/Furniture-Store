@@ -21,7 +21,11 @@ const update = async (req, res)=>{
     res.send('i update a product')
 }
 const deleteProduct = async (req, res)=>{
-    res.send('i delete a product')
+    console.log(req.body.id)
+    await productModel.findByIdAndDelete(req.body.id)
+    res.send({
+        "message":"item Deleted"
+    })
 }
 
 export { create, update, deleteProduct, getAll }
