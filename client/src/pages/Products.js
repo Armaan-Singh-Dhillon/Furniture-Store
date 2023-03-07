@@ -21,8 +21,15 @@ const Products = () => {
     setSearchTerm,
     sortBy,
     setSortBy,
+    page,
+    setpage,
+    limit,
+    setLimit,
+    totalPages
   } = useContext(MyContext);
 
+  
+  const [currentPage, setCurrentPage] = useState(1);
   const clickHandler = (e) => {
     const val = e.target.value;
 
@@ -89,6 +96,25 @@ const Products = () => {
     }
     setdata(sortedData);
   };
+  const handlePageChange = (pageNumber) => {
+    setpage(pageNumber);
+  };
+  const renderPageNumbers = () => {
+    const pageNumbers = [];
+
+    for (let i = 1; i <= totalPages; i++) {
+      pageNumbers.push(
+        
+        <div key={i}  className={i === page ? 'active' : ''}>
+          <button className="btn" onClick={() => handlePageChange(i)}>{i}</button>
+        </div>
+      );
+    }
+    
+
+    return pageNumbers;
+  };
+
 
   return (
     <>
@@ -220,11 +246,20 @@ const Products = () => {
                         <div>-${obj.price}</div>
                       </div>
                     </div>
+                    
                   </>
                 );
               })}
             </div>
           </div>
+          
+        </div>
+        <div className="pagecontainer">
+          
+          <div className="pagination">
+            
+            {renderPageNumbers()}
+            </div>
         </div>
       </Wrapper>
     </>
@@ -232,6 +267,29 @@ const Products = () => {
 };
 
 const Wrapper = styled.div`
+.btn{
+  background-color: #39a1ae;
+  border-radius: 0rem;
+  transition: all 0.2s;
+}
+.btn:hover{
+  color:white;
+  scale: 1.5;
+  
+}
+
+.pagecontainer{
+  display: flex;
+  justify-content: space-evenly;
+  
+
+}
+.pagination{
+  display: flex;
+  margin: 0 1.4rem;
+  margin-bottom: 3rem;
+  font-size: 1.6rem;
+}
   h2 {
     color: #39a1ae;
   }

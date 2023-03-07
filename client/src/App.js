@@ -27,7 +27,12 @@ function App() {
   const [searchTerm, setSearchTerm] = useState("");
   const [sortBy, setSortBy] = useState("Price(Lowest)");
 
-  const [token, setToken] = useState(''||localStorage.getItem('token'))
+  const [token, setToken] = useState('' || localStorage.getItem('token'))
+
+  const [page, setpage] = useState(1)
+  const [totalPages, settotalPages] = useState(1)
+  const [limit, setLimit] = useState(9)
+
   const [user, setUser] = useState({
     _id: '' || localStorage.getItem('_id'),
     name: '' || localStorage.getItem('name'),
@@ -39,20 +44,22 @@ function App() {
     offers: '' || localStorage.getItem('offers'),
     products: '' || localStorage.getItem('products'),
   })
-  
-  
+
+
 
   const fetchdata = async () => {
-    const {data} = await axios.get('http://localhost:2000/api/v1/products/getAll');
-    
+    const { data } = await axios.get(`http://localhost:2000/api/v1/products/getAll?limit=${limit}&page=${page}`);
+
     setdata(data.data);
+    settotalPages(data.totalPages)
+    
     setloader(false);
     allsetdata(data.data);
   };
 
   useEffect(() => {
     fetchdata();
-  }, []);
+  }, [page]);
 
   if (loader) {
     return <Loader></Loader>;
@@ -77,7 +84,12 @@ function App() {
           token,
           setToken,
           user,
-          setUser
+          setUser,
+          page,
+          setpage,
+          limit,
+          setLimit,
+          totalPages
         }}
       >
         <Routes>
