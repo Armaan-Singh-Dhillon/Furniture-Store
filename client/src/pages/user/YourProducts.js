@@ -4,6 +4,7 @@ import { useState } from "react";
 import styled from 'styled-components'
 import { Link } from "react-router-dom";
 import axios from "axios";
+import Loader from '../../components/Loader'
 const YourProducts = () => {
   const { user } = useContext(MyContext);
   let [products, setproducts] = useState([])
@@ -40,7 +41,7 @@ const YourProducts = () => {
   }
 
   if (loading) {
-    return <h1> Loading</h1>
+    return <Loader></Loader>
   }
   else if(products.length==0){
     return <h4> You Have No Products to sell</h4>

@@ -32,6 +32,7 @@ function App() {
   const [page, setpage] = useState(1)
   const [totalPages, settotalPages] = useState(1)
   const [limit, setLimit] = useState(9)
+  const [isLoading ,setLoading] = useState(true)
 
   const [user, setUser] = useState({
     _id: '' || localStorage.getItem('_id'),
@@ -48,12 +49,12 @@ function App() {
 
 
   const fetchdata = async () => {
+    setLoading(true)
     const { data } = await axios.get(`http://localhost:2000/api/v1/products/getAll?limit=${limit}&page=${page}`);
 
     setdata(data.data);
     settotalPages(data.totalPages)
-    
-    setloader(false);
+    setLoading(false);
     allsetdata(data.data);
   };
 
@@ -61,7 +62,7 @@ function App() {
     fetchdata();
   }, [page]);
 
-  if (loader) {
+  if (isLoading) {
     return <Loader></Loader>;
   } else {
     return (
@@ -89,7 +90,9 @@ function App() {
           setpage,
           limit,
           setLimit,
-          totalPages
+          totalPages,
+          isLoading,
+          setLoading
         }}
       >
         <Routes>
