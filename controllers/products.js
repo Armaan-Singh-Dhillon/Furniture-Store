@@ -36,5 +36,20 @@ const deleteProduct = async (req, res) => {
         "message": "item Deleted"
     })
 }
+const getById = async (req, res) => {
+   console.log(req.body._id)
+    const data =await productModel.findById(req.body._id)
+    res.send({
+        data
+    })
+}
+const updateReviews = async (req, res) => {
+   const {_id,reviews} = req.body
+    const data =await productModel.findByIdAndUpdate(_id,{reviews})
+    res.send({
+        data
+    })
+}
 
-export { create, update, deleteProduct, getAll }
+
+export { create, update, deleteProduct, getAll, getById, updateReviews }

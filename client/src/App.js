@@ -108,18 +108,11 @@ function App() {
               <Route path='/user/addyourproduct' element={<AddYourProduct></AddYourProduct>}></Route>
             </Route>
             {data.map((el) => {
-              const product = {
-                id: el.id,
-                name: el.name,
-                price: el.price,
-                image: el.image,
-                company: el.company,
-                description: el.description,
-              };
+             
               return (
                 <Route
-                  path={`/products/${el.id}`}
-                  element={<ProductPage key={el.id} product={product} />}
+                  path={`/products/${el._id}`}
+                  element={<ProductPage key={el.id} _id={el._id} />}
                 ></Route>
               );
             })}

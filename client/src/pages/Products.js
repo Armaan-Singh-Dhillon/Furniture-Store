@@ -236,14 +236,22 @@ const Products = () => {
                   <>
                     <div className="card">
                       <div className="image">
-                        <Link to={`/products/${obj.id}`}>
+                        <Link to={`/products/${obj._id}`}>
                           <img src={obj.image} alt="" />
                         </Link>
                       </div>
 
                       <div className="text">
-                        <div>{obj.name}</div>
-                        <div>-${obj.price}</div>
+                        <div>Name:</div>
+                        <div className="val">{obj.name}</div>
+                      </div>
+                      <div className="text">
+                        <div>Price:</div>
+                        <div className="val">-${obj.price}</div>
+                      </div>
+                      <div className="text">
+                        <div>Company</div>
+                        <div className="val">{obj.company}</div>
                       </div>
                     </div>
                     
@@ -267,6 +275,11 @@ const Products = () => {
 };
 
 const Wrapper = styled.div`
+.val{
+  color: #39a1ae;
+  
+  font-weight: 500;
+}
 .btn{
   background-color: #39a1ae;
   border-radius: 0rem;
@@ -304,6 +317,8 @@ const Wrapper = styled.div`
     justify-content: space-between;
     font-size: 1.4rem;
     margin: 1.2rem;
+    
+    
   }
   .products {
     display: flex;
@@ -311,6 +326,8 @@ const Wrapper = styled.div`
     width: 100%;
     background: aliceblue;
     justify-content: space-evenly;
+    
+    
   }
 
   img {
@@ -326,12 +343,16 @@ const Wrapper = styled.div`
 
   .card {
     flex-direction: column;
-    width: 29.5%;
+    width: 25.5%;
     justify-content: space-evenly;
-
+    transition: all .5s;
+   
     align-items: center;
     padding: 1.2rem;
     margin: 0.5rem;
+  }
+  .card:hover{
+    scale: 1.15;
   }
   .inner-sort {
     font-size: 1.2rem;

@@ -52,6 +52,9 @@ const productSchema = new mongoose.Schema({
         default: true
         
     },
+    averageRating:{
+        type:Number
+    },
     reviews: [{
         username: {
             type: String,
@@ -73,6 +76,12 @@ const productSchema = new mongoose.Schema({
         }
     }],
     Owner:{
+        type:Object
+    },
+    termiteResistant:{
+        type:String,
+    },
+    specifications:{
         type:Object
     }
 
