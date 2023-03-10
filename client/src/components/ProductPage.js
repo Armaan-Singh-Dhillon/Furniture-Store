@@ -19,15 +19,16 @@ const ProductPage = (data) => {
     setproduct(data.data)
     setLoading(false)
     setReviews(data.data.reviews)
+    
   }
   useEffect(() => {
     fetchData()
   }, [])
   const clickHandler = () => {
-
+    setModal(!showModal)
   }
   const [formData, setFormData] = useState({
-    username: '',
+    username: ''|| user.name,
     rating: '',
     comment: '',
   });
@@ -44,6 +45,8 @@ const ProductPage = (data) => {
     let {reviews}= product 
     reviews=[...reviews,formData]
     await axios.post('http://localhost:2000/api/v1/products/reviews',{_id,reviews})
+    setModal(!showModal)
+    fetchData()
    
   };
   const deleteHandler=async(e)=>{
@@ -53,6 +56,7 @@ const ProductPage = (data) => {
         return el._id!=e.target.value
     })
     await axios.post('http://localhost:2000/api/v1/products/reviews', { _id, reviews })
+    fetchData()
   }
 
   if (loading) {
@@ -64,7 +68,7 @@ const ProductPage = (data) => {
     return (
       <>
         <Wrapper>
-          <div className="product-page">
+          <div className={`product-page ${showModal ? 'transparent':''}`}>
             <div className="upper">
 
 
@@ -116,6 +120,9 @@ const ProductPage = (data) => {
                     <div className="review-comment">
                       "{el.comment}"
                     </div>
+                    <div>
+                      
+                    </div>
                     <button value={el._id} className="btn" onClick={(e)=>deleteHandler(e)}>Delete</button>
                   </div>
                 </>
@@ -132,7 +139,8 @@ const ProductPage = (data) => {
             </div>
           </div>
 
-          <div className='main'>
+          <div className={`main ${showModal ? '':'none'}`}>
+            <h1>Thanks for giving feedback</h1>
             <form onSubmit={handleSubmit}  >
               
               <div className='form'>
@@ -142,14 +150,14 @@ const ProductPage = (data) => {
                   <label>
                     Name:
                   </label>
-                  <input type="text" name="username" value={formData.username} onChange={handleChange} />
+                  <input type="text" name="username" value={formData.username} onChange={handleChange} placeholder='Name' />
                 </div>
 
 
 
                 <div className='item'>
 
-
+                  
                   <label>
                     Rating:
                   </label>
@@ -166,11 +174,17 @@ const ProductPage = (data) => {
                 
                 <div>
 
-                  <button type="submit" className='btn'>Submit</button>
+                  <button type="submit" className='btn btnm'>Submit</button>
                 </div>
               </div>
 
+              
+
             </form>
+            <div>
+
+              <button className="btntext " onClick={clickHandler}>Go back</button>
+            </div>
           </div>
 
 
@@ -182,6 +196,31 @@ const ProductPage = (data) => {
 };
 
 const Wrapper = styled.div`
+
+.btntext{
+  background: none;
+  color: #39A1AE;
+  border: none;
+  font-size: 1.2rem;
+  padding-top:1.2rem;
+  margin: 1.2rem;
+  :hover{
+    cursor: pointer;
+  }
+}
+.main{
+  position: absolute;
+  top: 20%;
+  display: flex;
+  width: 35rem;
+  left: 35%;
+  padding: 6rem;
+  background-color: aliceblue;
+  flex-direction: column;
+  
+  
+  
+}
 .review-card{
   margin: 1.8rem 1.4rem;
   
@@ -225,6 +264,12 @@ const Wrapper = styled.div`
     background: aliceblue;
     
   }
+  .transparent{
+    opacity: 0.2;
+  }
+  .none{
+    display: none;
+  }
 
   .product-image {
     height: auto;
@@ -235,18 +280,15 @@ const Wrapper = styled.div`
     width: 60%;
     font-size: 1.4rem;
 }
-.main{
-  
-  display: flex;
-}
 form{
-  width: 50%;
+  
   font-size: 1.2rem;
 }
 .item{
   display: flex;
   justify-content: space-between;
    align-items: center; 
+   margin: 1.2rem;
 }
 
 
