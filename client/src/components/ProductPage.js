@@ -5,15 +5,18 @@ import MyContext from "../MyContext";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import Star from "./Star";
-
+import Loader from './Loader'
+import { useNavigate } from "react-router-dom";
 
 const ProductPage = (data) => {
+  const navigate = useNavigate()
   const { _id } = data
-  const { user } = useContext(MyContext);
+  const { user, cartItems, setCartItems } = useContext(MyContext);
   const [product, setproduct] = useState({})
   const [loading, setLoading] = useState(true)
   const [reviews, setReviews] = useState([])
   const [showModal, setModal] = useState(false)
+  const [quantity ,setQuantity]=useState(0)
   const fetchData = async () => {
     const { data } = await axios.post('http://localhost:2000/api/v1/products/get', { _id })
     setproduct(data.data)
@@ -58,9 +61,13 @@ const ProductPage = (data) => {
     await axios.post('http://localhost:2000/api/v1/products/reviews', { _id, reviews })
     fetchData()
   }
+  const addCart=()=>{
+    setCartItems([...cartItems,product])
+    // navigate('/cart')
+  }
 
   if (loading) {
-    return <h1>Loading</h1>
+    return <Loader></Loader>
   }
   else {
     const { image, description, price, name, company } = product
@@ -85,7 +92,7 @@ const ProductPage = (data) => {
                 </div>
                 <div>Company : {company}</div>
                 <div>
-                  <button className="btn" >
+                  <button className="btn" onClick={addCart}>
                     Add to Cart
                   </button>
                   <Link to="/cart">
@@ -252,6 +259,7 @@ const Wrapper = styled.div`
   .product-info {
     padding: 1.8rem;
     display: flex;
+    width: 60%;
     flex-direction: column;
     justify-content: space-evenly;
     font-size: 1.4rem;
@@ -271,10 +279,7 @@ const Wrapper = styled.div`
     display: none;
   }
 
-  .product-image {
-    height: auto;
-    object-fit: cover;
-  }
+
   input{
     padding: 1.2rem;
     width: 60%;
@@ -290,8 +295,19 @@ form{
    align-items: center; 
    margin: 1.2rem;
 }
-
-
+img {
+    width: 100%;
+    height: 40rem;
+    object-fit: cover;
+    border-radius: 1.2rem;
+  }
+  img:hover {
+    opacity: 80%;
+    cursor: pointer;
+  }
+.product-image{
+  width: 50%;
+}
 `;
 
 export default ProductPage;

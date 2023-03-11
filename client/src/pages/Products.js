@@ -15,10 +15,6 @@ const Products = () => {
     setloader,
     data,
     setdata,
-    alldata,
-    allsetdata,
-    searchTerm,
-    setSearchTerm,
     sortBy,
     setSortBy,
     page,
@@ -32,72 +28,36 @@ const Products = () => {
 
 
   const [currentPage, setCurrentPage] = useState(1);
-  const clickHandler = (e) => {
-    const val = e.target.value;
-
-    if (val == "all") {
-      setdata(alldata);
-      return;
-    }
-
-    const newdata = alldata.filter((obj) => {
-      return obj.category == val;
-    });
-    setdata(newdata);
-  };
+  
   const handleSelect = (e) => {
-    const val = e.target.value;
-
-    if (val == "all") {
-      setdata(alldata);
-      return;
-    }
-
-    const newdata = alldata.filter((obj) => {
-      return obj.company == val;
-    });
-    setdata(newdata);
+   
+  };
+  const clickHandler = (e) => {
+   
   };
 
   const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
-    const filteredData = alldata.filter((obj) => {
-      return obj.name.includes(searchTerm);
-    });
-    setdata(filteredData);
+    e.preventDefault()
+    console.log(e.target.value)
+    
   };
+  function sortByNameAsc() {
+    setdata(data.sort((a, b) => (a.name > b.name ? 1 : -1)));
+  }
 
-  const handleSort = (e) => {
-    setSortBy(e.target.value);
+  function sortByNameDesc() {
+    setdata(data.sort((a, b) => (a.name < b.name ? 1 : -1)));
+  }
 
-    let sortedData;
-    if (sortBy === "Price(Lowest)") {
-      sortedData = alldata.sort((a, b) => a.price - b.price);
-    } else if (sortBy === "Price(Highest)") {
-      sortedData = alldata.sort((a, b) => b.price - a.price);
-    } else if (sortBy === "Name(a-z)") {
-      sortedData = alldata.sort((a, b) => {
-        if (a.name < b.name) {
-          return -1;
-        }
-        if (a.name > b.name) {
-          return 1;
-        }
-        return 0;
-      });
-    } else if (sortBy === "Name(z-a)") {
-      sortedData = alldata.sort((a, b) => {
-        if (a.name > b.name) {
-          return -1;
-        }
-        if (a.name < b.name) {
-          return 1;
-        }
-        return 0;
-      });
-    }
-    setdata(sortedData);
-  };
+  function sortByPriceAsc() {
+    setdata(data.sort((a, b) => (a.price > b.price ? 1 : -1)));
+  }
+
+  function sortByPriceDesc() {
+    setdata(data.sort((a, b) => (a.price < b.price ? 1 : -1)));
+  }
+ 
+   
   const handlePageChange = (pageNumber) => {
     setpage(pageNumber);
   };
@@ -121,7 +81,7 @@ const Products = () => {
     return <Loader></Loader>
   }
   else {
-
+   console.log(data)
     return (
       <>
         <Wrapper>
@@ -131,8 +91,8 @@ const Products = () => {
                 <input
                   type="text"
                   placeholder="Search"
-                  onChange={handleSearch}
-                  value={searchTerm}
+                  onChange={(e)=>handleSearch(e)}
+                  
                 />
                 <div className="view">
                   Grid Enabled
@@ -143,13 +103,13 @@ const Products = () => {
               <div className="sort">
                 <div className="inner-sort">
                   <label htmlFor="Sort">Sort By : </label>
-                  <select name="Sort" className="select" onChange={handleSort}>
-                    <option value="Price(Lowest)" selected>
+                  <select name="Sort" className="select">
+                    <option value="Price(Lowest)" selected onSelect={sortByPriceAsc}>
                       Price(Lowest)
                     </option>
-                    <option value="Price(Highest)">Price(Highest)</option>
-                    <option value="Name(a-z)">Name(a-z)</option>
-                    <option value="Name(z-a)">Name(z-a)</option>
+                    <option value="Price(Highest)" onSelect={sortByPriceDesc}>Price(Highest)</option>
+                    <option value="Name(a-z)" onSelect={sortByNameDesc}>Name(a-z)</option>
+                    <option value="Name(z-a)" onSelect={sortByNameAsc}>Name(z-a)</option>
                   </select>
                 </div>
               </div>

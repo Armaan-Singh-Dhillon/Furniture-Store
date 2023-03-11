@@ -9,10 +9,12 @@ const Cart = () => {
     console.log(cartItems);
   }, [cartItems.length]);
 
-  const ClickHandler = (elId) => {
+  const clickHandler = (e) => {
+    e.preventDefault()
+    const elId= e.target.value
     setCartItems(
-      cartItems.filter(({ id }) => {
-        return elId != id;
+      cartItems.filter(({ _id }) => {
+        return  _id!= elId;
       })
     );
   };
@@ -37,7 +39,8 @@ const Cart = () => {
       <>
         <Wrapper>
           {cartItems.map(
-            ({ id, name, price, image, company, description, quantity }) => {
+            ({ _id, name, price, image,quantity }) => {
+              console.log(_id)
               return (
                 <>
                   <div className="container">
@@ -65,11 +68,8 @@ const Cart = () => {
                       <div className="holders">
                         <h3>Remove-item</h3>
                         <div className="inner-holder">
-                          <button
-                            className="btn"
-                            onClick={() => ClickHandler(id)}
-                          >
-                            <BsTrashFill></BsTrashFill>
+                          <button className="btn" value={_id} onClick={(e)=>clickHandler(e)}>
+                            Delete
                           </button>
                         </div>
                       </div>
@@ -107,13 +107,16 @@ const Wrapper = styled.div`
   }
   .image-container {
     overflow: hidden;
+    width: 100%;
   }
 
   .image-container img {
     width: 100%;
-    height: auto;
+    height: 20rem;
     object-fit: cover;
+    border-radius: 1.2rem;
   }
+  
   .category {
     display: flex;
     justify-content: space-between;
@@ -137,5 +140,6 @@ const Wrapper1 = styled.div`
     align-items: center;
     font-size: 1.8rem;
   }
+  
 `;
 export default Cart;
