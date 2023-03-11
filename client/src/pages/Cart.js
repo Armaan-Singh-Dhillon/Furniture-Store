@@ -4,7 +4,7 @@ import MyContext from "../MyContext";
 import { BsTrashFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 const Cart = () => {
-  const { cartItems, setCartItems, total, setTotal } = useContext(MyContext);
+  const { cartItems, setCartItems} = useContext(MyContext);
   useEffect(() => {
     console.log(cartItems);
   }, [cartItems.length]);
@@ -39,7 +39,7 @@ const Cart = () => {
       <>
         <Wrapper>
           {cartItems.map(
-            ({ _id, name, price, image,quantity }) => {
+            ({ _id, name, price, image,quantity ,subtotal }) => {
               console.log(_id)
               return (
                 <>
@@ -63,7 +63,7 @@ const Cart = () => {
                       </div>
                       <div className="holders">
                         <h3>Subtotal</h3>
-                        <div className="inner-holder">-$3389</div>
+                        <div className="inner-holder">-${subtotal}</div>
                       </div>
                       <div className="holders">
                         <h3>Remove-item</h3>

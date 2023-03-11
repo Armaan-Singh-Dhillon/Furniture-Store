@@ -7,7 +7,8 @@ import axios from "axios";
 import Star from "./Star";
 import Loader from './Loader'
 import { useNavigate } from "react-router-dom";
-
+import { GrFormSubtract } from 'react-icons/gr';
+import { GrFormAdd } from 'react-icons/gr';
 const ProductPage = (data) => {
   const navigate = useNavigate()
   const { _id } = data
@@ -16,13 +17,13 @@ const ProductPage = (data) => {
   const [loading, setLoading] = useState(true)
   const [reviews, setReviews] = useState([])
   const [showModal, setModal] = useState(false)
-  const [quantity ,setQuantity]=useState(0)
+  const [quantity, setQuantity] = useState(0)
   const fetchData = async () => {
     const { data } = await axios.post('http://localhost:2000/api/v1/products/get', { _id })
     setproduct(data.data)
     setLoading(false)
     setReviews(data.data.reviews)
-    
+
   }
   useEffect(() => {
     fetchData()
@@ -31,7 +32,7 @@ const ProductPage = (data) => {
     setModal(!showModal)
   }
   const [formData, setFormData] = useState({
-    username: ''|| user.name,
+    username: '' || user.name,
     rating: '',
     comment: '',
   });
@@ -40,29 +41,33 @@ const ProductPage = (data) => {
     const { name, value } = event.target;
 
     setFormData(prevState => ({ ...prevState, [name]: value }));
-    
+
   };
 
-  const handleSubmit = async(event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    let {reviews}= product 
-    reviews=[...reviews,formData]
-    await axios.post('http://localhost:2000/api/v1/products/reviews',{_id,reviews})
+    let { reviews } = product
+    reviews = [...reviews, formData]
+    await axios.post('http://localhost:2000/api/v1/products/reviews', { _id, reviews })
     setModal(!showModal)
     fetchData()
-   
+
   };
-  const deleteHandler=async(e)=>{
+  const deleteHandler = async (e) => {
     e.preventDefault();
     let { reviews } = product
-    reviews = reviews.filter((el)=>{
-        return el._id!=e.target.value
+    reviews = reviews.filter((el) => {
+      return el._id != e.target.value
     })
     await axios.post('http://localhost:2000/api/v1/products/reviews', { _id, reviews })
     fetchData()
   }
-  const addCart=()=>{
-    setCartItems([...cartItems,product])
+  const addCart = () => {
+    product["quantity"]=quantity
+    product["subtotal"]=quantity*product.price
+
+    console.log(product)
+    setCartItems([...cartItems, product])
     // navigate('/cart')
   }
 
@@ -75,7 +80,7 @@ const ProductPage = (data) => {
     return (
       <>
         <Wrapper>
-          <div className={`product-page ${showModal ? 'transparent':''}`}>
+          <div className={`product-page ${showModal ? 'transparent' : ''}`}>
             <div className="upper">
 
 
@@ -91,6 +96,18 @@ const ProductPage = (data) => {
 
                 </div>
                 <div>Company : {company}</div>
+                <div>
+                  Quantitiy
+                  <div className="counter">
+                    <GrFormSubtract className="add-sub" onClick={() => setQuantity(quantity - 1)}></GrFormSubtract>
+                    <div className="qunat">
+
+                      {quantity}
+                    </div>
+                    <GrFormAdd className="add-sub" onClick={()=>setQuantity(quantity+1)}></GrFormAdd>
+
+                  </div>
+                </div>
                 <div>
                   <button className="btn" onClick={addCart}>
                     Add to Cart
@@ -128,9 +145,9 @@ const ProductPage = (data) => {
                       "{el.comment}"
                     </div>
                     <div>
-                      
+
                     </div>
-                    <button value={el._id} className="btn" onClick={(e)=>deleteHandler(e)}>Delete</button>
+                    <button value={el._id} className="btn" onClick={(e) => deleteHandler(e)}>Delete</button>
                   </div>
                 </>
               })}
@@ -146,10 +163,10 @@ const ProductPage = (data) => {
             </div>
           </div>
 
-          <div className={`main ${showModal ? '':'none'}`}>
+          <div className={`main ${showModal ? '' : 'none'}`}>
             <h1>Thanks for giving feedback</h1>
             <form onSubmit={handleSubmit}  >
-              
+
               <div className='form'>
 
 
@@ -164,7 +181,7 @@ const ProductPage = (data) => {
 
                 <div className='item'>
 
-                  
+
                   <label>
                     Rating:
                   </label>
@@ -177,15 +194,15 @@ const ProductPage = (data) => {
                   </label>
                   <input type="text" name="comment" value={formData.comment} onChange={handleChange} />
                 </div>
-                
-                
+
+
                 <div>
 
                   <button type="submit" className='btn btnm'>Submit</button>
                 </div>
               </div>
 
-              
+
 
             </form>
             <div>
@@ -203,6 +220,18 @@ const ProductPage = (data) => {
 };
 
 const Wrapper = styled.div`
+.add-sub{
+  background-color: white;
+  color: #39A1AE;
+  font-size: 1.2rem;
+}
+.counter{
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1.6rem;
+}
 
 .btntext{
   background: none;
