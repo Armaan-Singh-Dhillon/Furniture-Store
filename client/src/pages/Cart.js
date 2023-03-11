@@ -18,6 +18,7 @@ const Cart = () => {
       })
     );
   };
+  let total = 0
 
   if (cartItems.length == 0) {
     return (
@@ -38,17 +39,24 @@ const Cart = () => {
     return (
       <>
         <Wrapper>
+          <div className="container">
+            <div className="head">
+              <h1>Your Cart</h1>
+            </div>
           {cartItems.map(
             ({ _id, name, price, image,quantity ,subtotal }) => {
-              console.log(_id)
+              total=total+subtotal
               return (
                 <>
-                  <div className="container">
+                  
                     <div className="category">
                       <div className="holders">
                         <h3>Items</h3>
                         <div className="image-container">
-                          <img src={image} alt="" />
+                          <Link to={`/products/${_id}`}>
+                            <img src={image} alt="" />
+                          </Link>
+                          
                         </div>
                         <div>{name}</div>
                       </div>
@@ -74,12 +82,13 @@ const Cart = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
+                  
                   ;
                 </>
               );
             }
           )}
+        </div>
         </Wrapper>
       </>
     );
@@ -87,6 +96,10 @@ const Cart = () => {
 };
 
 const Wrapper = styled.div`
+.head{
+  display: flex;
+  justify-content: space-evenly;
+}
   .btn {
     margin: 0;
     padding: 0;
@@ -115,6 +128,11 @@ const Wrapper = styled.div`
     height: 20rem;
     object-fit: cover;
     border-radius: 1.2rem;
+    transition: all 0.2s;
+    :hover{
+      opacity: 0.5;
+      scale: 1.05;
+    }
   }
   
   .category {
@@ -124,7 +142,7 @@ const Wrapper = styled.div`
   }
   .container {
     display: flex;
-    margin: 0 1.4rem;
+    margin: 1.4rem;
     background: aliceblue;
     flex-direction: column;
   }
@@ -133,7 +151,7 @@ const Wrapper1 = styled.div`
   .main {
     display: flex;
     margin: 1.4rem;
-    background: blanchedalmond;
+    background: aliceblue;
     height: 30vh;
     flex-direction: column;
     justify-content: space-evenly;

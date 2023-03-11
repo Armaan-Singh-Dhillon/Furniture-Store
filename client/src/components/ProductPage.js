@@ -17,7 +17,7 @@ const ProductPage = (data) => {
   const [loading, setLoading] = useState(true)
   const [reviews, setReviews] = useState([])
   const [showModal, setModal] = useState(false)
-  const [quantity, setQuantity] = useState(0)
+  const [quantity, setQuantity] = useState(1)
   const fetchData = async () => {
     const { data } = await axios.post('http://localhost:2000/api/v1/products/get', { _id })
     setproduct(data.data)
@@ -70,7 +70,14 @@ const ProductPage = (data) => {
     setCartItems([...cartItems, product])
     // navigate('/cart')
   }
-
+  const add=()=>{
+      setQuantity(quantity+1)
+  }
+  const sub=()=>{
+    if(quantity>1){
+      setQuantity(quantity-1)
+    }
+  }
   if (loading) {
     return <Loader></Loader>
   }
@@ -99,12 +106,12 @@ const ProductPage = (data) => {
                 <div>
                   Quantitiy
                   <div className="counter">
-                    <GrFormSubtract className="add-sub" onClick={() => setQuantity(quantity - 1)}></GrFormSubtract>
+                    <GrFormSubtract className="add-sub" onClick={() => sub()}></GrFormSubtract>
                     <div className="qunat">
 
                       {quantity}
                     </div>
-                    <GrFormAdd className="add-sub" onClick={()=>setQuantity(quantity+1)}></GrFormAdd>
+                    <GrFormAdd className="add-sub" onClick={()=>add()}></GrFormAdd>
 
                   </div>
                 </div>
