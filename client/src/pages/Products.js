@@ -5,30 +5,30 @@ import Loader from "../components/Loader";
 import MyContext from "../MyContext";
 import { Link } from "react-router-dom";
 import { FaSearch } from 'react-icons/fa';
+const itemsPerPage = 9;
 const Products = () => {
   const {
-    cartItems,
-    setCartItems,
-    total,
-    setTotal,
-    loader,
-    setloader,
+    
     data,
     setdata,
-    sortBy,
-    setSortBy,
-    page,
-    setpage,
-    limit,
-    setLimit,
-    totalPages,
     isLoading,
     setLoading,
     searchFunction
   } = useContext(MyContext);
-
-
   const [currentPage, setCurrentPage] = useState(1);
+
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+
+  const currentItems = data.slice(startIndex, endIndex);
+  
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  
   
   const handleSelect = (e) => {
    
@@ -61,26 +61,27 @@ const Products = () => {
   function sortByPriceDesc() {
     setdata(data.sort((a, b) => (a.price < b.price ? 1 : -1)));
   }
- 
+  
    
-  const handlePageChange = (pageNumber) => {
-    setpage(pageNumber);
-  };
   const renderPageNumbers = () => {
     const pageNumbers = [];
-
     for (let i = 1; i <= totalPages; i++) {
       pageNumbers.push(
-
-        <div key={i} className={i === page ? 'active' : ''}>
-          <button className="btn" onClick={() => handlePageChange(i)}>{i}</button>
+        <div
+          key={i}
+          onClick={() => handlePageChange(i)}
+          className={`pages ${currentPage === i ? "active " : ""}`}
+          
+        >
+          {i}
         </div>
       );
     }
-  
-
     return pageNumbers;
   };
+
+
+ 
 
   if (isLoading) {
     return <>
@@ -216,7 +217,7 @@ const Products = () => {
     </>
   }
   else {
-   console.log(data)
+   
     return (
       <>
         <Wrapper>
@@ -332,7 +333,7 @@ const Products = () => {
                 </div>
               </div>
               <div className="products">
-                {data.length == 0 ? <>
+                {currentItems.length == 0 ? <>
                 
                 <div className="sorry">
                   <div>
@@ -344,7 +345,7 @@ const Products = () => {
                 </> : <>
                 
                 
-                  {data.map((obj) => {
+                    {currentItems.map((obj) => {
                     return (
                       <>
                         <div className="card">
@@ -429,11 +430,27 @@ const Wrapper = styled.div`
   
 
 }
+.pages{
+  padding: 1.2rem;
+  transition: all 0.2s;
+  :hover{
+    scale:1.12;
+  }
+}
 .pagination{
+  width: 20%;
   display: flex;
   margin: 0 1.4rem;
   margin-bottom: 3rem;
   font-size: 1.6rem;
+  justify-content: space-evenly;
+  color: aliceblue;
+  .active{
+    background-color: aliceblue;
+    color: #39a1ae;
+    
+    
+  }
 }
   h2 {
     color: #39a1ae;

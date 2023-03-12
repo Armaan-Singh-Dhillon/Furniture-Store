@@ -50,7 +50,7 @@ function App() {
 
   const fetchdata = async () => {
     setLoading(true)
-    const { data } = await axios.get(`http://localhost:2000/api/v1/products/getAll?limit=${limit}&page=${page}`);
+    const { data } = await axios.get(`http://localhost:2000/api/v1/products/getAll`);
 
     setdata(data.data);
     settotalPages(data.totalPages)
