@@ -2,7 +2,7 @@ import express from 'express'
 import { create, update, deleteProduct, getAll, getById, updateReviews ,search} from '../controllers/products.js'
 const router = express.Router()
 
-router.route('/getAll').get(getAll)
+router.route('/getAll').post(getAll)
 router.route('/get').post(getById)
 router.route('/create').post(create)
 router.route('/update').patch(update)

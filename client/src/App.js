@@ -20,19 +20,17 @@ import axios from "axios";
 import AddYourProduct from "./pages/user/AddYourProduct";
 function App() {
   const [cartItems, setCartItems] = useState([]);
-  const [total, setTotal] = useState(0);
+  
   const [loader, setloader] = useState(true);
   const [data, setdata] = useState([]);
   const [alldata, allsetdata] = useState([]);
  
-  const [sortBy, setSortBy] = useState("Price(Lowest)");
 
   const [token, setToken] = useState('' || localStorage.getItem('token'))
 
-  const [page, setpage] = useState(1)
-  const [totalPages, settotalPages] = useState(1)
-  const [limit, setLimit] = useState(9)
   const [isLoading ,setLoading] = useState(true)
+  const [sortname,setsortname]=useState(1)
+  const [sortprice,setsortprice]=useState(1)
   
   const [user, setUser] = useState({
     _id: '' || localStorage.getItem('_id'),
@@ -50,12 +48,12 @@ function App() {
 
   const fetchdata = async () => {
     setLoading(true)
-    const { data } = await axios.get(`http://localhost:2000/api/v1/products/getAll`);
+    const { data } = await axios.post(`http://localhost:2000/api/v1/products/getAll`,{sortname,sortprice});
 
     setdata(data.data);
-    settotalPages(data.totalPages)
+    
     setLoading(false);
-    allsetdata(data.data);
+    
   };
   const searchFunction = async (search) => {
     setLoading(true)
@@ -64,7 +62,7 @@ function App() {
     }
     const { data } = await axios.post(`http://localhost:2000/api/v1/products/search`, { search });
     setdata(data.data);
-    settotalPages(data.totalPages)
+    
     setLoading(false);
     
   }
@@ -72,7 +70,7 @@ function App() {
 
   useEffect(() => {
     fetchdata();
-  }, [page]);
+  }, [sortname,sortprice]);
 
   
     return (
@@ -80,28 +78,23 @@ function App() {
         value={{
           cartItems,
           setCartItems,
-          total,
-          setTotal,
+          
           loader,
           setloader,
           data,
           setdata,
-          alldata,
-          allsetdata,
-          sortBy,
-          setSortBy,
           token,
           setToken,
           user,
           setUser,
-          page,
-          setpage,
-          limit,
-          setLimit,
-          totalPages,
+          
           isLoading,
           setLoading,
-          searchFunction
+          searchFunction,
+          sortname,
+          setsortname,
+          sortprice,
+          setsortprice
           
         }}
       >

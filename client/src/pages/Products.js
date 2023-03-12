@@ -13,7 +13,11 @@ const Products = () => {
     setdata,
     isLoading,
     setLoading,
-    searchFunction
+    searchFunction,
+    sortname,
+    setsortname,
+    sortprice,
+    setsortprice
   } = useContext(MyContext);
   const [currentPage, setCurrentPage] = useState(1);
 
@@ -31,7 +35,18 @@ const Products = () => {
   
   
   const handleSelect = (e) => {
-   
+    e.preventDefault()
+   const data=e.target.value
+   console.log(typeof(data))
+   const [tag ,val] =data.split(' ')
+   if(tag=='name'){
+    setsortname(val)
+    setsortprice(0)
+   }
+  if(tag=='price'){
+    setsortprice(val)
+    setsortname(0)
+   }
   };
   const clickHandler = (e) => {
    
@@ -46,21 +61,6 @@ const Products = () => {
   };
   
 
-  function sortByNameAsc() {
-    setdata(data.sort((a, b) => (a.name > b.name ? 1 : -1)));
-  }
-
-  function sortByNameDesc() {
-    setdata(data.sort((a, b) => (a.name < b.name ? 1 : -1)));
-  }
-
-  function sortByPriceAsc() {
-    setdata(data.sort((a, b) => (a.price > b.price ? 1 : -1)));
-  }
-
-  function sortByPriceDesc() {
-    setdata(data.sort((a, b) => (a.price < b.price ? 1 : -1)));
-  }
   
    
   const renderPageNumbers = () => {
@@ -106,12 +106,12 @@ const Products = () => {
               <div className="inner-sort">
                 <label htmlFor="Sort">Sort By : </label>
                 <select name="Sort" className="select">
-                  <option value="Price(Lowest)" selected onSelect={sortByPriceAsc}>
+                  <option value="Price(Lowest)" >
                     Price(Lowest)
                   </option>
-                  <option value="Price(Highest)" onSelect={sortByPriceDesc}>Price(Highest)</option>
-                  <option value="Name(a-z)" onSelect={sortByNameDesc}>Name(a-z)</option>
-                  <option value="Name(z-a)" onSelect={sortByNameAsc}>Name(z-a)</option>
+                  <option value="Price(Highest)" >Price(Highest)</option>
+                  <option value="Name(a-z)" >Name(a-z)</option>
+                  <option value="Name(z-a)" >Name(z-a)</option>
                 </select>
               </div>
             </div>
@@ -239,13 +239,13 @@ const Products = () => {
               <div className="sort">
                 <div className="inner-sort">
                   <label htmlFor="Sort">Sort By : </label>
-                  <select name="Sort" className="select">
-                    <option value="Price(Lowest)" selected onSelect={sortByPriceAsc}>
+                  <select name="Sort" className="select" onChange={(e)=>handleSelect(e)}>
+                    <option value={'price 1'} >
                       Price(Lowest)
                     </option>
-                    <option value="Price(Highest)" onSelect={sortByPriceDesc}>Price(Highest)</option>
-                    <option value="Name(a-z)" onSelect={sortByNameDesc}>Name(a-z)</option>
-                    <option value="Name(z-a)" onSelect={sortByNameAsc}>Name(z-a)</option>
+                    <option value={'price -1'} >Price(Highest)</option>
+                    <option value={'name 1'} >Name(a-z)</option>
+                    <option value={'name -1'} >Name(z-a)</option>
                   </select>
                 </div>
               </div>

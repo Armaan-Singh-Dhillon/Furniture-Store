@@ -11,19 +11,25 @@ const create = async (req, res) => {
     })
 }
 const getAll = async (req, res) => {
-    const { page, limit } = req.query;
+   
+    const {sortname,sortprice}=req.body
+    if(sortname==0){
 
-    const startIndex = (page - 1) * limit;
+        const products = await productModel.find({}).sort({price:sortprice})
+        res.send({
+            data: products,
+        });
+    }
+    else{
 
-    const products = await productModel.find({})
-        .skip(startIndex)
-        .limit(parseInt(limit));
+        const products = await productModel.find({}).sort({name:sortname})
+        res.send({
+            data: products,
+        });
+    }
+        
 
-    res.send({
-        data: products,
-        currentPage: parseInt(page),
-        totalPages: Math.ceil(await productModel.countDocuments({}) / limit),
-    });
+   
 };
 
 const update = async (req, res) => {

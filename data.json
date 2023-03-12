@@ -1,282 +1,1187 @@
-
-    [
+[
+    
         {
-            "name": "Sawyer",
-            "price": 300,
-            "image": "https://i0.wp.com/magnoliahome.co.in/wp-content/uploads/2021/07/Sawyer-Bookshelf-1.1-1.jpg",
-            "company": "Furniture Co.",
-            "description": "A sturdy bookshelf made from solid wood",
-            "category": "Furniture",
-            "shipping": true,
-            "offers": [
-                {
-                    "offerName": "15% off",
-                    "discount": "15%"
-                },
-                {
-                    "offerName": "Free Assembly",
-                    "discount": "100%"
-                }
-            ],
-            "used": false,
-            "woodType": [
-                "Mahogany"
-            ],
-            "refundable": true
-        },
-        {
-            "name": "Rug",
-            "price": 200,
-            "image": "https://wakefitdev.gumlet.io/img/rug/WRUGNETW152213BL/8.jpg?w=732",
-            "company": "Flooring Co.",
-            "description": "A high-quality rug that adds warmth to any room",
-            "category": "Flooring",
-            "shipping": true,
-            "offers": [
-                {
-                    "offerName": "10% off",
-                    "discount": "10%"
-                }
-            ],
-            "used": false,
+            "_id": "640386fdec65f036e0647beb",
+            "name": "Sleeper Sofa",
+            "price": "1150",
+            "image": "https://cdn.shopify.com/s/files/1/0308/5641/3319/products/51xehajxp-L._AC_800x544.jpg?v=1661488237",
+            "company": "CozyHome",
+            "description": "Make room for guests with this comfortable sleeper sofa. Featuring a sturdy frame and easy-to-use pull-out bed, it's perfect for overnight visitors. Available in a variety of colors and fabrics.",
+            "category": "Living Room",
+            "shipping": "true",
+            "used": "false",
             "woodType": [],
-            "refundable": true
-        },
-        {
-            "name": "Lamp",
-            "price": 75,
-            "image": "https://images.woodenstreet.de/image/data/home-decors/lamps-lighting/floor-lamps/beige-wooden-floor-lamp-with-natural-jute-shade/beige-wooden-floor-lamp-with-natural-jute-shade/1.jpg",
-            "company": "Lighting Co.",
-            "description": "A stylish lamp that provides ample lighting",
-            "category": "Lighting",
-            "shipping": true,
-            "offers": [
-                {
-                    "offerName": "Free Bulb Replacement",
-                    "discount": "100%"
-                }
-            ],
-            "used": true,
-            "woodType": [],
-            "refundable": false
-        }
-        ,
-        {
-            "name": "Desk",
-            "price": 200,
-            "image": "https://m.media-amazon.com/images/I/61tBgPGDdpL._SX425_.jpg",
-            "company": "Furniture Co.",
-            "description": "A spacious desk with drawers",
-            "category": "Furniture",
-            "shipping": true,
+            "refundable": "true",
             "offers": [],
-            "used": true,
-            "woodType": [
-                "Oak"
-            ],
-            "refundable": false
+            "reviews": [],
+            "__v": 0
         },
         {
-            "name": "Sconce",
-            "price": 50,
-            "image": "https://m.media-amazon.com/images/I/71VWwkLFuYL._SL1500_.jpg",
-            "company": "Lighting Co.",
-            "description": "A simple yet elegant wall sconce",
-            "category": "Lighting",
-            "shipping": true,
-            "offers": [
-                {
-                    "offerName": "Free Shipping",
-                    "discount": "100%"
-                }
-            ],
-            "used": false,
+            "_id": "640386fdec65f036e0647bec",
+            "name": "Sectional Sofa",
+            "price": "6999",
+            "image": "https://5.imimg.com/data5/SELLER/Default/2022/12/NT/DB/TC/24135102/u-shape-sectional-sofa-set-1000x1000.jpg",
+            "company": "LuxuryLiving",
+            "description": "Create a cozy seating area with this luxurious sectional sofa. Featuring a modular design and plush cushions, it's perfect for entertaining or relaxing with family and friends. Available in a variety of colors and fabrics.",
+            "category": "Living Room",
+            "shipping": "true",
+            "used": "false",
             "woodType": [],
-            "refundable": true
-        },
-        
-        {
-            "name": "Curtains",
-            "price": 100,
-            "image": "https://5.imimg.com/data5/FZ/OW/UD/SELLER-3686580/classic-and-modern-contemporary-curtains-500x500.jpg",
-            "company": "Textiles Co.",
-            "description": "Elegant curtains for your living room",
-            "category": "Textiles",
-            "shipping": true,
-            "offers": [
-                {
-                    "offerName": "Free Shipping",
-                    "discount": "100%"
-                }
-            ],
-            "used": false,
-            "woodType": [],
-            "refundable": true
-        },
-        {
-            "name": "Chandelier",
-            "price": 500,
-            "image": "http://cdn.shopify.com/s/files/1/0047/8022/8698/products/3s-crystal-staircase-chandelier-1.png?v=1599907872",
-            "company": "Lighting Co.",
-            "description": "A stunning chandelier to elevate your space",
-            "category": "Lighting",
-            "shipping": true,
+            "refundable": "true",
             "offers": [],
-            "used": false,
-            "woodType": [],
-            "refundable": true
+            "reviews": [],
+            "__v": 0
         },
         {
-            "name": "Modern Sofa",
-            "price": 600,
-            "image": "https://sc02.alicdn.com/kf/HTB1ZP.fa.KF3KVjSZFEq6xExFXaR/238842455/HTB1ZP.fa.KF3KVjSZFEq6xExFXaR.jpg",
-            "company": "Furniture Co.",
-            "description": "A stylish modern sofa with a chaise lounge",
-            "category": "Furniture",
-            "shipping": true,
-            "offers": [
-                {
-                    "offerName": "20% off",
-                    "discount": "20%"
-                },
-                {
-                    "offerName": "Free Shipping",
-                    "discount": "100%"
-                }
-            ],
-            "used": false,
+            "_id": "640386fdec65f036e0647bef",
+            "name": "Platform Storage Bed",
+            "price": "1200",
+            "image": "https://i.pinimg.com/originals/9f/0a/9b/9f0a9bc38b8d4cd7d5b570c916d09a6d.jpg",
+            "company": "ModaFurnishings",
+            "description": "Maximize your bedroom storage with this sleek platform bed. Featuring built-in drawers and a stylish design, it's perfect for small spaces or anyone who needs extra storage. Available in a variety of sizes and finishes.",
+            "category": "Bedroom",
+            "shipping": "true",
+            "used": "false",
             "woodType": [
-                "Birch",
+                "Walnut",
+                "Birch"
+            ],
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647bf0",
+            "name": "Astral 4 Seater Dining Table",
+            "price": "399",
+            "image": "https://www.godrejinterio.com/imagestore/B2C/56101543SD00035/56101543SD00035_A1_803x602.jpg",
+            "company": "FurnitureCraze",
+            "description": "Gather around this beautiful dining table for family dinners and special occasions. Featuring a sturdy construction and elegant design, it's perfect for hosting dinner parties or enjoying a casual meal with loved ones. Available in a variety of sizes and finishes.",
+            "category": "Dining Room",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [
+                "Oak",
                 "Maple"
             ],
-            "refundable": true
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0
         },
         {
-            "name": "Side Table",
-            "price": 75,
-            "image": "https://cdn.shopify.com/s/files/1/0044/1208/0217/products/FremontBedsideTable-1_035516_6c1d8851-22cd-41a1-a4cc-6da789a79b8b_900x.jpg?v=1668497301",
-            "company": "Furniture Co.",
-            "description": "A small wooden side table",
-            "category": "Furniture",
-            "shipping": true,
+            "_id": "640386fdec65f036e0647bf1",
+            "name": "Rocking Chair",
+            "price": "1699",
+            "image": "https://royaloakindia.com/media/catalog/product/o/d/odrc20218001-1_1_.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=500&width=800&canvas=800:500",
+            "company": "RusticCharm",
+            "description": "Relax and unwind in this charming rocking chair. Featuring a classic design and comfortable cushions, it's perfect for enjoying a book or a cup of tea on the porch or in the living room. Available in a variety of finishes and fabrics.",
+            "category": "Living Room",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647bf2",
+            "name": "Bean Bag Chair",
+            "price": "99",
+            "image": "https://5.imimg.com/data5/ECOM/Default/2022/4/KD/WO/NY/35101554/51aiqskymjl-1000x1000.jpg",
+            "company": "CozyBean",
+            "description": "Get comfortable in this fun and functional bean bag chair. Featuring a soft, removable cover and durable construction, it's perfect for kids' rooms, dorms, or any casual living space. Available in a variety of colors and patterns.",
+            "category": "Living Room",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647bf3",
+            "name": "Armchair",
+            "price": "599",
+            "image": "https://www.ikea.com/in/en/images/products/ekeroe-armchair-bomstad-black__0951655_pe801303_s5.jpg",
+            "company": "ContemporaryLiving",
+            "description": "Make a statement with this stylish armchair. Featuring a modern design and comfortable cushions, it's perfect for adding a pop of color and personality to any room. Available in a variety of fabrics and finishes.",
+            "category": "Living Room",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647be3",
+            "name": "Reclining Sofa",
+            "price": "949",
+            "image": "https://royaloakindia.com/media/catalog/product/r/o/royaloak-cooper-fabric-recliner-sofa-3-seater-1.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=500&width=800&canvas=800:500",
+            "company": "ComfortLiving",
+            "description": "Sit back and relax in this luxurious reclining sofa. Featuring soft, plush cushions and a smooth reclining mechanism, it's perfect for movie nights and lazy afternoons. Available in a variety of colors and fabrics.",
+            "category": "Living Room",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0,
+            "updatedAt": "2023-03-10T16:42:56.551Z"
+        },
+        {
+            "_id": "640386fdec65f036e0647be8",
+            "name": "Madison Accent Chair",
+            "price": "399",
+            "image": "https://www.dreamzzfurniture.com/wp-content/uploads/2022/06/Live-Image-3-1.jpg",
+            "company": "ChicHome",
+            "description": "Add a pop of color to your living room with this stylish accent chair. Featuring a bold design and comfortable cushioning, it's perfect for reading, relaxing, or just enjoying a cup of tea. Available in a variety of colors and patterns.",
+            "category": "Living Room",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647bf6",
+            "name": "Lenox Bar Stool",
+            "price": "150",
+            "image": "https://assets.weimgs.com/weimgs/rk/images/wcm/products/202245/0036/lenox-bar-counter-stools-c.jpg",
+            "company": "RetroFurniture",
+            "description": "Enjoy drinks and conversation in style with this retro-inspired bar stool. Featuring a swivel seat and adjustable height, it's perfect for any bar or kitchen island. Available in a variety of colors and finishes.",
+            "category": "Kitchen",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647bf7",
+            "name": "Royal Chest of Drawers",
+            "price": "1200",
+            "image": "https://royalzig.com/wp-content/uploads/2020/02/Royal-Chest-Of-Drawers-Hand-Carved.jpg",
+            "company": "AntiqueTreasures",
+            "description": "Store your clothes and accessories in style with this beautiful chest of drawers. Featuring a timeless design and ample storage space, it's perfect for any bedroom or dressing room. Available in a variety of finishes.",
+            "category": "Bedroom",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647bf8",
+            "name": "Royal Dining Set",
+            "price": "8999",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1_NoMeWZaM35-Km5XOEQ3Bkfqwip-yqKcqA&usqp=CAU",
+            "company": "ModernFurnishings",
+            "description": "Gather around this stylish dining table for meals and conversations with family and friends. Featuring a durable and easy-to-clean surface, it's perfect for everyday use or special occasions. Available in a variety of sizes and finishes.",
+            "category": "Dining Room",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647bf9",
+            "name": "Charm Fabric Arm Chair",
+            "price": "400",
+            "image": "https://hometown.gumlet.io/media/product/92/8273/24993/1.jpg?mode=fill&h=360&w=360&dpr=1.5",
+            "company": "ChicInteriors",
+            "description": "Make a statement with this eye-catching accent chair. Featuring a bold pattern and comfortable cushions, it's perfect for adding a pop of color and personality to any room. Available in a variety of fabrics and finishes.",
+            "category": "Living Room",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647bfa",
+            "name": "Blemont Credenza",
+            "price": "900",
+            "image": "https://cdn.shopify.com/s/files/1/0199/1066/products/Belmont_Credenza_-_Walnut_-_L01_2000x.jpg?v=1582745412",
+            "company": "MidCenturyModern",
+            "description": "Store your dinnerware, table linens, and other essentials in this sleek and versatile credenza. Featuring clean lines and ample storage space, it's perfect for modern homes or anyone who loves to entertain. Available in a variety of finishes.",
+            "category": "Dining Room",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647bfb",
+            "name": "Wooden Base Office Chair",
+            "price": "450",
+            "image": "http://cdn.shopify.com/s/files/1/0055/6082/7950/products/ButtonedAdjustableOfficeChair-ZH0746_grande.jpg?v=1641892330",
+            "company": "ErgoDesigns",
+            "description": "Stay comfortable and productive all day long with this ergonomic office chair. Featuring adjustable height and lumbar support, it's perfect for anyone who works from home or spends long hours at a desk. Available in a variety of colors and finishes.",
+            "category": "Office",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647bfc",
+            "name": "Escobar Coffee Table",
+            "price": "600",
+            "image": "https://images.woodenstreet.de/image/data/coffee-tables-mdf/escobar-coffee-table/exotic-teak/updated%20new/1.jpg",
+            "company": "RusticCharm",
+            "description": "Add a touch of rustic charm to your living room with this beautiful coffee table. Featuring a distressed wood top and sturdy metal frame, it's perfect for serving drinks, snacks, or displaying decor. Available in a variety of sizes and finishes.",
+            "category": "Living Room",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647bfd",
+            "name": "Avalon Wardrobe",
+            "price": "1200",
+            "image": "https://www.ulcdn.net/images/products/625699/slide/666x363/Avalon_Sliding_Door_Wardrobe_Choc_Oak_Sil_Gy_1.jpg?1658148748",
+            "company": "ClosetEssentials",
+            "description": "Organize your clothes and accessories in style with this spacious wardrobe. Featuring ample storage space and a sleek design, it's perfect for anyone who wants to keep their clothes neat and tidy. Available in a variety of finishes.",
+            "category": "Bedroom",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647bfe",
+            "name": "Mid-Century Modern Armchair",
+            "price": "899.99",
+            "image": "https://makinghome.com.au/wp-content/uploads/sites/9/2022/08/castlery-desmond-armchair-4.jpg",
+            "company": "RetroRevival",
+            "description": "Add a touch of retro style to your living room with this mid-century modern armchair. Made with premium materials and featuring a sleek design, this chair is both comfortable and stylish. Available in a variety of colors.",
+            "category": "Living Room",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647bff",
+            "name": "Rustic Wood Coffee Table",
+            "price": "499.99",
+            "image": "http://cdn.home-designing.com/wp-content/uploads/2019/09/Large-Rustic-X-Coffee-Table-Black-Legs-Thick-Wood-Top.jpg",
+            "company": "FarmhouseFurniture",
+            "description": "Bring a touch of farmhouse charm to your living room with this rustic wood coffee table. Made from reclaimed wood and featuring a distressed finish, this table is both functional and stylish. Available in a variety of sizes.",
+            "category": "Living Room",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647c00",
+            "name": "Adjustable Standing Desk",
+            "price": "699.99",
+            "image": "https://static.standard.co.uk/2021/12/20/10/Ikea-%282%29jpg?width=968&auto=webp&quality=50&crop=968%3A645%2Csmart",
+            "company": "ErgoDesk",
+            "description": "Stay productive and healthy with this adjustable standing desk. Featuring a motorized height adjustment system and a spacious work surface, this desk is perfect for any home office. Available in a variety of colors.",
+            "category": "Home Office",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647c01",
+            "name": "Industrial Metal Bar Stool",
+            "price": "149.99",
+            "image": "https://secure.img1-fg.wfcdn.com/im/08557920/compr-r85/1837/183759175/industrial-bar-stool-adjustable-swivel-round-wood-metal-kitchen-stool-26-32-inch-rustic-farmhouse-counter-height-extra-tall-bar-height-stool-arc-shaped-backrestweldedset-of-2.jpg",
+            "company": "UrbanIndustrial",
+            "description": "Add a touch of industrial style to your kitchen or bar area with this metal bar stool. Featuring a sturdy metal frame and a comfortable seat, this stool is both functional and stylish. Available in a variety of colors.",
+            "category": "Kitchen",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647c02",
+            "name": "Tufted Velvet Loveseat",
+            "price": "799.99",
+            "image": "https://m.media-amazon.com/images/I/71k5BO4DmPL._SL1500_.jpg",
+            "company": "LuxLiving",
+            "description": "Create a cozy and stylish seating area in your living room with this tufted velvet loveseat. Featuring a soft velvet upholstery and a classic design, this loveseat is perfect for lounging and relaxing. Available in a variety of colors.",
+            "category": "Living Room",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647bdb",
+            "name": "Luxury Furniture Sofa Set",
+            "price": "1499",
+            "image": "https://cdn.shopify.com/s/files/1/0096/4594/9013/products/Designer-Sofa-Set-in-Fabric-L-Shape_3.png?v=1616070420",
+            "company": "FurnitureCo",
+            "description": "Upgrade your living room with this stylish and comfortable sofa set. It features soft cushions and a sturdy frame, making it perfect for relaxing and entertaining guests. Available in a variety of colors and configurations.",
+            "category": "Living Room",
+            "shipping": "true",
             "offers": [
                 {
-                    "offerName": "10% off",
-                    "discount": "10%"
+                    "offerName": "Free Shipping",
+                    "discount": "10%",
+                    "_id": "640386fdec65f036e0647bdc"
                 }
             ],
-            "used": false,
+            "used": "false",
             "woodType": [
                 "Oak",
                 "Pine"
             ],
-            "refundable": true
+            "refundable": "true",
+            "reviews": [],
+            "__v": 0
         },
-        
         {
-            "name": "TV Stand",
-            "price": 120,
-            "image": "https://m.media-amazon.com/images/I/818f0tvJT-L._SL1500_.jpg",
-            "company": "Furniture Co.",
-            "description": "A sleek black TV stand with two shelves",
-            "category": "Furniture",
-            "shipping": false,
+            "_id": "640386fdec65f036e0647bdd",
+            "name": "Bedroom Set",
+            "price": "1999",
+            "image": "https://www.ulcdn.net/images/products/654688/slide/666x363/Zoey_Non-_Storage_Bed_Queen_Size_Dark_Wenge_Finish_New__1.jpg?1662543029",
+            "company": "SleepWell",
+            "description": "Transform your bedroom into a peaceful oasis with this luxurious bedroom set. It includes a comfortable bed, dresser, and nightstands, all crafted from high-quality materials. Available in multiple sizes and finishes.",
+            "category": "Bedroom",
+            "shipping": "true",
+            "offers": [
+                {
+                    "offerName": "Limited Time Offer",
+                    "discount": "15%",
+                    "_id": "640386fdec65f036e0647bde"
+                }
+            ],
+            "used": "false",
+            "woodType": [
+                "Mahogany",
+                "Walnut"
+            ],
+            "refundable": "true",
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647bdf",
+            "name": "Dining Table Set",
+            "price": "1199",
+            "image": "https://images.woodenstreet.de/image/data/dining-set/6-seater/mcbeth-6-seater-with-bench/honey/updated/looks/updated-new/1.jpg",
+            "company": "FineDine",
+            "description": "Gather your friends and family around this beautiful dining table set. It features a sturdy table and comfortable chairs, perfect for hosting dinner parties or enjoying a casual meal. Available in a variety of styles and finishes.",
+            "category": "Dining Room",
+            "shipping": "true",
+            "offers": [
+                {
+                    "offerName": "Flash Sale",
+                    "discount": "25%",
+                    "_id": "640386fdec65f036e0647be0"
+                }
+            ],
+            "used": "false",
+            "woodType": [
+                "Maple",
+                "Birch"
+            ],
+            "refundable": "true",
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647bf4",
+            "name": "Cagney Bookshelf",
+            "price": "799",
+            "image": "https://images.woodenstreet.de/image/cache/data%2Fbook-shelves%2Fcagney-bookshelf-revised%2Fhoney%2Fupdated%2F1-810x702.jpg",
+            "company": "ModernDesigns",
+            "description": "Organize your books and display your favorite decor with this sleek bookshelf. Featuring clean lines and ample storage space, it's perfect for modern homes or anyone who loves to read. Available in a variety of finishes.",
+            "category": "Home Office",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
             "offers": [],
-            "used": true,
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647be4",
+            "name": "Texas Marble Dining Table",
+            "price": "1199",
+            "image": "https://royaloakindia.com/media/catalog/product/r/o/royaloak-milan-italian-marble-6-seater-dining-table-set-1.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=500&width=800&canvas=800:500",
+            "company": "ElegantDining",
+            "description": "Gather around this beautiful dining table for elegant meals with family and friends. Featuring a solid wood construction and sleek design, it's perfect for both casual and formal occasions. Available in a variety of sizes and finishes.",
+            "category": "Dining Room",
+            "shipping": "true",
+            "offers": [
+                {
+                    "offerName": "Holiday Sale",
+                    "discount": "10%",
+                    "_id": "640386fdec65f036e0647be5"
+                }
+            ],
+            "used": "false",
+            "woodType": [
+                "Oak",
+                "Mahogany"
+            ],
+            "refundable": "true",
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647be6",
+            "name": "SpringTek Platform Bed",
+            "price": "799",
+            "image": "https://springtek.in/images/Product/135/springtek-amaze-sheesham-platform-beds1.jpg",
+            "company": "SleekSleep",
+            "description": "Sleep in style with this minimalist platform bed. Featuring a low-profile design and solid wood construction, it's perfect for modern bedrooms. Available in a variety of sizes and finishes.",
+            "category": "Bedroom",
+            "shipping": "true",
+            "offers": [
+                {
+                    "offerName": "Winter Sale",
+                    "discount": "20%",
+                    "_id": "640386fdec65f036e0647be7"
+                }
+            ],
+            "used": "false",
+            "woodType": [
+                "Maple",
+                "Cherry"
+            ],
+            "refundable": "true",
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647bf5",
+            "name": "HoneyComb Console Table",
+            "price": "299",
+            "image": "https://cdn.shopify.com/s/files/1/1306/4195/products/1_F_1_60907045-9c11-4cb9-a549-3992bd489875_1024x1024.jpg?v=1669963614",
+            "company": "ClassicInteriors",
+            "description": "Add a touch of elegance to your entryway or living room with this classic console table. Featuring a timeless design and sturdy construction, it's perfect for displaying photos, flowers, or other decor. Available in a variety of finishes.",
+            "category": "Living Room",
+            "shipping": "true",
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "offers": [],
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647bed",
+            "name": "Writing Desk",
+            "price": "550",
+            "image": "https://m.media-amazon.com/images/I/91nuutXNOIL._SL1500_.jpg",
+            "company": "VintageCharm",
+            "description": "Get inspired with this beautiful writing desk. Featuring a classic design and ample workspace, it's perfect for writers, students, or anyone who needs a dedicated place to work. Available in a variety of finishes.",
+            "category": "Home Office",
+            "shipping": "true",
+            "offers": [
+                {
+                    "offerName": "Back-to-School Sale",
+                    "discount": "10%",
+                    "_id": "640386fdec65f036e0647bee"
+                }
+            ],
+            "used": "false",
             "woodType": [
                 "Pine",
                 "Birch"
             ],
-            "refundable": false
+            "refundable": "true",
+            "reviews": [],
+            "__v": 0
         },
         {
-            "name": "Bookcase",
-            "price": 180,
-            "image": "https://m.media-amazon.com/images/I/61w6tslU7yL._SL1024_.jpg",
-            "company": "Furniture Co.",
-            "description": "A wide bookcase with six shelves",
-            "category": "Furniture",
-            "shipping": true,
+            "_id": "640386fdec65f036e0647c0e",
+            "name": "RoyaLoak Glass Coffee Table",
+            "price": "899",
+            "image": "https://royaloakindia.com/media/catalog/product/l/f/lfs_copy_9_1.jpg?optimize=medium&bg-color=255,255,255&fit=bounds&height=500&width=800&canvas=800:500",
+            "company": "FurnitureMart",
+            "description": "Add a touch of elegance to your living room with this modern glass coffee table. The sleek design and sturdy construction make it a great addition to any home. Available in various sizes.",
+            "category": "Living Room",
+            "shipping": "true",
             "offers": [
                 {
-                    "offerName": "20% off",
-                    "discount": "20%"
+                    "offerName": "Free Shipping",
+                    "discount": "10%",
+                    "_id": "640386fdec65f036e0647c0f"
+                },
+                {
+                    "offerName": "20% off on first purchase",
+                    "discount": "20%",
+                    "_id": "640386fdec65f036e0647c10"
                 }
             ],
-            "used": false,
+            "used": "false",
             "woodType": [
-                "Oak",
-                "Birch"
+                "Glass",
+                "Metal"
             ],
-            "refundable": true
+            "refundable": "true",
+            "reviews": [
+                {
+                    "username": "johndoe",
+                    "rating": 4,
+                    "comment": "Great table, very modern and sleek. The glass top is easy to clean and the metal legs are very sturdy.",
+                    "_id": "640386fdec65f036e0647c11",
+                    "date": "2023-03-04T17:59:25.973Z"
+                },
+                {
+                    "username": "janedoe",
+                    "rating": 5,
+                    "comment": "Love this coffee table! It's the perfect size for my small apartment and it looks great. The glass top is thick and durable.",
+                    "_id": "640386fdec65f036e0647c12",
+                    "date": "2023-03-04T17:59:25.973Z"
+                }
+            ],
+            "__v": 0
         },
         {
-            "name": "Table",
-            "price": 250,
-            "image": "https://m.media-amazon.com/images/I/71Tjo4UiDFL._SL1200_.jpg",
+            "_id": "640386fdec65f036e0647c13",
+            "name": "Rustic Wooden Bed Frame",
+            "price": "1199",
+            "image": "https://i.pinimg.com/originals/a8/85/80/a88580966a81a06538396eccd1feb615.jpg",
+            "company": "WoodenFurnishings",
+            "description": "Sleep in style with this beautiful rustic wooden bed frame. Made from high-quality wood, this bed frame is built to last. Available in various sizes.",
+            "category": "Bedroom",
+            "shipping": "true",
+            "offers": [
+                {
+                    "offerName": "Free Shipping",
+                    "discount": "10%",
+                    "_id": "640386fdec65f036e0647c14"
+                },
+                {
+                    "offerName": "30% off on second purchase",
+                    "discount": "30%",
+                    "_id": "640386fdec65f036e0647c15"
+                }
+            ],
+            "used": "false",
+            "woodType": [
+                "Maple",
+                "Birch"
+            ],
+            "refundable": "true",
+            "reviews": [
+                {
+                    "username": "bobsmith",
+                    "rating": 5,
+                    "comment": "This bed frame is amazing! It's sturdy, well-made, and looks beautiful in my bedroom. I love the rustic feel of the wood.",
+                    "_id": "640386fdec65f036e0647c16",
+                    "date": "2023-03-04T17:59:25.974Z"
+                },
+                {
+                    "username": "sarahjones",
+                    "rating": 4,
+                    "comment": "Overall, I'm happy with my purchase. The bed frame arrived in good condition and was easy to assemble. The only downside is that it's a bit creaky when I move around at night.",
+                    "_id": "640386fdec65f036e0647c17",
+                    "date": "2023-03-04T17:59:25.974Z"
+                }
+            ],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647c1d",
+            "name": "Modern Glass Top Dining Table Set",
+            "price": "799",
+            "image": "https://i.pinimg.com/736x/09/00/2d/09002d1d3c31a36658d484906a26ce6d.jpg",
+            "company": "FurnitureMaster",
+            "description": "This beautiful dining table set features a tempered glass top and sleek metal legs, creating a modern and elegant look for your dining room. The set comes with four comfortable chairs with cushioned seats and backs. Available in black and white color options.",
+            "category": "Dining Room",
+            "shipping": "true",
+            "offers": [
+                {
+                    "offerName": "Free Shipping",
+                    "discount": "5%",
+                    "_id": "640386fdec65f036e0647c1e"
+                }
+            ],
+            "used": "false",
+            "woodType": [
+                "Metal",
+                "Glass"
+            ],
+            "refundable": "true",
+            "reviews": [
+                {
+                    "username": "johndoe",
+                    "rating": 4.5,
+                    "comment": "I love this dining set! The glass top is easy to clean and looks great. The chairs are comfortable and sturdy. The only issue I had was with the assembly instructions, which were a bit confusing.",
+                    "date": "2022-02-18T00:00:00.000Z",
+                    "_id": "640386fdec65f036e0647c1f"
+                },
+                {
+                    "username": "janedoe",
+                    "rating": 5,
+                    "comment": "This is a beautiful and well-made dining set. The glass top is thick and the chairs are comfortable. It was easy to assemble and looks great in my dining room.",
+                    "date": "2022-01-15T00:00:00.000Z",
+                    "_id": "640386fdec65f036e0647c20"
+                }
+            ],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647c21",
+            "name": "Vintage Leather Armchair",
+            "price": "499",
+            "image": "https://www.thechesterfieldcompany.com/_images/_images/l/2612-berkeley-vintage-leather-chair.jpg",
+            "company": "VintageFurniture",
+            "description": "This beautiful armchair features a vintage leather design that adds a touch of elegance to any room. The chair is made with high-quality materials and has a comfortable cushioned seat and back. Available in brown and black color options.",
+            "category": "Living Room",
+            "shipping": "true",
+            "offers": [
+                {
+                    "offerName": "Free Shipping",
+                    "discount": "10%",
+                    "_id": "640386fdec65f036e0647c22"
+                },
+                {
+                    "offerName": "10% off first purchase",
+                    "discount": "10%",
+                    "_id": "640386fdec65f036e0647c23"
+                }
+            ],
+            "used": "false",
+            "woodType": [
+                "Leather",
+                "Wood"
+            ],
+            "refundable": "true",
+            "reviews": [
+                {
+                    "username": "emilyjones",
+                    "rating": 5,
+                    "comment": "I absolutely love this armchair! It's so comfortable and the vintage leather design looks amazing. The shipping was fast and the chair arrived in perfect condition.",
+                    "date": "2022-03-02T00:00:00.000Z",
+                    "_id": "640386fdec65f036e0647c24"
+                },
+                {
+                    "username": "michaelsmith",
+                    "rating": 4,
+                    "comment": "This is a beautiful armchair and it's comfortable to sit in. The only issue I had was with the assembly, which took longer than I expected.",
+                    "date": "2022-02-28T00:00:00.000Z",
+                    "_id": "640386fdec65f036e0647c25"
+                }
+            ],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647be1",
+            "name": "Lounge Chair",
+            "price": "699",
+            "image": "https://cdn.shopify.com/s/files/1/0096/4594/9013/products/ChaiseLoungeModernMulti-colorVelvetChaiseLounge-5_d532beab-a7c9-48f0-b99a-435fd2edbab2.jpg?v=1629533648",
+            "company": "RelaxCo",
+            "description": "Sit back and relax in this comfortable lounge chair. It features a sleek design and plush cushions, making it perfect for reading, watching TV, or just taking a nap. Available in a variety of colors.",
+            "category": "Living Room",
+            "shipping": "true",
+            "offers": [
+                {
+                    "offerName": "Spring Sale",
+                    "discount": "15%",
+                    "_id": "640386fdec65f036e0647be2"
+                }
+            ],
+            "used": "false",
+            "woodType": [
+                "Beech",
+                "Walnut"
+            ],
+            "refundable": "true",
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "640386fdec65f036e0647be9",
+            "name": "Bookcase",
+            "price": "599",
+            "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRlxVWa2XQ4AFvNutBL6GrwCZJeURN9jjpXrw&usqp=CAU",
+            "company": "ModernLiving",
+            "description": "Organize your books and display your favorite decorative items with this sleek bookcase. Featuring a minimalist design and adjustable shelves, it's perfect for modern living spaces. Available in a variety of sizes and finishes.",
+            "category": "Home Office",
+            "shipping": "true",
+            "offers": [
+                {
+                    "offerName": "Summer Sale",
+                    "discount": "15%",
+                    "_id": "640386fdec65f036e0647bea"
+                }
+            ],
+            "used": "false",
+            "woodType": [
+                "Ash",
+                "Teak"
+            ],
+            "refundable": "true",
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "64038c64f6a1b0db09ea6f91",
+            "name": "TV Stand",
+            "price": "120",
+            "image": "https://m.media-amazon.com/images/I/818f0tvJT-L._SL1500_.jpg",
             "company": "Furniture Co.",
-            "description": "A beautiful wooden table with four chairs",
+            "description": "A sleek black TV stand with two shelves",
             "category": "Furniture",
-            "shipping": true,
+            "shipping": "false",
+            "offers": [],
+            "used": "true",
+            "woodType": [
+                "Pine",
+                "Birch"
+            ],
+            "refundable": "false",
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "64038c64f6a1b0db09ea6f7f",
+            "name": "Sawyer",
+            "price": "300",
+            "image": "https://i0.wp.com/magnoliahome.co.in/wp-content/uploads/2021/07/Sawyer-Bookshelf-1.1-1.jpg",
+            "company": "Furniture Co.",
+            "description": "A sturdy bookshelf made from solid wood",
+            "category": "Furniture",
+            "shipping": "true",
+            "offers": [
+                {
+                    "offerName": "15% off",
+                    "discount": "15%",
+                    "_id": "64038c64f6a1b0db09ea6f80"
+                },
+                {
+                    "offerName": "Free Assembly",
+                    "discount": "100%",
+                    "_id": "64038c64f6a1b0db09ea6f81"
+                }
+            ],
+            "used": "false",
+            "woodType": [
+                "Mahogany"
+            ],
+            "refundable": "true",
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "64038c64f6a1b0db09ea6f82",
+            "name": "Rug",
+            "price": "200",
+            "image": "https://wakefitdev.gumlet.io/img/rug/WRUGNETW152213BL/8.jpg?w=732",
+            "company": "Flooring Co.",
+            "description": "A high-quality rug that adds warmth to any room",
+            "category": "Flooring",
+            "shipping": "true",
             "offers": [
                 {
                     "offerName": "10% off",
-                    "discount": "10%"
-                },
-                {
-                    "offerName": "Free Shipping",
-                    "discount": "100%"
+                    "discount": "10%",
+                    "_id": "64038c64f6a1b0db09ea6f83"
                 }
             ],
-            "used": false,
-            "woodType": [
-                "Oak",
-                "Maple"
-            ],
-            "refundable": true
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "reviews": [],
+            "__v": 0
         },
         {
+            "_id": "64038c64f6a1b0db09ea6f84",
+            "name": "Lamp",
+            "price": "75",
+            "image": "https://images.woodenstreet.de/image/data/home-decors/lamps-lighting/floor-lamps/beige-wooden-floor-lamp-with-natural-jute-shade/beige-wooden-floor-lamp-with-natural-jute-shade/1.jpg",
+            "company": "Lighting Co.",
+            "description": "A stylish lamp that provides ample lighting",
+            "category": "Lighting",
+            "shipping": "true",
+            "offers": [
+                {
+                    "offerName": "Free Bulb Replacement",
+                    "discount": "100%",
+                    "_id": "64038c64f6a1b0db09ea6f85"
+                }
+            ],
+            "used": "true",
+            "woodType": [],
+            "refundable": "false",
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "64038c64f6a1b0db09ea6f87",
+            "name": "Sconce",
+            "price": "50",
+            "image": "https://m.media-amazon.com/images/I/71VWwkLFuYL._SL1500_.jpg",
+            "company": "Lighting Co.",
+            "description": "A simple yet elegant wall sconce",
+            "category": "Lighting",
+            "shipping": "true",
+            "offers": [
+                {
+                    "offerName": "Free Shipping",
+                    "discount": "100%",
+                    "_id": "64038c64f6a1b0db09ea6f88"
+                }
+            ],
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "64038c64f6a1b0db09ea6f89",
+            "name": "Curtains",
+            "price": "100",
+            "image": "https://5.imimg.com/data5/FZ/OW/UD/SELLER-3686580/classic-and-modern-contemporary-curtains-500x500.jpg",
+            "company": "Textiles Co.",
+            "description": "Elegant curtains for your living room",
+            "category": "Textiles",
+            "shipping": "true",
+            "offers": [
+                {
+                    "offerName": "Free Shipping",
+                    "discount": "100%",
+                    "_id": "64038c64f6a1b0db09ea6f8a"
+                }
+            ],
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "64038c64f6a1b0db09ea6f86",
+            "name": "Desk",
+            "price": "200",
+            "image": "https://m.media-amazon.com/images/I/61tBgPGDdpL._SX425_.jpg",
+            "company": "Furniture Co.",
+            "description": "A spacious desk with drawers",
+            "category": "Furniture",
+            "shipping": "true",
+            "offers": [],
+            "used": "true",
+            "woodType": [
+                "Oak"
+            ],
+            "refundable": "false",
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "64038c64f6a1b0db09ea6f8f",
+            "name": "Side Table",
+            "price": "75",
+            "image": "https://cdn.shopify.com/s/files/1/0044/1208/0217/products/FremontBedsideTable-1_035516_6c1d8851-22cd-41a1-a4cc-6da789a79b8b_900x.jpg?v=1668497301",
+            "company": "Furniture Co.",
+            "description": "A small wooden side table",
+            "category": "Furniture",
+            "shipping": "true",
+            "offers": [
+                {
+                    "offerName": "10% off",
+                    "discount": "10%",
+                    "_id": "64038c64f6a1b0db09ea6f90"
+                }
+            ],
+            "used": "false",
+            "woodType": [
+                "Oak",
+                "Pine"
+            ],
+            "refundable": "true",
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "64038c64f6a1b0db09ea6f8b",
+            "name": "Chandelier",
+            "price": "500",
+            "image": "http://cdn.shopify.com/s/files/1/0047/8022/8698/products/3s-crystal-staircase-chandelier-1.png?v=1599907872",
+            "company": "Lighting Co.",
+            "description": "A stunning chandelier to elevate your space",
+            "category": "Lighting",
+            "shipping": "true",
+            "offers": [],
+            "used": "false",
+            "woodType": [],
+            "refundable": "true",
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "64038c64f6a1b0db09ea6f97",
             "name": "Sofa",
-            "price": 500,
+            "price": "500",
             "image": "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-sofa-in-a-box-1666302170.png?crop=0.612xw:0.925xh;0.340xw,0.0315xh&resize=640:*",
             "company": "Furniture Co.",
             "description": "A comfortable sofa with a chaise lounge",
             "category": "Furniture",
-            "shipping": true,
+            "shipping": "true",
             "offers": [
                 {
                     "offerName": "20% off",
-                    "discount": "20%"
+                    "discount": "20%",
+                    "_id": "64038c64f6a1b0db09ea6f98"
                 }
             ],
-            "used": false,
+            "used": "false",
             "woodType": [
                 "Birch"
             ],
-            "refundable": true
+            "refundable": "true",
+            "reviews": [],
+            "__v": 0
         },
-        
         {
+            "_id": "64038c64f6a1b0db09ea6f94",
+            "name": "Table",
+            "price": "250",
+            "image": "https://m.media-amazon.com/images/I/71Tjo4UiDFL._SL1200_.jpg",
+            "company": "Furniture Co.",
+            "description": "A beautiful wooden table with four chairs",
+            "category": "Furniture",
+            "shipping": "true",
+            "offers": [
+                {
+                    "offerName": "10% off",
+                    "discount": "10%",
+                    "_id": "64038c64f6a1b0db09ea6f95"
+                },
+                {
+                    "offerName": "Free Shipping",
+                    "discount": "100%",
+                    "_id": "64038c64f6a1b0db09ea6f96"
+                }
+            ],
+            "used": "false",
+            "woodType": [
+                "Oak",
+                "Maple"
+            ],
+            "refundable": "true",
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "64038c64f6a1b0db09ea6f99",
             "name": "Desk",
-            "price": 200,
+            "price": "200",
             "image": "https://www.thespruce.com/thmb/l7vA36dSr_QQczazu7um_Oo-SEY=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/annlivingsmalldesk-d9b22390b0c74cfb9fe2d872b76f417d.jpg",
             "company": "Furniture Co.",
             "description": "A sturdy wooden desk with drawers",
             "category": "Furniture",
-            "shipping": true,
+            "shipping": "true",
             "offers": [
                 {
                     "offerName": "15% off",
-                    "discount": "15%"
+                    "discount": "15%",
+                    "_id": "64038c64f6a1b0db09ea6f9a"
                 }
             ],
-            "used": false,
+            "used": "false",
             "woodType": [
                 "Oak",
                 "Birch"
             ],
-            "refundable": true
+            "refundable": "true",
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "64038c64f6a1b0db09ea6f8c",
+            "name": "Modern Sofa",
+            "price": "600",
+            "image": "https://sc02.alicdn.com/kf/HTB1ZP.fa.KF3KVjSZFEq6xExFXaR/238842455/HTB1ZP.fa.KF3KVjSZFEq6xExFXaR.jpg",
+            "company": "Furniture Co.",
+            "description": "A stylish modern sofa with a chaise lounge",
+            "category": "Furniture",
+            "shipping": "true",
+            "offers": [
+                {
+                    "offerName": "20% off",
+                    "discount": "20%",
+                    "_id": "64038c64f6a1b0db09ea6f8d"
+                },
+                {
+                    "offerName": "Free Shipping",
+                    "discount": "100%",
+                    "_id": "64038c64f6a1b0db09ea6f8e"
+                }
+            ],
+            "used": "false",
+            "woodType": [
+                "Birch",
+                "Maple"
+            ],
+            "refundable": "true",
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "64038c64f6a1b0db09ea6f92",
+            "name": "Bookcase",
+            "price": "180",
+            "image": "https://m.media-amazon.com/images/I/61w6tslU7yL._SL1024_.jpg",
+            "company": "Furniture Co.",
+            "description": "A wide bookcase with six shelves",
+            "category": "Furniture",
+            "shipping": "true",
+            "offers": [
+                {
+                    "offerName": "20% off",
+                    "discount": "20%",
+                    "_id": "64038c64f6a1b0db09ea6f93"
+                }
+            ],
+            "used": "false",
+            "woodType": [
+                "Oak",
+                "Birch"
+            ],
+            "refundable": "true",
+            "reviews": [],
+            "__v": 0
+        },
+        {
+            "_id": "6404951f84963fd82d959760",
+            "name": "Outdoor Chair",
+            "price": "399",
+            "image": "https://images.woodenstreet.de/image/cache/data%2FDREAMLINE+furniture%2Fgrey-hand-weaved-synthetic-rope-outdoor-chair%2F1-750x650.jpg",
+            "company": "Ikea",
+            "description": "The \"Sunburst\" outdoor chair is a stylish and comfortable seating option for your backyard or patio. Its unique design features a sturdy metal frame with a sunburst pattern, which adds a touch of elegance to any outdoor space. The frame is coated with a weather-resistant finish, ensuring it can withstand the elements and resist rusting.",
+            "category": "Chair",
+            "shipping": "true",
+            "used": "true",
+            "woodType": [],
+            "refundable": "true",
+            "Owner": {
+                "_id": "64048cf6400015098a349898",
+                "name": "Armaan",
+                "email": "dhillonarmaan2004@gmail.com",
+                "address1": "Melbourne",
+                "address2": "Perth",
+                "phone": " 890953755",
+                "orders": "",
+                "offers": "",
+                "products": [
+                    {
+                        "name": "Armaan",
+                        "price": "500",
+                        "image": "sda",
+                        "company": "sad",
+                        "description": "dsa",
+                        "category": "dsa",
+                        "shipping": true,
+                        "used": true,
+                        "woodType": [],
+                        "refundable": true,
+                        "Owner": {
+                            "_id": "64048cf6400015098a349898",
+                            "name": "Armaan",
+                            "email": "dhillonarmaan2004@gmail.com",
+                            "address1": "Melbourne",
+                            "address2": "Perth",
+                            "phone": " 890953755",
+                            "orders": "",
+                            "offers": "",
+                            "products": ""
+                        },
+                        "_id": "64048fcb6b58583222512cd2",
+                        "offers": [],
+                        "reviews": [],
+                        "createdAt": "2023-03-05T12:49:15.115Z",
+                        "updatedAt": "2023-03-05T12:49:15.115Z",
+                        "__v": 0
+                    }
+                ]
+            },
+            "offers": [],
+            "reviews": [],
+            "createdAt": "2023-03-05T13:11:59.447Z",
+            "updatedAt": "2023-03-05T13:11:59.447Z",
+            "__v": 0
+        },
+        {
+            "_id": "640d72dbb919bb7d26f59ada",
+            "name": "Floating Table",
+            "price": "700",
+            "image": "https://mymodernmet.com/wp/wp-content/uploads/2020/07/john-malecki-floating-table-01.jpg",
+            "company": "Floaters",
+            "description": "Make Things Float !!",
+            "category": "Table",
+            "shipping": "true",
+            "used": "true",
+            "woodType": [],
+            "refundable": "true",
+            "Owner": {
+                "_id": "64048cf6400015098a349898",
+                "name": "Armaan",
+                "email": "dhillonarmaan2004@gmail.com",
+                "address1": "Melbourne",
+                "address2": "Perth",
+                "phone": " 890953755",
+                "orders": "",
+                "offers": "",
+                "products": ""
+            },
+            "offers": [],
+            "reviews": [],
+            "createdAt": "2023-03-12T06:36:11.830Z",
+            "updatedAt": "2023-03-12T06:36:11.830Z",
+            "__v": 0
         }
-        
-    ]
     
+    ]
