@@ -24,7 +24,7 @@ function App() {
   const [loader, setloader] = useState(true);
   const [data, setdata] = useState([]);
   const [alldata, allsetdata] = useState([]);
-  const [searchTerm, setSearchTerm] = useState("");
+ 
   const [sortBy, setSortBy] = useState("Price(Lowest)");
 
   const [token, setToken] = useState('' || localStorage.getItem('token'))
@@ -33,7 +33,7 @@ function App() {
   const [totalPages, settotalPages] = useState(1)
   const [limit, setLimit] = useState(9)
   const [isLoading ,setLoading] = useState(true)
-
+  
   const [user, setUser] = useState({
     _id: '' || localStorage.getItem('_id'),
     name: '' || localStorage.getItem('name'),
@@ -57,14 +57,24 @@ function App() {
     setLoading(false);
     allsetdata(data.data);
   };
+  const searchFunction = async (search) => {
+    setLoading(true)
+    if(search==''){
+      return fetchdata()
+    }
+    const { data } = await axios.post(`http://localhost:2000/api/v1/products/search`, { search });
+    setdata(data.data);
+    settotalPages(data.totalPages)
+    setLoading(false);
+    
+  }
+  
 
   useEffect(() => {
     fetchdata();
   }, [page]);
 
-  if (isLoading) {
-    return <Loader></Loader>;
-  } else {
+  
     return (
       <MyContext.Provider
         value={{
@@ -78,8 +88,6 @@ function App() {
           setdata,
           alldata,
           allsetdata,
-          searchTerm,
-          setSearchTerm,
           sortBy,
           setSortBy,
           token,
@@ -92,7 +100,9 @@ function App() {
           setLimit,
           totalPages,
           isLoading,
-          setLoading
+          setLoading,
+          searchFunction
+          
         }}
       >
         <Routes>
@@ -123,7 +133,7 @@ function App() {
         </Routes>
       </MyContext.Provider>
     );
-  }
+            
 }
 
 export default App;

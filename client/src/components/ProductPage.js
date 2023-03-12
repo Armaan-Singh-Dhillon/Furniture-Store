@@ -78,6 +78,7 @@ const ProductPage = (data) => {
       setQuantity(quantity-1)
     }
   }
+  
   if (loading) {
     return <Loader></Loader>
   }
@@ -113,6 +114,9 @@ const ProductPage = (data) => {
                     </div>
                     <GrFormAdd className="add-sub" onClick={()=>add()}></GrFormAdd>
 
+                  </div>
+                  <div>
+                    Woodtype : {product.woodType.length!=0 ? product.woodType.map(el=>el+'  ') :'Engineered'  }
                   </div>
                 </div>
                 <div>

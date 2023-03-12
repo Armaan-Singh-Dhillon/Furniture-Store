@@ -50,6 +50,20 @@ const updateReviews = async (req, res) => {
         data
     })
 }
+const search = async (req, res) => {
+   const {search} = req.body
+    const { page, limit } = req.query;
+    const startIndex = (page - 1) * limit;
+   console.log(search)
+    const data = await productModel.find({ $text: { $search: search } }).skip(startIndex)
+        .limit(parseInt(limit));
+    res.send({
+        data,
+        currentPage: parseInt(page),
+        totalPages: Math.ceil(await productModel.countDocuments({}) / limit),
+    })
+}
 
 
-export { create, update, deleteProduct, getAll, getById, updateReviews }
+
+export { create, update, deleteProduct, getAll, getById, updateReviews, search }

@@ -1,4 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital@1&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merienda&display=swap');
+
 
 body {
   margin: 0;
@@ -26,5 +28,23 @@ code {
 }
 .btn:hover{
   cursor: pointer;
+}
+h1{
+font-family: 'Merienda', cursive;
+}
+h2{
+font-family: 'Merienda', cursive;
+}
+h3{
+font-family: 'Merienda', cursive;
+}
+h4{
+font-family: 'Merienda', cursive;
+}
+h5{
+  font-family: 'Merienda', cursive;
+}
+h6{
+font-family: 'Merienda', cursive;
 }
 

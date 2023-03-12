@@ -4,7 +4,7 @@ import { TfiLayoutGrid2Alt } from "react-icons/tfi";
 import Loader from "../components/Loader";
 import MyContext from "../MyContext";
 import { Link } from "react-router-dom";
-
+import { FaSearch } from 'react-icons/fa';
 const Products = () => {
   const {
     cartItems,
@@ -23,7 +23,8 @@ const Products = () => {
     setLimit,
     totalPages,
     isLoading,
-    setLoading
+    setLoading,
+    searchFunction
   } = useContext(MyContext);
 
 
@@ -35,12 +36,16 @@ const Products = () => {
   const clickHandler = (e) => {
    
   };
+  const [search, setSearch] = useState('')
 
   const handleSearch = (e) => {
     e.preventDefault()
-    console.log(e.target.value)
     
+    searchFunction(search)
+
   };
+  
+
   function sortByNameAsc() {
     setdata(data.sort((a, b) => (a.name > b.name ? 1 : -1)));
   }
@@ -72,13 +77,143 @@ const Products = () => {
         </div>
       );
     }
-
+  
 
     return pageNumbers;
   };
 
   if (isLoading) {
-    return <Loader></Loader>
+    return <>
+      <Wrapper>
+        <div className="main">
+          <div className="search">
+            <div className="input">
+              <input
+                type="text"
+                placeholder="Search"
+                onChange={(e) => setSearch(e.target.value)}
+
+              />
+              Search<FaSearch ></FaSearch>
+              <div className="view">
+                Grid Enabled
+                <TfiLayoutGrid2Alt className="icon"></TfiLayoutGrid2Alt>
+              </div>
+            </div>
+
+            <div className="sort">
+              <div className="inner-sort">
+                <label htmlFor="Sort">Sort By : </label>
+                <select name="Sort" className="select">
+                  <option value="Price(Lowest)" selected onSelect={sortByPriceAsc}>
+                    Price(Lowest)
+                  </option>
+                  <option value="Price(Highest)" onSelect={sortByPriceDesc}>Price(Highest)</option>
+                  <option value="Name(a-z)" onSelect={sortByNameDesc}>Name(a-z)</option>
+                  <option value="Name(z-a)" onSelect={sortByNameAsc}>Name(z-a)</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div className="middle">
+            <div className="category">
+              <div className="category-cat">
+                <div className="heading">
+                  <h2>Category</h2>
+                </div>
+                <div className="inner-cat">
+                  <div>
+                    <button value="all" onClick={(e) => clickHandler(e)}>
+                      All
+                    </button>
+                  </div>
+                  <div>
+                    <button value="office" onClick={(e) => clickHandler(e)}>
+                      Office
+                    </button>
+                  </div>
+
+                  <div>
+                    <button
+                      value="living room"
+                      onClick={(e) => clickHandler(e)}
+                    >
+                      Living Room
+                    </button>
+                  </div>
+
+                  <div>
+                    <button value="kitchen" onClick={(e) => clickHandler(e)}>
+                      Kitchen
+                    </button>
+                  </div>
+
+                  <div>
+                    <button value="bedroom" onClick={(e) => clickHandler(e)}>
+                      Bedroom
+                    </button>
+                  </div>
+
+                  <div>
+                    <button value="dining" onClick={(e) => clickHandler(e)}>
+                      Dining
+                    </button>
+                  </div>
+                  <div>
+                    <button value="kids" onClick={(e) => clickHandler(e)}>
+                      Kids
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div className="company-cat">
+                <div>
+                  <div className="heading">
+                    <h2>Company</h2>
+                  </div>
+                  <div className="company">
+                    <label>Select : </label>
+                    <select className="select" onChange={handleSelect}>
+                      <option value="all" selected>
+                        all
+                      </option>
+                      <option value="marcos">marcos</option>
+                      <option value="liddy">liddy</option>
+                      <option value="ikea">ikea</option>
+                      <option value="caressa">caressa</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <div className="clear-cat">
+                <button
+                  className="clear"
+                  value="all"
+                  onClick={(e) => clickHandler(e)}
+                >
+                  Clear Filters
+                </button>
+              </div>
+            </div>
+            <div className="loader">
+
+            <Loader></Loader>
+           
+            </div>
+          </div>
+
+        </div>
+        <div className="pagecontainer">
+
+          <div className="pagination">
+
+            {renderPageNumbers()}
+          </div>
+        </div>
+      </Wrapper>
+    </>
   }
   else {
    console.log(data)
@@ -91,9 +226,9 @@ const Products = () => {
                 <input
                   type="text"
                   placeholder="Search"
-                  onChange={(e)=>handleSearch(e)}
-                  
+                onChange={(e)=>setSearch(e.target.value)}
                 />
+                <FaSearch onClick={handleSearch} className='icon'></FaSearch>
                 <div className="view">
                   Grid Enabled
                   <TfiLayoutGrid2Alt className="icon"></TfiLayoutGrid2Alt>
@@ -197,33 +332,46 @@ const Products = () => {
                 </div>
               </div>
               <div className="products">
-                {data.map((obj) => {
-                  return (
-                    <>
-                      <div className="card">
-                        <div className="image">
-                          <Link to={`/products/${obj._id}`}>
-                            <img src={obj.image} alt="" />
-                          </Link>
+                {data.length == 0 ? <>
+                
+                <div className="sorry">
+                  <div>
+
+                  
+                      <h1>{`Sorry no Products related to "${search}"`}</h1>
+                  </div>
+                </div>
+                </> : <>
+                
+                
+                  {data.map((obj) => {
+                    return (
+                      <>
+                        <div className="card">
+                          <div className="image">
+                            <Link to={`/products/${obj._id}`}>
+                              <img src={obj.image} alt="" />
+                            </Link>
+                          </div>
+
+                          <div className="text">
+                            <div>Name:</div>
+                            <div className="val">{obj.name}</div>
+                          </div>
+                          <div className="text">
+                            <div>Price:</div>
+                            <div className="val">-${obj.price}</div>
+                          </div>
+                          <div className="text">
+                            <div>Company</div>
+                            <div className="val">{obj.company}</div>
+                          </div>
                         </div>
 
-                        <div className="text">
-                          <div>Name:</div>
-                          <div className="val">{obj.name}</div>
-                        </div>
-                        <div className="text">
-                          <div>Price:</div>
-                          <div className="val">-${obj.price}</div>
-                        </div>
-                        <div className="text">
-                          <div>Company</div>
-                          <div className="val">{obj.company}</div>
-                        </div>
-                      </div>
-
-                    </>
-                  );
-                })}
+                      </>
+                    );
+                  })}
+                </>}
               </div>
             </div>
 
@@ -242,6 +390,23 @@ const Products = () => {
 };
 
 const Wrapper = styled.div`
+.sorry{
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  color: #39a1ae;
+}
+.icon{
+  font-size: 1.2rem;
+  margin: 1.2rem;
+  :hover{
+    cursor: pointer;
+  }
+}
+.loader{
+  background-color: aliceblue;
+  height: 30vh;
+}
 .val{
   color: #39a1ae;
   
@@ -292,14 +457,14 @@ const Wrapper = styled.div`
     flex-wrap: wrap;
     width: 100%;
     background: aliceblue;
-    justify-content: space-evenly;
+    
     
     
   }
 
   img {
     width: 100%;
-    height: 25rem;
+    height: 30rem;
     object-fit: cover;
     border-radius: 1.2rem;
   }
@@ -310,16 +475,16 @@ const Wrapper = styled.div`
 
   .card {
     flex-direction: column;
-    width: 25.5%;
+    width: 29.6%;
     justify-content: space-evenly;
     transition: all .5s;
    
     align-items: center;
     padding: 1.2rem;
-    margin: 0.5rem;
+    margin: 1.4rem;
   }
   .card:hover{
-    scale: 1.15;
+    scale: 1.08;
   }
   .inner-sort {
     font-size: 1.2rem;
