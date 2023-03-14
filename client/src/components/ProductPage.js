@@ -63,27 +63,34 @@ const ProductPage = (data) => {
     fetchData()
   }
   const addCart = () => {
-    product["quantity"]=quantity
-    product["subtotal"]=quantity*product.price
+    product["quantity"] = quantity
+    product["subtotal"] = quantity * product.price
 
     console.log(product)
     setCartItems([...cartItems, product])
     // navigate('/cart')
   }
-  const add=()=>{
-      setQuantity(quantity+1)
+  const add = () => {
+    setQuantity(quantity + 1)
   }
-  const sub=()=>{
-    if(quantity>1){
-      setQuantity(quantity-1)
+  const sub = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1)
     }
   }
-  
+  function formatDate(dateStr) {
+    const date = new Date(dateStr);
+    const month = date.getMonth() + 1; // add 1 to convert from 0-indexed to 1-indexed
+    const day = date.getDate();
+    const year = date.getFullYear().toString().substr(-2); // extract the last 2 digits of the year
+    return `${month}/${day}/${year}`;
+  }
+
   if (loading) {
     return <Loader></Loader>
   }
   else {
-    const { image, description, price, name, company } = product
+    const { image, description, price, name, company, averageRating } = product
 
     return (
       <>
@@ -97,6 +104,14 @@ const ProductPage = (data) => {
               </div>
               <div className="product-info">
                 <h2 className="product-name">{name}</h2>
+                <div className="stars">
+                  <Star stars={averageRating}></Star>
+                  <div>
+
+                  {averageRating}
+                  </div>
+                </div>
+
                 <p className="product-description">{description}</p>
 
                 <div> Price : -${price}</div>
@@ -112,11 +127,11 @@ const ProductPage = (data) => {
 
                       {quantity}
                     </div>
-                    <GrFormAdd className="add-sub" onClick={()=>add()}></GrFormAdd>
+                    <GrFormAdd className="add-sub" onClick={() => add()}></GrFormAdd>
 
                   </div>
                   <div>
-                    Woodtype : {product.woodType.length!=0 ? product.woodType.map(el=>el+'  ') :'Engineered'  }
+                    Woodtype : {product.woodType.length != 0 ? product.woodType.map(el => el + '  ') : 'Engineered'}
                   </div>
                 </div>
                 <div>
@@ -139,8 +154,7 @@ const ProductPage = (data) => {
 
 
               {reviews.map((el) => {
-                console.log(el._id)
-                console.log(user._id)
+                console.log(el)
                 return <>
                   <div className="review-card">
                     <div className="review-head">
@@ -149,6 +163,13 @@ const ProductPage = (data) => {
 
                         {el.username}
                       </h2>
+
+                      <div >
+                        <h2>
+
+                          {formatDate(el.date)}
+                        </h2>
+                      </div>
 
                       <Star stars={el.rating}></Star>
                     </div>
@@ -231,6 +252,11 @@ const ProductPage = (data) => {
 };
 
 const Wrapper = styled.div`
+.stars{
+  display: flex;
+  width: 20%;
+  justify-content: space-between;
+}
 .add-sub{
   background-color: white;
   color: #39A1AE;
@@ -278,7 +304,7 @@ const Wrapper = styled.div`
 .review-head{
   display: flex;
   align-items: center;
-  width: 15%;
+  width: 45%;
   justify-content: space-between;
 }
 .title{

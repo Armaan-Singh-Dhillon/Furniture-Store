@@ -5,6 +5,7 @@ import Loader from "../components/Loader";
 import MyContext from "../MyContext";
 import { Link } from "react-router-dom";
 import { FaSearch } from 'react-icons/fa';
+import Star from "../components/Star";
 const itemsPerPage = 9;
 const Products = () => {
   const {
@@ -346,6 +347,7 @@ const Products = () => {
                 
                 
                     {currentItems.map((obj) => {
+                      
                     return (
                       <>
                         <div className="card">
@@ -355,6 +357,14 @@ const Products = () => {
                             </Link>
                           </div>
 
+                          <div className="text">
+                            <div>
+                              Rating:
+                            </div>
+                            
+                              <Star className="val" stars={obj.averageRating}></Star>
+                            
+                          </div>
                           <div className="text">
                             <div>Name:</div>
                             <div className="val">{obj.name}</div>
@@ -466,6 +476,7 @@ const Wrapper = styled.div`
     justify-content: space-between;
     font-size: 1.4rem;
     margin: 1.2rem;
+    align-items: center;
     
     
   }

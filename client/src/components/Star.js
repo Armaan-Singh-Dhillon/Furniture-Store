@@ -3,6 +3,7 @@ import { AiOutlineStar } from "react-icons/ai";
 import styled from "styled-components";
 
 const Star = ({ stars}) => {
+    console.log(stars)
     const ratingStar = Array.from({ length: 5 }, (elem, index) => {
         let number = index + 0.5;
         
@@ -38,7 +39,8 @@ const Wrapper = styled.div`
 
     .icon {
       font-size: 2rem;
-      color: orange;
+      color:#39A1AE;
+      
     }
 
     .empty-icon {
