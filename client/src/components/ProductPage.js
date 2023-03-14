@@ -66,7 +66,7 @@ const ProductPage = (data) => {
     product["quantity"] = quantity
     product["subtotal"] = quantity * product.price
 
-    console.log(product)
+    
     setCartItems([...cartItems, product])
     // navigate('/cart')
   }
@@ -90,8 +90,8 @@ const ProductPage = (data) => {
     return <Loader></Loader>
   }
   else {
-    const { image, description, price, name, company, averageRating } = product
-
+    const { image, description, price, name, company, averageRating, offers, termiteResistant, refundable ,used } = product
+    
     return (
       <>
         <Wrapper>
@@ -104,22 +104,46 @@ const ProductPage = (data) => {
               </div>
               <div className="product-info">
                 <h2 className="product-name">{name}</h2>
-                <div className="stars">
+                <div className="stars properites">
                   <Star stars={averageRating}></Star>
-                  <div>
+                <div>
 
                   {averageRating}
                   </div>
                 </div>
-
-                <p className="product-description">{description}</p>
-
-                <div> Price : -${price}</div>
-                <div className="product-quantity">
-
+                <div className="properites">
+                
                 </div>
-                <div>Company : {company}</div>
-                <div>
+                <div> Price : -${price}</div>
+                <div className="properites">
+                 {offers.map((el)=>{
+                  console.log(el)
+                  return <>
+                    <div className="price ">
+                      <div>
+                        {el.offerName}
+                      </div>
+                      <div>
+
+                        -{el.discount}
+                      </div>
+                      <div>
+                        Available
+                      </div>
+                    </div>
+                 
+                  </>
+                 })}
+                </div>
+
+                <div className="properites">
+                  Product Desciption: {description}
+                  </div>
+
+                
+                
+                <div className="properites">Company : {company}</div>
+                <div className="properites">
                   Quantitiy
                   <div className="counter">
                     <GrFormSubtract className="add-sub" onClick={() => sub()}></GrFormSubtract>
@@ -130,11 +154,47 @@ const ProductPage = (data) => {
                     <GrFormAdd className="add-sub" onClick={() => add()}></GrFormAdd>
 
                   </div>
-                  <div>
+                  <div className="properites">
                     Woodtype : {product.woodType.length != 0 ? product.woodType.map(el => el + '  ') : 'Engineered'}
                   </div>
+                  <div className="stickers">
+
+                  {termiteResistant == "Yes" ? <>
+                    <div>
+
+                      <img className="props" src="https://ecolatermite.com/wp-content/uploads/2017/04/noants2017.png" alt="" />
+
+                    </div>
+                  </> : <>
+                  
+                        <img className="props" src="https://cdn-icons-png.flaticon.com/512/854/854558.png" alt="" />
+                  </>}
+                  {refundable == "true" ? <>
+                    <div>
+
+                        <img className="props" src="https://www.svgrepo.com/show/129299/refund.svg" alt="" />
+
+                    </div>
+                  </> : <>
+                  
+                  <img className="props" src="
+                  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjN8yyYtirWcjWQUS0zu31qtaOdODPUO1uIgW-9H3e58r7OVFmbSPry3SKmilVl4DzoZc&usqp=CAU" alt="" />
+                  </>}
+                  {used == "false" ? <>
+                    <div>
+
+                        <img className="props" src="https://www.svgrepo.com/show/250302/new.svg" alt="" />
+
+                    </div>
+                  </> : <>
+                  
+                  <img className="props" src="
+                  https://previews.123rf.com/images/aquir/aquir2009/aquir200902596/154468562-refurbished-sign-round-isolated-sticker-ribbon-tag.jpg" alt="" />
+                  </>}
+
+                  </div>
                 </div>
-                <div>
+                <div className="btn-section">
                   <button className="btn" onClick={addCart}>
                     Add to Cart
                   </button>
@@ -154,7 +214,7 @@ const ProductPage = (data) => {
 
 
               {reviews.map((el) => {
-                console.log(el)
+               
                 return <>
                   <div className="review-card">
                     <div className="review-head">
@@ -252,6 +312,37 @@ const ProductPage = (data) => {
 };
 
 const Wrapper = styled.div`
+.stickers{
+  display: flex;
+ width: 50%;
+ justify-content: space-between;
+}
+
+.props{
+   width: 80%;
+    height: 8rem;
+    object-fit: contain;
+    border-radius: 1.2rem;
+}
+.btn-section{
+  display: flex;
+  justify-content: center;
+}
+
+h2{
+  margin: 0;
+  padding: 0;
+}
+
+.properites{
+  font-size: 1.6rem;
+  margin: 1.4rem 0;
+}
+.price{
+    display: flex;
+  width: 30%;
+  justify-content: space-between;
+}
 .stars{
   display: flex;
   width: 20%;
@@ -317,7 +408,7 @@ const Wrapper = styled.div`
 }
 .upper{
     display: flex;
-    
+   
     margin: 1.2rem;
     background: aliceblue;
 }
@@ -326,6 +417,7 @@ const Wrapper = styled.div`
     padding: 1.8rem;
     display: flex;
     width: 60%;
+   
     flex-direction: column;
     justify-content: space-evenly;
     font-size: 1.4rem;
@@ -373,6 +465,8 @@ img {
   }
 .product-image{
   width: 50%;
+  position: sticky;
+  top: 0;
 }
 `;
 
