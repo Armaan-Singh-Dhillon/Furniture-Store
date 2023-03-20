@@ -92,140 +92,7 @@ const Products = () => {
 
  
 
-  if (isLoading) {
-    return <>
-      <Wrapper>
-        <div className="main">
-          <div className="search">
-            <div className="input">
-              <input
-                type="text"
-                placeholder="Search"
-                onChange={(e) => setSearch(e.target.value)}
-
-              />
-              <FaSearch ></FaSearch>
-              <div className="view">
-                Grid Enabled
-                <TfiLayoutGrid2Alt className="icon"></TfiLayoutGrid2Alt>
-              </div>
-            </div>
-
-            <div className="sort">
-              <div className="inner-sort">
-                <label htmlFor="Sort">Sort By : </label>
-                <select name="Sort" className="select">
-                  <option value="Price(Lowest)" >
-                    Price(Lowest)
-                  </option>
-                  <option value="Price(Highest)" >Price(Highest)</option>
-                  <option value="Name(a-z)" >Name(a-z)</option>
-                  <option value="Name(z-a)" >Name(z-a)</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div className="middle">
-            <div className="category">
-              <div className="category-cat">
-                <div className="heading">
-                  <h2>Category</h2>
-                </div>
-                <div className="inner-cat">
-                  <div>
-                    <button value="all" onClick={(e) => setSearch(e.target.value)}>
-                      All
-                    </button>
-                  </div>
-                  <div>
-                    <button value="office" onClick={(e) => setSearch(e.target.value)}>
-                      Office
-                    </button>
-                  </div>
-
-                  <div>
-                    <button
-                      value="living room"
-                      onClick={(e) => setSearch(e.target.value)}
-                    >
-                      Living Room
-                    </button>
-                  </div>
-
-                  <div>
-                    <button value="kitchen" onClick={(e) => setSearch(e.target.value)}>
-                      Kitchen
-                    </button>
-                  </div>
-
-                  <div>
-                    <button value="bedroom" onClick={(e) => setSearch(e.target.value)}>
-                      Bedroom
-                    </button>
-                  </div>
-
-                  <div>
-                    <button value="dining" onClick={(e) => setSearch(e.target.value)}>
-                      Dining
-                    </button>
-                  </div>
-                  <div>
-                    <button value="kids" onClick={(e) => setSearch(e.target.value)}>
-                      Kids
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div className="company-cat">
-                <div>
-                  <div className="heading">
-                    <h2>Company</h2>
-                  </div>
-                  <div className="company">
-                    <label>Select : </label>
-                    <select className="select" onChange={handleSelect}>
-                      <option value="all" selected>
-                        all
-                      </option>
-                      <option value="marcos">marcos</option>
-                      <option value="liddy">liddy</option>
-                      <option value="ikea">ikea</option>
-                      <option value="caressa">caressa</option>
-                    </select>
-                  </div>
-                </div>
-              </div>
-
-              <div className="clear-cat">
-                <button
-                  className="clear"
-                  value="all"
-                  onClick={(e) => clickHandler(e)}
-                >
-                  Clear Filters
-                </button>
-              </div>
-            </div>
-            <div className="loader">
-
-            <Loader></Loader>
-           
-            </div>
-          </div>
-
-        </div>
-        <div className="pagecontainer">
-
-          <div className="pagination">
-
-            {renderPageNumbers()}
-          </div>
-        </div>
-      </Wrapper>
-    </>
-  }
-  else {
+ 
    
     return (
       <>
@@ -343,21 +210,21 @@ const Products = () => {
                   </button>
                 </div>
               </div>
-              <div className="products">
+              {isLoading ? <Loader></Loader> : <div className="products">
                 {currentItems.length == 0 ? <>
-                
-                <div className="sorry">
-                  <div>
 
-                  
+                  <div className="sorry">
+                    <div>
+
+
                       <h1>{`Sorry no Products related to "${search}"`}</h1>
+                    </div>
                   </div>
-                </div>
                 </> : <>
-                
-                
-                    {currentItems.map((obj) => {
-                      
+
+
+                  {currentItems.map((obj) => {
+
                     return (
                       <>
                         <div className="card">
@@ -371,9 +238,9 @@ const Products = () => {
                             <div>
                               Rating:
                             </div>
-                            
-                              <Star className="val" stars={obj.averageRating}></Star>
-                            
+
+                            <Star className="val" stars={obj.averageRating}></Star>
+
                           </div>
                           <div className="text">
                             <div>Name:</div>
@@ -393,7 +260,8 @@ const Products = () => {
                     );
                   })}
                 </>}
-              </div>
+              </div>}
+              
             </div>
 
           </div>
@@ -407,7 +275,7 @@ const Products = () => {
         </Wrapper>
       </>
     );
-  }
+  
 };
 
 const Wrapper = styled.div`
