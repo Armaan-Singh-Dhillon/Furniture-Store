@@ -9,6 +9,14 @@ import Loader from './Loader'
 import { useNavigate } from "react-router-dom";
 import { GrFormSubtract } from 'react-icons/gr';
 import { GrFormAdd } from 'react-icons/gr';
+import refurbished from '../assets/refurbished.jpg';
+import newsvg from '../assets/new.svg'
+import no_termite from '../assets/notermite.png'
+import norefund from '../assets/refund.png'
+import refund from '../assets/refund.svg'
+import termite from '../assets/termite.png'
+
+
 const ProductPage = (data) => {
   const navigate = useNavigate()
   const { _id } = data
@@ -111,10 +119,8 @@ const ProductPage = (data) => {
                   {averageRating}
                   </div>
                 </div>
-                <div className="properites">
-                
-                </div>
-                <div> Price : -${price}</div>
+             
+                <div className="properites"> Price : -${price}</div>
                 <div className="properites">
                  {offers.map((el)=>{
                   console.log(el)
@@ -154,42 +160,52 @@ const ProductPage = (data) => {
                     <GrFormAdd className="add-sub" onClick={() => add()}></GrFormAdd>
 
                   </div>
-                  <div className="properites">
+                  <div>
                     Woodtype : {product.woodType.length != 0 ? product.woodType.map(el => el + '  ') : 'Engineered'}
                   </div>
                   <div className="stickers">
 
                   {termiteResistant == "Yes" ? <>
-                    <div>
+                    <div className="contain">
 
-                      <img className="props" src="https://ecolatermite.com/wp-content/uploads/2017/04/noants2017.png" alt="" />
+                      <img className="props" src={no_termite} alt="" />
 
                     </div>
                   </> : <>
+                  <div className="contain">
+                          <img className="props" src={termite} alt="" />
+                  </div>
                   
-                        <img className="props" src="https://cdn-icons-png.flaticon.com/512/854/854558.png" alt="" />
+                       
                   </>}
                   {refundable == "true" ? <>
-                    <div>
+                    <div className="contain">
 
-                        <img className="props" src="https://www.svgrepo.com/show/129299/refund.svg" alt="" />
+                        <img className="props" src={refund} alt="" />
 
                     </div>
                   </> : <>
+                  <div className="contain">
+
+                          <img className="props" src={norefund}
+                            alt="" />
+                  </div>
                   
-                  <img className="props" src="
-                  https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSjN8yyYtirWcjWQUS0zu31qtaOdODPUO1uIgW-9H3e58r7OVFmbSPry3SKmilVl4DzoZc&usqp=CAU" alt="" />
                   </>}
                   {used == "false" ? <>
-                    <div>
+                    <div className="contain">
 
-                        <img className="props" src="https://www.svgrepo.com/show/250302/new.svg" alt="" />
+                        <img className="props" src={newsvg} alt="" />
 
                     </div>
                   </> : <>
+                  <div className="contain">
+                          <img className="props" src={refurbished}
+                            alt="" />
+
+                  </div>
                   
-                  <img className="props" src="
-                  https://previews.123rf.com/images/aquir/aquir2009/aquir200902596/154468562-refurbished-sign-round-isolated-sticker-ribbon-tag.jpg" alt="" />
+                        
                   </>}
 
                   </div>
@@ -314,16 +330,11 @@ const ProductPage = (data) => {
 const Wrapper = styled.div`
 .stickers{
   display: flex;
- width: 50%;
- justify-content: space-between;
+ 
+ justify-content: left;
 }
 
-.props{
-   width: 80%;
-    height: 8rem;
-    object-fit: contain;
-    border-radius: 1.2rem;
-}
+
 .btn-section{
   display: flex;
   justify-content: center;
@@ -336,7 +347,7 @@ h2{
 
 .properites{
   font-size: 1.6rem;
-  margin: 1.4rem 0;
+  margin: 1.4rem ;
 }
 .price{
     display: flex;
@@ -373,14 +384,14 @@ h2{
   }
 }
 .main{
-  position: absolute;
-  top: 20%;
-  display: flex;
-  width: 35rem;
-  left: 35%;
+  position:fixed;
+  top: 15%;
+  left: 20%;
   padding: 6rem;
   background-color: aliceblue;
   flex-direction: column;
+  width: 50%;
+
   
   
   
@@ -395,7 +406,7 @@ h2{
 .review-head{
   display: flex;
   align-items: center;
-  width: 45%;
+  width: 55%;
   justify-content: space-between;
 }
 .title{
@@ -467,6 +478,15 @@ img {
   width: 50%;
   position: sticky;
   top: 0;
+}
+.props{
+    height: 8rem;
+    object-fit: contain;
+    border-radius: 1.2rem;
+}
+.contain{
+ margin-right: 1.8rem;
+ margin-top: 1.2rem;
 }
 `;
 
