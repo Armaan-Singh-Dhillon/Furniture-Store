@@ -23,8 +23,6 @@ function App() {
   
   const [loader, setloader] = useState(true);
   const [data, setdata] = useState([]);
-  const [alldata, allsetdata] = useState([]);
- 
 
   const [token, setToken] = useState('' || localStorage.getItem('token'))
 
@@ -54,13 +52,17 @@ function App() {
     
     setLoading(false);
     
+    
+    
   };
   const searchFunction = async (search) => {
     setLoading(true)
+    console.log(search)
     if(search==''){
       return fetchdata()
     }
     const { data } = await axios.post(`http://localhost:2000/api/v1/products/search`, { search });
+    console.log(data.data)
     setdata(data.data);
     
     setLoading(false);

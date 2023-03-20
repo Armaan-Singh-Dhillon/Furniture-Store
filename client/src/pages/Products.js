@@ -20,6 +20,7 @@ const Products = () => {
     sortprice,
     setsortprice
   } = useContext(MyContext);
+
   const [currentPage, setCurrentPage] = useState(1);
 
   const startIndex = (currentPage - 1) * itemsPerPage;
@@ -60,6 +61,13 @@ const Products = () => {
     searchFunction(search)
 
   };
+  const handleoptions = (e) => {
+    e.preventDefault()
+    console.log(e.target.value)
+    setSearch(e.target.value)
+    searchFunction(e.target.value)
+
+  };
   
 
   
@@ -96,7 +104,7 @@ const Products = () => {
                 onChange={(e) => setSearch(e.target.value)}
 
               />
-              Search<FaSearch ></FaSearch>
+              <FaSearch ></FaSearch>
               <div className="view">
                 Grid Enabled
                 <TfiLayoutGrid2Alt className="icon"></TfiLayoutGrid2Alt>
@@ -125,12 +133,12 @@ const Products = () => {
                 </div>
                 <div className="inner-cat">
                   <div>
-                    <button value="all" onClick={(e) => clickHandler(e)}>
+                    <button value="all" onClick={(e) => setSearch(e.target.value)}>
                       All
                     </button>
                   </div>
                   <div>
-                    <button value="office" onClick={(e) => clickHandler(e)}>
+                    <button value="office" onClick={(e) => setSearch(e.target.value)}>
                       Office
                     </button>
                   </div>
@@ -138,31 +146,31 @@ const Products = () => {
                   <div>
                     <button
                       value="living room"
-                      onClick={(e) => clickHandler(e)}
+                      onClick={(e) => setSearch(e.target.value)}
                     >
                       Living Room
                     </button>
                   </div>
 
                   <div>
-                    <button value="kitchen" onClick={(e) => clickHandler(e)}>
+                    <button value="kitchen" onClick={(e) => setSearch(e.target.value)}>
                       Kitchen
                     </button>
                   </div>
 
                   <div>
-                    <button value="bedroom" onClick={(e) => clickHandler(e)}>
+                    <button value="bedroom" onClick={(e) => setSearch(e.target.value)}>
                       Bedroom
                     </button>
                   </div>
 
                   <div>
-                    <button value="dining" onClick={(e) => clickHandler(e)}>
+                    <button value="dining" onClick={(e) => setSearch(e.target.value)}>
                       Dining
                     </button>
                   </div>
                   <div>
-                    <button value="kids" onClick={(e) => clickHandler(e)}>
+                    <button value="kids" onClick={(e) => setSearch(e.target.value)}>
                       Kids
                     </button>
                   </div>
@@ -228,6 +236,8 @@ const Products = () => {
                 <input
                   type="text"
                   placeholder="Search"
+                  value={search}
+                  
                 onChange={(e)=>setSearch(e.target.value)}
                 />
                 <FaSearch onClick={handleSearch} className='icon'></FaSearch>
@@ -259,12 +269,12 @@ const Products = () => {
                   </div>
                   <div className="inner-cat">
                     <div>
-                      <button value="all" onClick={(e) => clickHandler(e)}>
+                      <button value="all" onClick={(e) => handleoptions(e)}>
                         All
                       </button>
                     </div>
                     <div>
-                      <button value="office" onClick={(e) => clickHandler(e)}>
+                      <button value="office" onClick={(e) => handleoptions(e )}>
                         Office
                       </button>
                     </div>
@@ -272,31 +282,31 @@ const Products = () => {
                     <div>
                       <button
                         value="living room"
-                        onClick={(e) => clickHandler(e)}
+                        onClick={(e) => handleoptions(e)}
                       >
                         Living Room
                       </button>
                     </div>
 
                     <div>
-                      <button value="kitchen" onClick={(e) => clickHandler(e)}>
+                      <button value="kitchen" onClick={(e) => handleoptions(e)}>
                         Kitchen
                       </button>
                     </div>
 
                     <div>
-                      <button value="bedroom" onClick={(e) => clickHandler(e)}>
+                      <button value="bedroom" onClick={(e) => handleoptions(e)}>
                         Bedroom
                       </button>
                     </div>
 
                     <div>
-                      <button value="dining" onClick={(e) => clickHandler(e)}>
+                      <button value="dining" onClick={(e) => handleoptions(e)}>
                         Dining
                       </button>
                     </div>
                     <div>
-                      <button value="kids" onClick={(e) => clickHandler(e)}>
+                      <button value="kids" onClick={(e) => handleoptions(e)}>
                         Kids
                       </button>
                     </div>
