@@ -31,7 +31,11 @@ const Products = () => {
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
   const handlePageChange = (pageNumber) => {
+    setLoading(true)
     setCurrentPage(pageNumber);
+    setTimeout(() => {
+      setLoading(false)
+    }, 500);
   };
 
   
@@ -136,7 +140,7 @@ const Products = () => {
                   </div>
                   <div className="inner-cat">
                     <div>
-                      <button value="all" onClick={(e) => handleoptions(e)}>
+                      <button value="" onClick={(e) => handleoptions(e)}>
                         All
                       </button>
                     </div>
@@ -180,25 +184,7 @@ const Products = () => {
                   </div>
                 </div>
 
-                <div className="company-cat">
-                  <div>
-                    <div className="heading">
-                      <h2>Company</h2>
-                    </div>
-                    <div className="company">
-                      <label>Select : </label>
-                      <select className="select" onChange={handleSelect}>
-                        <option value="all" selected>
-                          all
-                        </option>
-                        <option value="marcos">marcos</option>
-                        <option value="liddy">liddy</option>
-                        <option value="ikea">ikea</option>
-                        <option value="caressa">caressa</option>
-                      </select>
-                    </div>
-                  </div>
-                </div>
+               
 
                 <div className="clear-cat">
                   <button

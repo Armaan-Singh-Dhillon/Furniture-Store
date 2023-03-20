@@ -1,19 +1,18 @@
 import styled from "styled-components";
-
+import timeline from '../assets/timeline.jpg'
+import gif from '../assets/treegif.gif'
 const About = () => {
   return (
     <>
       <Wrapper>
         <div className="main">
-          <div className="image-holder">
-            <img
-              src="https://i.pinimg.com/originals/e5/a7/12/e5a7124258f196b0aefb5efbc4696eec.jpg"
-              alt=""
-            />
-          </div>
           <div>
+            <div className="title">
+              <h1>About us</h1>
+            </div>
+          <div className="about">
             <Container>
-              <Title>About The Furniture Shop</Title>
+              
               <Paragraph>
                 The Furniture Shop is a family-owned business that has been
                 providing high-quality, stylish, and affordable furniture to our
@@ -36,14 +35,25 @@ const About = () => {
                 something for everyone.
               </Paragraph>
             </Container>
+            <div className="gif">
+              <img src={gif} alt="" />
+            </div>
+          </div>
+          </div>
+          <div className="timeline">
+            <div>
+              <h1>Milestones</h1>
+            </div>
+            <img src={timeline} alt="" />
           </div>
         </div>
+        
       </Wrapper>
     </>
   );
 };
 const Container = styled.div`
-  width: 80%;
+  
   margin: 0 auto;
   padding: 2rem;
 `;
@@ -56,20 +66,44 @@ const Title = styled.h1`
 const Paragraph = styled.p`
   line-height: 1.5;
   margin-bottom: 1.5rem;
-  font-size: 1.3rem;
+  font-size: 1.4rem;
 `;
 
 const Wrapper = styled.div`
-  .image-holder {
-    width: 60%;
+
+.about{
+  display: flex;
+}
+ .gif{
+  width: 60%;
+  display: flex;
+  align-items: center;
+  img{
+    width: 100%;
   }
+ }
   .main {
-    display: flex;
+   
     justify-content: space-evenly;
     padding: 1.4rem;
     margin: 1.4rem;
     background: aliceblue;
+    .title{
+      display: flex;
+      justify-content: space-evenly;
+    }
   }
+  .timeline{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+  .timeline img{
+    width: 65%;
+  }
+
+ 
 `;
 
 export default About;
