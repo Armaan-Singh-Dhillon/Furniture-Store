@@ -4,7 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 import connectDB from './utils/connectDB.js';
-import Product from './models/products.js';
+import Product from './models/cities.js';
 
 const start = async () => {
     try {

@@ -3,6 +3,7 @@ import dotenv from 'dotenv'
 import connectDB from './utils/connectDB.js'
 import productRoute from './Routes/products.js'
 import userRoute from './Routes/user.js'
+import cityRoute from './Routes/cities.js'
 import cors from 'cors'
 dotenv.config()
 const app = express()
@@ -11,6 +12,7 @@ app.use(express.json())
 
 app.use('/api/v1/products', productRoute)
 app.use('/api/v1/user', userRoute)
+app.use('/api/v1/cities', cityRoute)
 
 const port = process.env.PORT || 5000
 

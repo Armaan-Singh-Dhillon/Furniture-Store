@@ -1,16 +1,43 @@
 import styled from "styled-components";
-import { ImQuotesLeft } from "react-icons/im";
-import { ImQuotesRight } from "react-icons/im";
 import { Link } from "react-router-dom";
-import MainTile from "../logos/main-title-tv.jpg";
+import Loader from '../components/Loader.js'
 import side1 from "../logos/TVC-600x600.jpg";
 import side2 from "../logos/Center-Table-Set-of-3-600x600.jpg";
 import side3 from "../logos/side3.jpg";
 import wood from '../assets/wood.jpg'
 import sofa from '../assets/home-main.jpg'
+import axios from "axios";
+import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css';
+import { useState } from "react";
+import { useEffect } from "react";
+import {Icon} from 'leaflet'
+
+const customIcon = new Icon({
+  iconUrl:'https://www.svgrepo.com/show/302636/map-marker.svg',
+  iconSize:[38,38]
+})
 const Home = () => {
+  const [isLoading,setLoading]=useState(true)
+  const [data,setData]=useState([])
+  const fetchData=async()=>{
+    const { data } = await axios.get('http://localhost:2000/api/v1/cities/getAll') 
+    
+    setData(data.cities)
+    setLoading(false)
+  }
+  useEffect(()=>{
+     fetchData()
+  },[])
+
+  if(isLoading){
+    return <Loader></Loader>
+  }
   return (
+
+
     <>
+
       <Wrapper>
         <div className="main">
           <div className="zone">
@@ -40,7 +67,7 @@ const Home = () => {
         <div>
           <div className="custom">
 
-          <h1>Totally Customizable</h1>
+            <h1>Totally Customizable</h1>
           </div>
           <div className="env">
 
@@ -64,10 +91,32 @@ const Home = () => {
           </div>
         </div>
 
-        
+
       </Wrapper>
 
       <Wrapper1>
+
+        <div className="map">
+
+          <MapContainer center={[20.5937, 78.9629]} zoom={6} scrollWheelZoom={false} >
+            <TileLayer
+              attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+
+            
+            {data.map((el)=>{
+              const position=[el.latitude,el.longitude]
+              return <Marker position={position} icon={customIcon}>
+                <Popup>
+                 {el.label}
+                </Popup>
+              </Marker>
+            })}
+
+          </MapContainer>
+        </div>
+
         <div>
           <h1> Featured Products </h1>
         </div>
@@ -293,6 +342,17 @@ const Wrapper1 = styled.div`
   align-items: center;
   margin: 1.4rem;
   background: aliceblue;
+ .map{
+  width: 100%;
+  padding: 1.4rem;
+  display: flex;
+  justify-content: space-evenly;
+ }
+  .leaflet-container{
+    width: 98%;
+    height: 80rem;
+    
+  }
   .products {
     display: flex;
     justify-content: space-around;
