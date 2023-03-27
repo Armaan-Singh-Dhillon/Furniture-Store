@@ -6,6 +6,8 @@ import MainTile from "../logos/main-title-tv.jpg";
 import side1 from "../logos/TVC-600x600.jpg";
 import side2 from "../logos/Center-Table-Set-of-3-600x600.jpg";
 import side3 from "../logos/side3.jpg";
+import wood from '../assets/wood.jpg'
+import sofa from '../assets/home-main.jpg'
 const Home = () => {
   return (
     <>
@@ -14,24 +16,57 @@ const Home = () => {
           <div className="zone">
             <h1>Design Your Comfort</h1>
             <p className="text">
-              <ImQuotesLeft className="quotes" /> Furniture is a big deal in the
-              design industry. A well-executed concept can result in a timeless
-              piece of furniture that never goes out of style. With this in
-              mind, we've found these inspirational examples of furniture
-              design. Some are classics that have been around for years, others
-              are recent and more modern. But they're all fantastic designs -
-              which of them would you have in your home?{" "}
-              <ImQuotesRight className="quotes" />
+
+
+              <p>
+                At our furniture company, we prioritize sustainability and environmental responsibility in all aspects of our operations. From sourcing materials to manufacturing and delivery, we are committed to reducing our environmental impact and promoting eco-friendly practices.
+
+              </p>
+
+              <p>
+
+                By choosing our furniture, you can feel good about supporting a company that is committed to the environment and the well-being of our community. Together, we can make a positive impact on the world while enjoying beautiful, high-quality furniture that will last for years to come.
+              </p>
+
             </p>
             <Link to="/products">
               <button className="btn">shop now</button>
             </Link>
           </div>
-          <div>
-            <img src={MainTile} alt="" />
+          <div className="main-image">
+            <img src={sofa} alt="" />
           </div>
         </div>
+        <div>
+          <div className="custom">
+
+          <h1>Totally Customizable</h1>
+          </div>
+          <div className="env">
+
+            <div className="img-container">
+              <img src={wood} alt="" />
+            </div>
+            <div className="wood-description">
+              <p>
+                With our furniture, you have the ability to create your dream piece, tailor-made to your exact specifications. Choose from a wide range of colors, textures, and finishes, as well as the option to add your own personal touch with bespoke detailing.
+              </p>
+              <p>
+                Our expert craftsmen will bring your vision to life, creating a piece that is truly one of a kind. At our furniture site, we pride ourselves on providing a seamless customer experience, ensuring that you are completely satisfied with your purchase from start to finish.
+              </p>
+              <p>
+                Whether you are looking to add a statement piece to your home or create a cohesive look throughout, our furniture is the perfect choice for those seeking both exceptional design and customizability.
+              </p>
+            </div>
+
+
+
+          </div>
+        </div>
+
+        
       </Wrapper>
+
       <Wrapper1>
         <div>
           <h1> Featured Products </h1>
@@ -80,6 +115,7 @@ const Home = () => {
             <button className="btn">Products</button>
           </Link>
         </div>
+
       </Wrapper1>
       <Wrapper2>
         <div className="mission">
@@ -199,10 +235,30 @@ const Wrapper = styled.div`
   background: aliceblue;
   margin: 1.4rem;
   padding: 1.2rem;
-
-  .main {
+  .custom{
     display: flex;
     justify-content: space-evenly;
+  }
+  .img-container{
+    width: 50%;
+    
+  }
+  .env{
+     display: flex;
+     justify-content: space-between;
+     font-size: 1.4rem;
+     margin-top: 1.2rem;
+     .wood-description{
+      width: 48%;
+     }
+  }
+  
+  .main {
+    display: flex;
+    justify-content: space-between;
+    .main-image{
+      width: 50%
+    }
   }
   .zone {
     width: 50%;
@@ -219,6 +275,7 @@ const Wrapper = styled.div`
   .quotes {
     font-size: 1rem;
   }
+  
   @media only screen and (max-width: 1100px) {
     .main {
       flex-direction: column-reverse;
@@ -258,6 +315,7 @@ const Wrapper1 = styled.div`
     opacity: 80%;
     cursor: pointer;
   }
+ 
 `;
 
 const Wrapper2 = styled.div`

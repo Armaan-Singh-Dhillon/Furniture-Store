@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import timeline from '../assets/timeline.jpg'
 import gif from '../assets/treegif.gif'
+import globe from '../assets/globe.gif'
 const About = () => {
   return (
     <>
@@ -35,9 +36,7 @@ const About = () => {
                 something for everyone.
               </Paragraph>
             </Container>
-            <div className="gif">
-              <img src={gif} alt="" />
-            </div>
+            
           </div>
           </div>
           <div className="timeline">
@@ -46,7 +45,12 @@ const About = () => {
             </div>
             <img src={timeline} alt="" />
           </div>
+          <div>
+          
+          
+          </div>
         </div>
+       
         
       </Wrapper>
     </>
@@ -66,22 +70,12 @@ const Title = styled.h1`
 const Paragraph = styled.p`
   line-height: 1.5;
   margin-bottom: 1.5rem;
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 `;
 
 const Wrapper = styled.div`
 
-.about{
-  display: flex;
-}
- .gif{
-  width: 60%;
-  display: flex;
-  align-items: center;
-  img{
-    width: 100%;
-  }
- }
+ 
   .main {
    
     justify-content: space-evenly;
@@ -102,7 +96,16 @@ const Wrapper = styled.div`
   .timeline img{
     width: 65%;
   }
-
+  .globe{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    img{
+      width: 35%;
+    }
+  }
+ 
  
 `;
 
