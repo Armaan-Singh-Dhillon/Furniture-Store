@@ -53,9 +53,102 @@ const About = () => {
        
         
       </Wrapper>
+     <Wrapper2>
+        <div className="services">
+          <div className="s-text">
+            <div>
+              <h2>Mission</h2>
+            </div>
+            <div>
+              <p>
+                Our mission at (The Furniture Shop) is to provide
+                high-quality, stylish, and affordable furniture to our
+                customers. We strive to create a welcoming and inclusive
+                shopping experience for all, and to make the process of
+                furnishing your home as seamless and enjoyable as possible.
+              </p>
+            </div>
+          </div>
+
+          <div className="s-text">
+            <div>
+              <h2>Vision</h2>
+            </div>
+            <div>
+              <p>
+                Our vision is to be the go-to destination for all of your home
+                furnishings needs. We aim to be the industry leader in
+                customer service, product selection, and design inspiration.
+                We want to empower our customers to create beautiful,
+                comfortable, and functional living spaces that reflect their
+                unique style and personality.
+              </p>
+            </div>
+          </div>
+
+          <div className="s-text">
+            <div>
+              <h2>History</h2>
+            </div>
+            <div>
+              <p>
+                Throughout our history, we've been committed to providing our
+                customers with the very best products, services, and shopping
+                experience. And we'll continue to do so in the future.
+              </p>
+            </div>
+          </div>
+        </div>
+     </Wrapper2>
     </>
   );
 };
+
+const Wrapper2=styled.div`
+ display: flex;
+ padding: 0 1.4rem 1.4rem 1.4rem ;
+ margin-bottom: 4rem;
+  .text {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin: 0 0 1.4rem 0;
+  }
+  .inner {
+    width: 47.5%;
+    display: flex;
+    padding: 1.2rem;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1.35rem;
+    text-align: center;
+    line-height: 2rem;
+    background: aliceblue;
+  }
+  .mission {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 1.4rem;
+  }
+  .services {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .s-text {
+    display: flex;
+    flex-direction: column;
+    background: aliceblue;
+    align-items: center;
+    padding: 1.2rem;
+    width: 30.5%;
+
+    line-height: 2rem;
+    font-size: 1.35rem;
+    text-align: center;
+  }
+`
 const Container = styled.div`
   
   margin: 0 auto;

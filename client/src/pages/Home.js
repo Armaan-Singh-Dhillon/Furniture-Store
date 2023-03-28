@@ -1,9 +1,8 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Loader from '../components/Loader.js'
-import side1 from "../logos/TVC-600x600.jpg";
-import side2 from "../logos/Center-Table-Set-of-3-600x600.jpg";
-import side3 from "../logos/side3.jpg";
+import { useContext } from "react";
+import MyContext from "../MyContext.js";
 import wood from '../assets/wood.jpg'
 import sofa from '../assets/home-main.jpg'
 import axios from "axios";
@@ -11,26 +10,50 @@ import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import { useState } from "react";
 import { useEffect } from "react";
-import {Icon} from 'leaflet'
+import { Icon } from 'leaflet'
+import Star from "../components/Star.js";
+import Footer from "../components/Footer.js";
 
 const customIcon = new Icon({
-  iconUrl:'https://www.svgrepo.com/show/302636/map-marker.svg',
-  iconSize:[38,38]
+  iconUrl: 'https://www.svgrepo.com/show/302636/map-marker.svg',
+  iconSize: [38, 38]
 })
 const Home = () => {
-  const [isLoading,setLoading]=useState(true)
-  const [data,setData]=useState([])
-  const fetchData=async()=>{
-    const { data } = await axios.get('http://localhost:2000/api/v1/cities/getAll') 
-    
-    setData(data.cities)
-    setLoading(false)
-  }
-  useEffect(()=>{
-     fetchData()
-  },[])
 
-  if(isLoading){
+
+  const { data, isLoading } = useContext(MyContext);
+  const [isLoadinglocal, setLoadinglocal] = useState(true)
+  const [cities, setCities] = useState([])
+  const [products, setProducts] = useState([])
+  const fetchData = async () => {
+    const { data } = await axios.get('http://localhost:2000/api/v1/cities/getAll')
+
+    setCities(data.cities)
+    setLoadinglocal(false)
+  }
+  function selectThreeRandomItems(array) {
+
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+
+    return array.slice(0, 6);
+  }
+  const get3products = () => {
+    if (!isLoading) {
+
+      setProducts(selectThreeRandomItems(data))
+
+    }
+
+  }
+  useEffect(() => {
+    fetchData()
+    get3products()
+  }, [isLoading])
+
+  if (isLoadinglocal) {
     return <Loader></Loader>
   }
   return (
@@ -97,19 +120,29 @@ const Home = () => {
       <Wrapper1>
 
         <div className="map">
-
+          <div>
+            <h1>Cities we deliver to</h1>
+          </div>
+          <div>
+            <p className="">
+              Several new furniture stores were opening across India, including in Bengaluru, Mumbai, Delhi, Hyderabad, Pune, and Chennai. The stores featured a wide range of contemporary and traditional designs, as well as expert design services and customer support. The openings were highly anticipated, and the stores attracted large crowds of eager customers.
+            </p>
+          </div>
           <MapContainer center={[20.5937, 78.9629]} zoom={6} scrollWheelZoom={false} >
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
             />
 
-            
-            {data.map((el)=>{
-              const position=[el.latitude,el.longitude]
+
+            {cities.map((el) => {
+              const position = [el.latitude, el.longitude]
               return <Marker position={position} icon={customIcon}>
                 <Popup>
-                 {el.label}
+                  {el.label}
+                  <div>
+                    {el.latitude},{el.longitude}
+                  </div>
                 </Popup>
               </Marker>
             })}
@@ -118,52 +151,52 @@ const Home = () => {
         </div>
 
         <div>
-          <h1> Featured Products </h1>
+          <h1> Products of the day </h1>
+         
         </div>
 
-        <div className="products">
-          <div className="product">
-            <img src={side3} alt="" />
+        {isLoading ? <Loader></Loader> : <div className="products">
 
-            <div className="text">
-              <div>
-                <h2>Modern Chair </h2>
-              </div>
-              <div>
-                <h2>-$399</h2>
-              </div>
-            </div>
-          </div>
+          {products.map((obj) => {
 
-          <div className="product">
-            <img src={side1} alt="" />
-            <div className="text">
-              <div>
-                <h2> Living Room Table </h2>
-              </div>
-              <div>
-                <h2>-$799</h2>
-              </div>
-            </div>
-          </div>
+            return (
+              <>
+                <div className="card">
+                  <div className="image">
+                    <Link to={`/products/${obj._id}`}>
+                      <img src={obj.image} alt="" />
+                    </Link>
+                  </div>
 
-          <div className="product">
-            <img src={side2} alt="" />
-            <div className="text">
-              <div>
-                <h2>Low Height Table </h2>
-              </div>
-              <div>
-                <h2>-$999</h2>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div>
-          <Link to="/products">
-            <button className="btn">Products</button>
-          </Link>
-        </div>
+                  <div className="text">
+                    <div>
+                      Rating:
+                    </div>
+
+                    <Star className="val" stars={obj.averageRating}></Star>
+
+                  </div>
+                  <div className="text">
+                    <div>Name:</div>
+                    <div className="val">{obj.name}</div>
+                  </div>
+                  <div className="text">
+                    <div>Price:</div>
+                    <div className="val">-${obj.price}</div>
+                  </div>
+                  <div className="text">
+                    <div>Company</div>
+                    <div className="val">{obj.company}</div>
+                  </div>
+                </div>
+
+              </>
+            );
+          })}
+
+        </div>}
+      
+
 
       </Wrapper1>
       <Wrapper2>
@@ -203,79 +236,11 @@ const Home = () => {
             </div>
           </div>
 
-          <div className="services">
-            <div className="s-text">
-              <div>
-                <h2>Mission</h2>
-              </div>
-              <div>
-                <p>
-                  Our mission at (The Furniture Shop) is to provide
-                  high-quality, stylish, and affordable furniture to our
-                  customers. We strive to create a welcoming and inclusive
-                  shopping experience for all, and to make the process of
-                  furnishing your home as seamless and enjoyable as possible.
-                </p>
-              </div>
-            </div>
-
-            <div className="s-text">
-              <div>
-                <h2>Vision</h2>
-              </div>
-              <div>
-                <p>
-                  Our vision is to be the go-to destination for all of your home
-                  furnishings needs. We aim to be the industry leader in
-                  customer service, product selection, and design inspiration.
-                  We want to empower our customers to create beautiful,
-                  comfortable, and functional living spaces that reflect their
-                  unique style and personality.
-                </p>
-              </div>
-            </div>
-
-            <div className="s-text">
-              <div>
-                <h2>History</h2>
-              </div>
-              <div>
-                <p>
-                  Throughout our history, we've been committed to providing our
-                  customers with the very best products, services, and shopping
-                  experience. And we'll continue to do so in the future.
-                </p>
-              </div>
-            </div>
-          </div>
+          
         </div>
       </Wrapper2>
-      <Wrapper3>
-        <div className="letter">
-          <div className="text1">
-            <div>
-              <h1>Join Our Newsletter</h1>
-              <p>
-                Stay updated with our latest collections and exclusive discounts
-                by joining our newsletter! Simply enter your email address below
-                and hit 'Subscribe' to receive updates on sales and new
-                arrivals. As a thank you for subscribing, you'll also receive a
-                special discount code to use on your next purchase
-              </p>
-            </div>
-          </div>
-          <div className="text">
-            <div className="inner">
-              <form action="">
-                <input type="email" placeholder="Enter Email" />
-                <button type="submit" className="btn">
-                  Subscribe
-                </button>
-              </form>
-            </div>
-          </div>
-        </div>
-      </Wrapper3>
+      
+      
     </>
   );
 };
@@ -342,39 +307,68 @@ const Wrapper1 = styled.div`
   align-items: center;
   margin: 1.4rem;
   background: aliceblue;
+  padding: 1.4rem;
  .map{
   width: 100%;
-  padding: 1.4rem;
   display: flex;
+  flex-direction: column;
   justify-content: space-evenly;
+  align-items: center;
+ p{
+  font-size: 1.4rem;
+ }
+  
  }
   .leaflet-container{
-    width: 98%;
+    width: 100%;
     height: 80rem;
     
   }
-  .products {
+.products {
     display: flex;
-    justify-content: space-around;
+    flex-wrap: wrap;
     width: 100%;
+    background: aliceblue;
+    
   }
-  .product {
-    display: flex;
+
+  .card {
     flex-direction: column;
+    width: 29.5%;
+    justify-content: space-evenly;
+    transition: all .5s;
+   
     align-items: center;
+    padding: 1.2rem;
+    margin: 1.4rem;
+  }
+  .card:hover{
+    scale: 1.08;
   }
   .text {
-    width: 100%;
     display: flex;
     justify-content: space-between;
+    font-size: 1.4rem;
+    margin: 1.2rem;
+    align-items: center;
+    
+    
   }
-  img {
+  .val{
+  color: #39a1ae;
+  
+  font-weight: 500;
+}
+  
+  
+    img{
+    width: 100%;
+    height: 30rem;
+    object-fit: cover;
     border-radius: 1.2rem;
-  }
-  img:hover {
-    opacity: 80%;
-    cursor: pointer;
-  }
+    }
+    
+  
  
 `;
 
@@ -421,59 +415,6 @@ const Wrapper2 = styled.div`
     text-align: center;
   }
 `;
-const Wrapper3 = styled.div`
-  background: aliceblue;
-  margin: 1.4rem;
 
-  form {
-    display: flex;
-    width: 80%;
-  }
-
-  .inner {
-    width: 100%;
-    display: flex;
-    justify-content: space-around;
-  }
-
-  .text1 {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    text-align: center;
-    font-size: 1.25rem;
-    line-height: 1.5rem;
-    padding: 1.2rem;
-  }
-
-  .text {
-    width: 100%;
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-  }
-
-  .letter {
-    height: 50vh;
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-  }
-
-  .btn {
-    margin: 0;
-    border-radius: 0;
-  }
-
-  input {
-    width: 100%;
-    border-style: solid;
-
-    font-size: 1.4rem;
-    padding: 1.2rem;
-  }
-`;
 
 export default Home;
