@@ -46,7 +46,7 @@ function App() {
 
   const fetchdata = async () => {
     setLoading(true)
-    const { data } = await axios.post(`http://localhost:2000/api/v1/products/getAll`,{sortname,sortprice});
+    const { data } = await axios.get(`http://localhost:2000/api/v1/products?sortprice=${sortprice}&sortname=${sortname}`);
 
     setdata(data.data);
     
@@ -55,9 +55,10 @@ function App() {
     
     
   };
+  
   const searchFunction = async (search) => {
     setLoading(true)
-    console.log(search)
+    
     if(search==''){
       return fetchdata()
     }

@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "server": "nodemon server --ignore client",
     "client": "npm start --prefix client",
-    "start": "concurrently --kill-others-on-fail \"npm run server\" \" npm run client\""
+    "start": "concurrently --kill-others-on-fail \"npm run server\" \" npm run client\"",
+    "debug": "ndb server.js"
   },
   "repository": {
     "type": "git",
@@ -32,6 +33,7 @@
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^5.1.0",
     "mongoose": "^6.9.1",
+    "ndb": "^1.1.5",
     "validator": "^13.9.0"
   },
   "devDependencies": {

@@ -107,7 +107,7 @@ const About = () => {
 const Wrapper2=styled.div`
  display: flex;
  padding: 0 1.4rem 1.4rem 1.4rem ;
- margin-bottom: 4rem;
+ 
   .text {
     display: flex;
     width: 100%;

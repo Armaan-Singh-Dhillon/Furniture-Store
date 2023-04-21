@@ -141,9 +141,9 @@ const Footer = () => {
 }
 
 const Wrapper = styled.footer`
- padding: 0 1.4rem 1.4rem 1.4rem;
+padding: 1.4rem;
  background-color: aliceblue;
- margin: 1.4rem;
+ margin: 0 1.4rem 1.4rem 1.4rem;
  .closing{
   display: flex;
   justify-content: center;

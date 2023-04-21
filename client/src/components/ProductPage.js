@@ -27,7 +27,7 @@ const ProductPage = (data) => {
   const [showModal, setModal] = useState(false)
   const [quantity, setQuantity] = useState(1)
   const fetchData = async () => {
-    const { data } = await axios.post('http://localhost:2000/api/v1/products/get', { _id })
+    const { data } = await axios.get(`http://localhost:2000/api/v1/products/get/${_id}`)
     setproduct(data.data)
     setLoading(false)
     setReviews(data.data.reviews)

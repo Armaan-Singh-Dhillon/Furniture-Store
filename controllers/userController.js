@@ -1,87 +1,77 @@
 import User from '../models/user.js'
+import catchAsync from "../utils/catchAsync.js"
+import AppError from "../utils/appError.js"
+const register = catchAsync(async (req, res,next) => {
 
-const register = async (req, res) => {
-    
     const user = await User.create(req.body)
     const token = user.createJWT()
-    
+
     res.send({
-        "message":"registered successfully",
+        "message": "registered successfully",
         user,
         token
     })
-}
-const login = async (req, res) => {
-    
-    try {
-        const user = await User.findOne({ email: req.body.email }).select('+password')
-       
-        
-       if(! await user.comparePassword(req.body.password)){
-        throw new Error('incorect Password')
-       }
-         
+})
+const login = catchAsync(async (req, res,next) => {
 
-        const token = user.createJWT()
 
-        res.json({
-           
-            user,
-            token
-        })
-        
-    } catch (error) {
-        
-        res.json({
-            "message": "Error ",
-            
-        })
+    const user = await User.findOne({ email: req.body.email }).select('+password')
+
+    if (!user) {
+        return next(new AppError('No user found with that email', 404))
     }
-    
-}
-const update = async (req, res) => {
-
-    const {_id,products} =req.body
-    try {
-        const user = await User.findOneAndUpdate(_id,{ products })
-       
-        res.json({
-           
-            user,
-            
-        })
-        
-    } catch (error) {
-        
-        res.json({
-            "message": "Error ",
-            
-        })
+    if (! await user.comparePassword(req.body.password)) {
+        return next(new AppError('No user found with that credentails', 401))
     }
-    
-}
-const getById = async (req, res) => {
 
-    
-    const { _id } =req.body
-    try {
-        const user = await User.findOne({_id})
-       console.log(user)
-        res.json({
-           
-            user,
-            
-        })
-        
-    } catch (error) {
-        
-        res.json({
-            "message": "Error ",
-            
-        })
+
+    const token = user.createJWT()
+
+    res.json({
+
+        user,
+        token
+    })
+
+
+
+})
+const update = catchAsync(async (req, res,next) => {
+
+    const { _id, products } = req.body
+
+    const user = await User.findOneAndUpdate(_id, { products })
+    if (!user) {
+        return next(new AppError('No user found with that ID', 404))
     }
-    
-}
+    res.json({
+
+        user,
+
+    })
+
+
+
+})
+const getById = catchAsync(async (req, res,next) => {
+
+
+    const { _id } = req.body
+
+    const user = await User.findOne({ _id })
+
+    if (!user) {
+        return next(new AppError('No user found with that ID', 404))
+    }
+    console.log(user)
+    res.json({
+
+        user,
+
+    })
+
+
+})
 
 
 

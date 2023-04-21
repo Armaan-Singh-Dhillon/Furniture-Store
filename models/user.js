@@ -5,32 +5,38 @@ import validator from "validator";
 const userSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: true
+        required: true,
+        unique: true
 
     },
     email: {
         type: String,
         required: true,
-        validate: [validator.isEmail, 'Please provide a valid email address']
+        validate: [validator.isEmail, 'Please provide a valid email address'],
+        unique: true
     },
     phone:{
         type: String,
         required: true,
-        validate: [validator.isMobilePhone, 'Please provide a valid phone no']
+        validate: [validator.isMobilePhone, 'Please provide a valid phone no'],
+        unique: true
     },
     password: {
         type: String,
         required: true,
-        select: false
+        select: false,
+        unique: true
         
     },
     address1: {
         type: String,
-        required:true
+        required:true,
+        unique: true
         
     },
     address2: {
         type: String,
+        unique: true
         
     },
     orders:{
@@ -43,7 +49,8 @@ const userSchema = new mongoose.Schema({
     },
     products:{
          type:Array,
-         default:[]
+         default:[],
+         unique: true
     },
 
     

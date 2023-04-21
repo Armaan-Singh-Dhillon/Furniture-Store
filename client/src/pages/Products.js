@@ -6,10 +6,10 @@ import MyContext from "../MyContext";
 import { Link } from "react-router-dom";
 import { FaSearch } from 'react-icons/fa';
 import Star from "../components/Star";
-const itemsPerPage = 9;
+const itemsPerPage = 12;
 const Products = () => {
   const {
-    
+
     data,
     setdata,
     isLoading,
@@ -27,7 +27,7 @@ const Products = () => {
   const endIndex = startIndex + itemsPerPage;
 
   const currentItems = data.slice(startIndex, endIndex);
-  
+
   const totalPages = Math.ceil(data.length / itemsPerPage);
 
   const handlePageChange = (pageNumber) => {
@@ -38,44 +38,44 @@ const Products = () => {
     }, 500);
   };
 
-  
-  
+
+
   const handleSelect = (e) => {
     e.preventDefault()
-   const data=e.target.value
-   console.log(typeof(data))
-   const [tag ,val] =data.split(' ')
-   if(tag=='name'){
-    setsortname(val)
-    setsortprice(0)
-   }
-  if(tag=='price'){
-    setsortprice(val)
-    setsortname(0)
-   }
+    const data = e.target.value
+
+    const [tag, val] = data.split(' ')
+    if (tag == 'name') {
+      setsortname(val)
+      setsortprice(0)
+    }
+    if (tag == 'price') {
+      setsortprice(val)
+      setsortname(0)
+    }
   };
   const clickHandler = (e) => {
-   
+
   };
   const [search, setSearch] = useState('')
 
   const handleSearch = (e) => {
     e.preventDefault()
-    
+
     searchFunction(search)
 
   };
   const handleoptions = (e) => {
     e.preventDefault()
-    console.log(e.target.value)
+    
     setSearch(e.target.value)
     searchFunction(e.target.value)
 
   };
-  
 
-  
-   
+
+
+
   const renderPageNumbers = () => {
     const pageNumbers = [];
     for (let i = 1; i <= totalPages; i++) {
@@ -84,7 +84,7 @@ const Products = () => {
           key={i}
           onClick={() => handlePageChange(i)}
           className={`pages ${currentPage === i ? "active " : ""}`}
-          
+
         >
           {i}
         </div>
@@ -94,174 +94,171 @@ const Products = () => {
   };
 
 
- 
+  return (
+    <>
+      <Wrapper>
+        <div className="main">
+          <div className="search">
+            <div className="input">
+              <input
+                type="text"
+                placeholder="Search"
+                value={search}
 
- 
-   
-    return (
-      <>
-        <Wrapper>
-          <div className="main">
-            <div className="search">
-              <div className="input">
-                <input
-                  type="text"
-                  placeholder="Search"
-                  value={search}
-                  
-                onChange={(e)=>setSearch(e.target.value)}
-                />
-                <FaSearch onClick={handleSearch} className='icon'></FaSearch>
-                <div className="view">
-                  Grid Enabled
-                  <TfiLayoutGrid2Alt className="icon"></TfiLayoutGrid2Alt>
-                </div>
-              </div>
-
-              <div className="sort">
-                <div className="inner-sort">
-                  <label htmlFor="Sort">Sort By : </label>
-                  <select name="Sort" className="select" onChange={(e)=>handleSelect(e)}>
-                    <option value={'price 1'} >
-                      Price(Lowest)
-                    </option>
-                    <option value={'price -1'} >Price(Highest)</option>
-                    <option value={'name 1'} >Name(a-z)</option>
-                    <option value={'name -1'} >Name(z-a)</option>
-                  </select>
-                </div>
+                onChange={(e) => setSearch(e.target.value)}
+              />
+              <FaSearch onClick={handleSearch} className='icon'></FaSearch>
+              <div className="view">
+                Grid Enabled
+                <TfiLayoutGrid2Alt className="icon"></TfiLayoutGrid2Alt>
               </div>
             </div>
-            <div className="middle">
-              <div className="category">
-                <div className="category-cat">
-                  <div className="heading">
-                    <h2>Category</h2>
-                  </div>
-                  <div className="inner-cat">
-                    <div>
-                      <button value="" onClick={(e) => handleoptions(e)}>
-                        All
-                      </button>
-                    </div>
-                    <div>
-                      <button value="office" onClick={(e) => handleoptions(e )}>
-                        Office
-                      </button>
-                    </div>
 
-                    <div>
-                      <button
-                        value="living room"
-                        onClick={(e) => handleoptions(e)}
-                      >
-                        Living Room
-                      </button>
-                    </div>
-
-                    <div>
-                      <button value="kitchen" onClick={(e) => handleoptions(e)}>
-                        Kitchen
-                      </button>
-                    </div>
-
-                    <div>
-                      <button value="bedroom" onClick={(e) => handleoptions(e)}>
-                        Bedroom
-                      </button>
-                    </div>
-
-                    <div>
-                      <button value="dining" onClick={(e) => handleoptions(e)}>
-                        Dining
-                      </button>
-                    </div>
-                    <div>
-                      <button value="kids" onClick={(e) => handleoptions(e)}>
-                        Kids
-                      </button>
-                    </div>
-                  </div>
+            <div className="sort">
+              <div className="inner-sort">
+                <label htmlFor="Sort">Sort By : </label>
+                <select name="Sort" className="select" onChange={(e) => handleSelect(e)}>
+                  <option value={'price 1'} >
+                    Price(Lowest)
+                  </option>
+                  <option value={'price -1'} >Price(Highest)</option>
+                  <option value={'name 1'} >Name(a-z)</option>
+                  <option value={'name -1'} >Name(z-a)</option>
+                  <option value={'name 0'} selected>None</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div className="middle">
+            <div className="category">
+              <div className="category-cat">
+                <div className="heading">
+                  <h2>Category</h2>
                 </div>
+                <div className="inner-cat">
+                  <div>
+                    <button value="" onClick={(e) => handleoptions(e)}>
+                      All
+                    </button>
+                  </div>
+                  <div>
+                    <button value="office" onClick={(e) => handleoptions(e)}>
+                      Office
+                    </button>
+                  </div>
 
-               
+                  <div>
+                    <button
+                      value="living room"
+                      onClick={(e) => handleoptions(e)}
+                    >
+                      Living Room
+                    </button>
+                  </div>
 
-                <div className="clear-cat">
-                  <button
-                    className="clear"
-                    value="all"
-                    onClick={(e) => clickHandler(e)}
-                  >
-                    Clear Filters
-                  </button>
+                  <div>
+                    <button value="kitchen" onClick={(e) => handleoptions(e)}>
+                      Kitchen
+                    </button>
+                  </div>
+
+                  <div>
+                    <button value="bedroom" onClick={(e) => handleoptions(e)}>
+                      Bedroom
+                    </button>
+                  </div>
+
+                  <div>
+                    <button value="dining" onClick={(e) => handleoptions(e)}>
+                      Dining
+                    </button>
+                  </div>
+                  <div>
+                    <button value="kids" onClick={(e) => handleoptions(e)}>
+                      Kids
+                    </button>
+                  </div>
                 </div>
               </div>
-              {isLoading ? <Loader></Loader> : <div className="products">
-                {currentItems.length == 0 ? <>
-
-                  <div className="sorry">
-                    <div>
 
 
-                      <h1>{`Sorry no Products related to "${search}"`}</h1>
-                    </div>
+
+              <div className="clear-cat">
+                <button
+                  className="clear"
+                  value="all"
+                  onClick={(e) => clickHandler(e)}
+                >
+                  Clear Filters
+                </button>
+              </div>
+            </div>
+            {isLoading ? <Loader></Loader> : <div className="products">
+              {currentItems.length == 0 ? <>
+
+                <div className="sorry">
+                  <div>
+
+
+                    <h1>{`Sorry no Products related to "${search}"`}</h1>
                   </div>
-                </> : <>
+                </div>
+              </> : <>
 
 
-                  {currentItems.map((obj) => {
+                {currentItems.map((obj) => {
 
-                    return (
-                      <>
-                        <div className="card">
-                          <div className="image">
-                            <Link to={`/products/${obj._id}`}>
-                              <img src={obj.image} alt="" />
-                            </Link>
-                          </div>
-
-                          <div className="text">
-                            <div>
-                              Rating:
-                            </div>
-
-                            <Star className="val" stars={obj.averageRating}></Star>
-
-                          </div>
-                          <div className="text">
-                            <div>Name:</div>
-                            <div className="val">{obj.name}</div>
-                          </div>
-                          <div className="text">
-                            <div>Price:</div>
-                            <div className="val">-${obj.price}</div>
-                          </div>
-                          <div className="text">
-                            <div>Company</div>
-                            <div className="val">{obj.company}</div>
-                          </div>
+                  return (
+                    <>
+                      <div className="card">
+                        <div className="image">
+                          <Link to={`/products/${obj._id}`}>
+                            <img src={obj.image} alt="" />
+                          </Link>
                         </div>
 
-                      </>
-                    );
-                  })}
-                </>}
-              </div>}
-              
-            </div>
+                        <div className="text">
+                          <div>
+                            Rating:
+                          </div>
+
+                          <Star className="val" stars={obj.averageRating}></Star>
+
+                        </div>
+                        <div className="text">
+                          <div>Name:</div>
+                          <div className="val">{obj.name}</div>
+                        </div>
+                        <div className="text">
+                          <div>Price:</div>
+                          <div className="val">-${obj.price}</div>
+                        </div>
+                        <div className="text">
+                          <div>Company</div>
+                          <div className="val">{obj.company}</div>
+                        </div>
+                      </div>
+
+                    </>
+                  );
+                })}
+              </>}
+            </div>}
 
           </div>
-          <div className="pagecontainer">
 
-            <div className="pagination">
+        </div>
+        <div className="pagecontainer">
 
-              {renderPageNumbers()}
-            </div>
+          <div className="pagination">
+
+            {renderPageNumbers()}
           </div>
-        </Wrapper>
-      </>
-    );
-  
+        </div>
+      </Wrapper>
+    </>
+  );
+
 };
 
 const Wrapper = styled.div`

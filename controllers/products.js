@@ -1,75 +1,89 @@
-import mongoose from "mongoose"
-import productModel from '../models/products.js'
 
-const create = async (req, res) => {
+import productModel from '../models/products.js'
+import AppError from "../utils/appError.js"
+import catchAsync from "../utils/catchAsync.js"
+
+
+const create = catchAsync(async (req, res, next) => {
 
     const { user } = req.body
     const data = await productModel.create({ ...req.body, Owner: user })
-    res.send({
+    res.status(201).json({
 
         data
     })
-}
-const getAll = async (req, res) => {
-   
-    const {sortname,sortprice}=req.body
-    if(sortname==0){
+})
+const getAll = catchAsync(async (req, res, next) => {
 
-        const products = await productModel.find({}).sort({price:sortprice})
-        res.send({
+
+
+    const { sortname, sortprice } = req.query
+    console.log(sortname, sortprice)
+    if (sortname == 0) {
+
+        const products = await productModel.find({}).sort({ price: sortprice })
+        res.status(200).json({
             data: products,
         });
     }
-    else{
+    else {
 
-        const products = await productModel.find({}).sort({name:sortname})
-        res.send({
+        const products = await productModel.find({}).sort({ name: sortname })
+        res.status(200).json({
             data: products,
         });
     }
-        
 
-   
-};
 
-const update = async (req, res) => {
-    res.send('i update a product')
-}
-const deleteProduct = async (req, res) => {
-    console.log(req.body.id)
+
+});
+
+
+const deleteProduct = catchAsync(async (req, res, next) => {
+
     await productModel.findByIdAndDelete(req.body.id)
-    res.send({
+    res.json({
         "message": "item Deleted"
     })
-}
-const getById = async (req, res) => {
-   console.log(req.body._id)
-    const data =await productModel.findById(req.body._id)
+})
+const getById = catchAsync(async (req, res, next) => {
+
+    const data = await productModel.findById(req.params._id)
+
+    if (!data) {
+        return next(new AppError('No product found with that ID', 404))
+    }
+
     res.send({
         data
     })
-}
-const updateReviews = async (req, res) => {
-   const {_id,reviews} = req.body
-    const data =await productModel.findByIdAndUpdate(_id,{reviews})
+})
+const updateReviews = catchAsync(async (req, res, next) => {
+    const { _id, reviews } = req.body
+    const data = await productModel.findByIdAndUpdate(_id, { reviews })
+
+    if (!data) {
+        return next(new AppError('No product found with that ID', 404))
+    }
     res.send({
         data
     })
-}
-const search = async (req, res) => {
-   const {search} = req.body
+})
+const search = catchAsync(async (req, res, next) => {
+    const { search } = req.body
     const { page, limit } = req.query;
     const startIndex = (page - 1) * limit;
-   console.log(search)
     const data = await productModel.find({ $text: { $search: search } }).skip(startIndex)
         .limit(parseInt(limit));
-    res.send({
+    res.json({
         data,
         currentPage: parseInt(page),
         totalPages: Math.ceil(await productModel.countDocuments({}) / limit),
     })
+})
+const update = (req, res) => {
+    console.log('i do nothing');
 }
-
 
 
 export { create, update, deleteProduct, getAll, getById, updateReviews, search }
