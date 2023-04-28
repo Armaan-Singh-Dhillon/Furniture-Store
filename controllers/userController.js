@@ -1,11 +1,13 @@
 import User from '../models/user.js'
 import catchAsync from "../utils/catchAsync.js"
 import AppError from "../utils/appError.js"
+import Email from '../utils/email.js'
 const register = catchAsync(async (req, res,next) => {
 
     const user = await User.create(req.body)
     const token = user.createJWT()
-
+    const url=`${req.protocol}://3000/`
+    await new Email(user ,url).sendWelcome()
     res.send({
         "message": "registered successfully",
         user,

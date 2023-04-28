@@ -7,12 +7,26 @@ import cityRoute from './Routes/cities.js'
 import cors from 'cors'
 import AppError from './utils/appError.js'
 import globalErrorHandler from './controllers/errorController.js'
+import path from 'path'
+import { dirname } from 'path';
+import { fileURLToPath } from 'url';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 dotenv.config()
 const app = express()
+app.set('view engine','pug')
+app.set('views' ,path.join(__dirname,'views'))
+app.use(express.static(path.join(__dirname, 'views')))
+
 app.use(cors())
 app.use(express.json())
 
+app.get('/',(req,res)=>{
+    res.status(200).render('welcome',{
+        user:'Dhillon'
+    })
+})
 app.use('/api/v1/products', productRoute)
 app.use('/api/v1/user', userRoute)
 app.use('/api/v1/cities', cityRoute)
