@@ -38,7 +38,7 @@ const Home = () => {
       [array[i], array[j]] = [array[j], array[i]];
     }
 
-    return array.slice(0, 6);
+    return array.slice(0, 4);
   }
   const get3products = () => {
     if (!isLoading) {
@@ -74,7 +74,7 @@ const Home = () => {
               Several new furniture stores were opening across India, including in Bengaluru, Mumbai, Delhi, Hyderabad, Pune, and Chennai. The stores featured a wide range of contemporary and traditional designs, as well as expert design services and customer support. The openings were highly anticipated, and the stores attracted large crowds of eager customers.
             </p>
           </div>
-          <MapContainer center={[20.5937, 78.9629]} zoom={6} scrollWheelZoom={false} >
+          <MapContainer center={[20.5937, 78.9629]} zoom={6} scrollWheelZoom={false} className="map-container" >
             <TileLayer
               attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -113,27 +113,30 @@ const Home = () => {
                       <img src={obj.image} alt="" />
                     </Link>
                   </div>
+                  <div>
+                    <div className="text">
+                      <div>
+                        Rating:
+                      </div>
 
-                  <div className="text">
-                    <div>
-                      Rating:
+                      <Star className="val" stars={obj.averageRating}></Star>
+
                     </div>
+                    <div className="text">
+                      <div>Name:</div>
+                      <div className="val">{obj.name}</div>
+                    </div>
+                    <div className="text">
+                      <div>Price:</div>
+                      <div className="val">-${obj.price}</div>
+                    </div>
+                    <div className="text">
+                      <div>Company</div>
+                      <div className="val">{obj.company}</div>
+                    </div>
+                  </div>
 
-                    <Star className="val" stars={obj.averageRating}></Star>
-
-                  </div>
-                  <div className="text">
-                    <div>Name:</div>
-                    <div className="val">{obj.name}</div>
-                  </div>
-                  <div className="text">
-                    <div>Price:</div>
-                    <div className="val">-${obj.price}</div>
-                  </div>
-                  <div className="text">
-                    <div>Company</div>
-                    <div className="val">{obj.company}</div>
-                  </div>
+                 
                 </div>
 
               </>
@@ -200,14 +203,16 @@ const Wrapper1 = styled.div`
   
   background: aliceblue;
   padding: 1.4rem;
+
  .map{
   width: 90vw;
+  
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
  p{
-  font-size: 1.4rem;
+   font-size: calc(.35em + 1vw);
  }
   
  }
@@ -218,7 +223,7 @@ const Wrapper1 = styled.div`
   }
 .products {
     display: flex;
-   flex-wrap: wrap;
+    flex-wrap: wrap;
     width: 100%;
     background: aliceblue;
     justify-content: space-evenly;
@@ -227,10 +232,9 @@ const Wrapper1 = styled.div`
 
   .card {
     flex-direction: column;
-    width: 800px;
-    justify-content: space-evenly;
+    width: 850px;
+    justify-content: space-between;
     transition: all .5s;
-   
     align-items: center;
     padding: 1.2vw;
     margin: 1.4vw;
@@ -241,7 +245,7 @@ const Wrapper1 = styled.div`
   .text {
     display: flex;
     justify-content: space-between;
-    font-size: 1vw;
+    font-size: calc(.2em + 1vw);
     margin: 1.2vw;
     align-items: center;
     
@@ -252,17 +256,24 @@ const Wrapper1 = styled.div`
   
   font-weight: 500;
 }
-  
-  
+
     img{
     width: 100%;
-    height: 600px;
+    height:600px ;
     object-fit: cover;
     border-radius: 1.2rem;
     }
     
-  
-  
+@media screen and (max-width: 1366px) {
+   img{
+    height: 400px;
+   }
+  }
+@media screen and (max-width: 768px) {
+   img{
+    height: 250px;
+   }
+  }
  
 `;
 
@@ -271,24 +282,28 @@ const Wrapper2 = styled.div`
   .text {
     display: flex;
     width: 100%;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
     margin: 0 0 1.4rem 0;
+    
   }
   .inner {
-    width: 47.5%;
+    width: 100%;
+
     display: flex;
     padding: 1.2rem;
     flex-direction: column;
     align-items: center;
-    font-size: 1.35rem;
+    font-size: calc(.35em + 1vw);
     text-align: center;
-    line-height: 2rem;
+    
     background: aliceblue;
   }
   .mission {
     width: 100%;
     display: flex;
     flex-direction: column;
+    background-color: aliceblue;
     
   }
   .services {
@@ -305,7 +320,7 @@ const Wrapper2 = styled.div`
     width: 30.5%;
 
     line-height: 2rem;
-    font-size: 1.35rem;
+     font-size: calc(.35em + 1vw);
     text-align: center;
   }
 `;

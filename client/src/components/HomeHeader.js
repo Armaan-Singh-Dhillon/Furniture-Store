@@ -71,7 +71,7 @@ const Wrapper = styled.div`
   .env{
      display: flex;
      justify-content: space-between;
-     font-size: 1.4rem;
+     font-size: calc(.4em + 1vw);
      
      .wood-description{
       width: 48%;
@@ -96,7 +96,7 @@ const Wrapper = styled.div`
     max-width: 100%;
   }
   .text {
-    font-size: 1.4rem;
+ font-size: calc(.4em + 1vw);;
   }
   .quotes {
     font-size: 1rem;
@@ -114,14 +114,14 @@ const Wrapper = styled.div`
         flex-direction: column;
         align-items: center;
          .wood-description{
-          font-size: 1rem;
           width: 100%;
      }
+     .main-image{
+      width: 100vw
+    }
     
     }
-     .text{
-        font-size: 1rem;
-     }
+     
   }
 `;
 

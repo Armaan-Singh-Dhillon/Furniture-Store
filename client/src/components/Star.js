@@ -38,13 +38,13 @@ const Wrapper = styled.div`
     justify-content: flex-start;
 
     .icon {
-      font-size: 2rem;
+      font-size: calc(.2em + 1vw);
       color:#39A1AE;
       
     }
 
     .empty-icon {
-      font-size: 2.6rem;
+      font-size: calc(.4em + 1vw);
     }
     
   }

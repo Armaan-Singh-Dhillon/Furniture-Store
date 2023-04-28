@@ -68,6 +68,7 @@ const Nav = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
+  margin-bottom:1.4rem ;
   
   background: aliceblue;
   .body {
@@ -79,7 +80,7 @@ const Nav = styled.div`
   h4 {
     padding: 0;
     
-    font-size: 1.5vw;
+    font-size: calc(.6em + 1vw);
   }
   .links {
     text-decoration: none;
@@ -105,18 +106,15 @@ const Nav = styled.div`
   }
   .carti {
     width: 100%;
-    font-size: 1.5vw;
+    font-size: calc(.6em + 1vw);
   }
    @media screen and (max-width: 1366px) {
     flex-direction: column;
     align-items:top;
   
-    h4{
-    font-size: 2vw;
-    }
    
     .body {
-      width: 100vw;
+      width: 100%;
       
     }
 

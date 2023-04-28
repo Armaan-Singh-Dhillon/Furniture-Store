@@ -18,24 +18,23 @@ const Footer = () => {
         <div className="letter">
           <div className="text1">
             <div>
-              <h1>Join Our Newsletter</h1>
+              <h2>Join Our Newsletter</h2>
               <p>
                 Stay updated with our latest collections and exclusive discounts
                 by joining our newsletter! Simply enter your email address below
                 and hit 'Subscribe' to receive updates on sales and new
-                arrivals. As a thank you for subscribing, you'll also receive a
-                special discount code to use on your next purchase
+                arrivals.
               </p>
             </div>
           </div>
           <div className="text">
             <div className="inner">
-              <form action="">
-                <input type="email" placeholder="Enter Email" />
-                <button type="submit" className="btn">
+             
+                <input  placeholder="Enter Email" />
+                <button  className="btn">
                   Subscribe
                 </button>
-              </form>
+              
             </div>
           </div>
         </div>
@@ -84,7 +83,7 @@ const Footer = () => {
         </div>
 
       </div>
-    
+
       <div className="foot">
         <div className="card-containers">
           <h2>We Accept</h2>
@@ -92,21 +91,21 @@ const Footer = () => {
             <img src={visa} alt="" />
             <img src={mastercard} alt="" />
             <img src={maestro} alt="" />
-            
+
             <img src={netbanking} alt="" />
           </div>
         </div>
         <div className="card-containers">
-          <h2>Like What You See? Follow us Here</h2>
+          <h2>Follow us Here</h2>
           <div className="stickers">
             <img src={insta} alt="" />
             <img src={facebook} alt="" />
             <img src={youtube} alt="" />
             <img src={twitter} alt="" />
-            
+
           </div>
         </div>
-        
+
       </div>
       <hr />
       <div className="closing">
@@ -130,8 +129,13 @@ const Footer = () => {
           Grievance Redressal
         </p>
       </div>
-      <div className="closing">
-        	&#169; Copyright The Furniture Shop Limited
+      <div className="last">
+        <div>
+          <h2>
+
+            &#169; Copyright The Furniture Shop Limited
+          </h2>
+        </div>
       </div>
 
 
@@ -141,39 +145,46 @@ const Footer = () => {
 }
 
 const Wrapper = styled.footer`
-padding: 1.4rem;
  background-color: aliceblue;
- margin: 0 1.4rem 1.4rem 1.4rem;
+ margin-top: 1.4rem;
+padding: 1.4rem;
+ .last{
+  display: flex;
+  justify-content: space-evenly;
+ }
  .closing{
   display: flex;
-  justify-content: center;
-  font-size: larger;
+  font-size: calc(.2em + 1vw);
+  flex-wrap: wrap;
   font-family: Georgia, 'Times New Roman', Times, serif;
   p{
     margin: 1.2rem;
+    width: 200px;
   }
  }
  .stickers{
   display: flex;
-  width: 80%;
+  width: 100%;
   justify-content: space-between;
   img{
     width: 15%;
   }
  }
  .card-containers{
-  width: 30%;
+  width: 400px;
  }
  .foot{
   display: flex;
-  justify-content: space-between;
+  justify-content:space-between;
+  padding: 1.8rem;
+  flex-wrap: wrap;
  }
  h2{
   color: #39A1AE;
  }
  .cards{
   display: flex;
-  width: 90%;
+  width: 100%;
   justify-content: space-between;
   img{
     width: 15%;
@@ -181,12 +192,14 @@ padding: 1.4rem;
  }
 .follow{
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
  
 }
 .card{
-  width: 15%;
+  width: 250px;
   padding: 1.2rem;
+  font-size: calc(.2em + 1vw);
  
   h2{
     color: #39A1AE;
@@ -203,40 +216,37 @@ const Wrapper3 = styled.div`
   margin: 1.4rem;
   
 
-  form {
-    display: flex;
-    width: 80%;
-  }
-
   .inner {
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-around;
   }
 
   .text1 {
-    width: 50%;
+    width: calc(100 -50vw);
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     text-align: center;
-    font-size: 1.25rem;
-    line-height: 1.5rem;
+     font-size: calc(.2em + 1vw);
+    line-height: 2rem;
     padding: 1.2rem;
   }
 
   .text {
-    width: 100%;
+    width: 50%;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
   }
 
   .letter {
-    height: 50vh;
+    height: calc(100 -50vw);
     display: flex;
     width: 100%;
+    flex-wrap: wrap;
     justify-content: space-evenly;
   }
 
@@ -246,11 +256,16 @@ const Wrapper3 = styled.div`
   }
 
   input {
-    width: 100%;
+    width: 50%;
     border-style: solid;
-
-    font-size: 1.4rem;
+     font-size: calc(.4em + 1vw);
     padding: 1.2rem;
+  }
+
+   @media only screen and (max-width: 840px) {
+    .letter{
+      display: none;
+    }
   }
 `;
 export default Footer

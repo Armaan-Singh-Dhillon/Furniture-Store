@@ -1,7 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital@1&family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Merienda&display=swap');
 
-
+html{
+  zoom: 60%;
+}
 body {
   margin: 0;
   padding: 1.4vw;
@@ -17,13 +19,13 @@ code {
     monospace;
 }
 .btn{
-  font-size: 1.4rem;
+  font-size: calc(.5em + 1vw);
   background: #39A1AE;
   border: none;
   color: white;
-  padding: 1.2rem;
-  border-radius: 1.2rem;
-  margin: 1.2rem;
+  padding: calc(.5em + 1vw);
+  border-radius: calc(.5em + 1vw);
+  margin:  calc(.5em + 1vw);
 
 }
 .btn:hover{
@@ -31,21 +33,27 @@ code {
 }
 h1{
 font-family: 'Merienda', cursive;
+font-size: calc(.5em + 1vw);
 }
 h2{
 font-family: 'Merienda', cursive;
+font-size: calc(.5em + 1vw);
 }
 h3{
 font-family: 'Merienda', cursive;
+font-size: calc(.5em + 1vw);
 }
 h4{
 font-family: 'Merienda', cursive;
+font-size: calc(.5em + 1vw);
 }
 h5{
   font-family: 'Merienda', cursive;
+  font-size: calc(.5em + 1vw);
 }
 h6{
 font-family: 'Merienda', cursive;
+font-size: calc(.5em + 1vw);
 }
 
 /* .leaflet-container {
