@@ -332,28 +332,11 @@ const Wrapper = styled.div`
   .company-cat {
     width: 30%;
   }
-  .text {
-    display: flex;
-    justify-content: space-between;
-    font-size: 1.4rem;
-    margin: 1.2rem;
-    align-items: center;
-    
-    
-  }
-  .products {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    background: aliceblue;
-    
-    
-    
-  }
+
 
   img {
     width: 100%;
-    height: 30rem;
+    height: 600px;
     object-fit: cover;
     border-radius: 1.2rem;
   }
@@ -362,19 +345,6 @@ const Wrapper = styled.div`
     cursor: pointer;
   }
 
-  .card {
-    flex-direction: column;
-    width: 29.6%;
-    justify-content: space-evenly;
-    transition: all .5s;
-   
-    align-items: center;
-    padding: 1.2rem;
-    margin: 1.4rem;
-  }
-  .card:hover{
-    scale: 1.08;
-  }
   .inner-sort {
     font-size: 1.2rem;
   }
@@ -451,7 +421,6 @@ const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
 
-    margin: 1.4rem;
   }
   .middle {
     display: flex;
@@ -472,6 +441,53 @@ const Wrapper = styled.div`
   .inner-cat {
     display: flex;
   }
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    background: aliceblue;
+    justify-content: space-evenly;
+    
+  }
+
+  .card {
+    flex-direction: column;
+    width: 850px;
+    justify-content: space-evenly;
+    transition: all .5s;
+    align-items: center;
+    padding: 1.2vw;
+    margin: 1rem;
+   
+  }
+  .card:hover{
+    scale: 1.08;
+  }
+  .text {
+    display: flex;
+    justify-content: space-between;
+    font-size: 1.8rem;
+    margin: 1.2rem;
+    align-items: center;
+    
+    
+  }
+    @media only screen and (max-width: 1966px) {
+    .card{
+      width: 600px;
+    }
+    img{
+      height: 400px;
+    }
+    
+  }
+    @media only screen and (max-width: 1422px) {
+    .card{
+      width: 500px;
+    }
+    
+  }
+ 
 `;
 
 export default Products;

@@ -10,7 +10,7 @@ import { useEffect } from "react";
 
 const Navbar = () => {
   const { user } = useContext(MyContext);
- 
+
   return (
     <>
       <Nav>
@@ -26,39 +26,40 @@ const Navbar = () => {
         <div className="body">
           <div>
             <Link to={"/"} className="links">
-              
+
               <h4>Home</h4>
             </Link>
           </div>
           <div>
             <Link to={"/about"} className="links">
-              
+
               <h4>About</h4>
             </Link>
           </div>
           <div>
             <Link to={"/products"} className="links">
-              
+
               <h4>Products</h4>
             </Link>
           </div>
-          
+          <div className="footer">
+            <div className="cart">
+              <Link to="/cart" className="links">
+
+                <BsFillCartFill className="carti"></BsFillCartFill>
+              </Link>
+            </div>
+            <div className="cart">
+              <Link to={user ? '/user' : '/login'} className="links">
+
+                <FaUserAlt className="carti"></FaUserAlt>
+              </Link>
+            </div>
+          </div>
+
         </div>
 
-        <div className="footer">
-          <div className="cart">
-            <Link to="/cart" className="links">
-              
-              <BsFillCartFill className="carti"></BsFillCartFill>
-            </Link>
-          </div>
-          <div className="cart">
-            <Link to={user ? '/user':'/login'} className="links">
-              
-              <FaUserAlt className="carti"></FaUserAlt>
-            </Link>
-          </div>
-        </div>
+
       </Nav>
     </>
   );
@@ -67,17 +68,18 @@ const Nav = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin: 0 1.4rem;
+  
   background: aliceblue;
   .body {
     width: 55%;
     display: flex;
     justify-content: space-around;
+    align-items: center;
   }
   h4 {
     padding: 0;
-    margin: 0;
-    font-size: 1.8rem;
+    
+    font-size: 1.5vw;
   }
   .links {
     text-decoration: none;
@@ -103,21 +105,29 @@ const Nav = styled.div`
   }
   .carti {
     width: 100%;
-    font-size: 2rem;
+    font-size: 1.5vw;
   }
-  @media only screen and (max-width: 900px) {
-    .footer {
-      display: none;
+   @media screen and (max-width: 1366px) {
+    flex-direction: column;
+    align-items:top;
+  
+    h4{
+    font-size: 2vw;
     }
-  }
-  @media only screen and (max-width: 600px) {
+   
     .body {
-      display: none;
+      width: 100vw;
+      
     }
+
     .header {
       width: 50%;
+ 
     }
+
+    
   }
+
 `;
 
 export default Navbar;

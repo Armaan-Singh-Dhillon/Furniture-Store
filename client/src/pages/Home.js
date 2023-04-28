@@ -3,8 +3,7 @@ import { Link } from "react-router-dom";
 import Loader from '../components/Loader.js'
 import { useContext } from "react";
 import MyContext from "../MyContext.js";
-import wood from '../assets/wood.jpg'
-import sofa from '../assets/home-main.jpg'
+
 import axios from "axios";
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
@@ -12,7 +11,8 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { Icon } from 'leaflet'
 import Star from "../components/Star.js";
-import Footer from "../components/Footer.js";
+
+import HomeHeader from "../components/HomeHeader.js";
 
 const customIcon = new Icon({
   iconUrl: 'https://www.svgrepo.com/show/302636/map-marker.svg',
@@ -60,62 +60,8 @@ const Home = () => {
 
 
     <>
+      <HomeHeader></HomeHeader>
 
-      <Wrapper>
-        <div className="main">
-          <div className="zone">
-            <h1>Design Your Comfort</h1>
-            <p className="text">
-
-
-              <p>
-                At our furniture company, we prioritize sustainability and environmental responsibility in all aspects of our operations. From sourcing materials to manufacturing and delivery, we are committed to reducing our environmental impact and promoting eco-friendly practices.
-
-              </p>
-
-              <p>
-
-                By choosing our furniture, you can feel good about supporting a company that is committed to the environment and the well-being of our community. Together, we can make a positive impact on the world while enjoying beautiful, high-quality furniture that will last for years to come.
-              </p>
-
-            </p>
-            <Link to="/products">
-              <button className="btn">shop now</button>
-            </Link>
-          </div>
-          <div className="main-image">
-            <img src={sofa} alt="" />
-          </div>
-        </div>
-        <div>
-          <div className="custom">
-
-            <h1>Totally Customizable</h1>
-          </div>
-          <div className="env">
-
-            <div className="img-container">
-              <img src={wood} alt="" />
-            </div>
-            <div className="wood-description">
-              <p>
-                With our furniture, you have the ability to create your dream piece, tailor-made to your exact specifications. Choose from a wide range of colors, textures, and finishes, as well as the option to add your own personal touch with bespoke detailing.
-              </p>
-              <p>
-                Our expert craftsmen will bring your vision to life, creating a piece that is truly one of a kind. At our furniture site, we pride ourselves on providing a seamless customer experience, ensuring that you are completely satisfied with your purchase from start to finish.
-              </p>
-              <p>
-                Whether you are looking to add a statement piece to your home or create a cohesive look throughout, our furniture is the perfect choice for those seeking both exceptional design and customizability.
-              </p>
-            </div>
-
-
-
-          </div>
-        </div>
-
-
-      </Wrapper>
 
       <Wrapper1>
 
@@ -152,7 +98,7 @@ const Home = () => {
 
         <div>
           <h1> Products of the day </h1>
-         
+
         </div>
 
         {isLoading ? <Loader></Loader> : <div className="products">
@@ -195,7 +141,7 @@ const Home = () => {
           })}
 
         </div>}
-      
+
 
 
       </Wrapper1>
@@ -236,80 +182,26 @@ const Home = () => {
             </div>
           </div>
 
-          
+
         </div>
       </Wrapper2>
-      
-      
+
+
     </>
   );
 };
 
-const Wrapper = styled.div`
-  background: aliceblue;
-  margin: 1.4rem;
-  padding: 1.2rem;
-  .custom{
-    display: flex;
-    justify-content: space-evenly;
-  }
-  .img-container{
-    width: 50%;
-    
-  }
-  .env{
-     display: flex;
-     justify-content: space-between;
-     font-size: 1.4rem;
-     margin-top: 1.2rem;
-     .wood-description{
-      width: 48%;
-     }
-  }
-  
-  .main {
-    display: flex;
-    justify-content: space-between;
-    .main-image{
-      width: 50%
-    }
-  }
-  .zone {
-    width: 50%;
-    padding: 1.2rem;
-  }
-  img {
-    max-width: 100%;
-  }
-  .text {
-    line-height: 2.5rem;
 
-    font-size: 1.4rem;
-  }
-  .quotes {
-    font-size: 1rem;
-  }
-  
-  @media only screen and (max-width: 1100px) {
-    .main {
-      flex-direction: column-reverse;
-      align-items: center;
-    }
-    .zone {
-      width: 100%;
-    }
-  }
-`;
 
 const Wrapper1 = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 1.4rem;
+  
   background: aliceblue;
   padding: 1.4rem;
  .map{
-  width: 100%;
+  width: 90vw;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -321,26 +213,27 @@ const Wrapper1 = styled.div`
  }
   .leaflet-container{
     width: 100%;
-    height: 80rem;
+    height: 80vh;
     
   }
 .products {
     display: flex;
-    flex-wrap: wrap;
+   flex-wrap: wrap;
     width: 100%;
     background: aliceblue;
+    justify-content: space-evenly;
     
   }
 
   .card {
     flex-direction: column;
-    width: 29.5%;
+    width: 800px;
     justify-content: space-evenly;
     transition: all .5s;
    
     align-items: center;
-    padding: 1.2rem;
-    margin: 1.4rem;
+    padding: 1.2vw;
+    margin: 1.4vw;
   }
   .card:hover{
     scale: 1.08;
@@ -348,8 +241,8 @@ const Wrapper1 = styled.div`
   .text {
     display: flex;
     justify-content: space-between;
-    font-size: 1.4rem;
-    margin: 1.2rem;
+    font-size: 1vw;
+    margin: 1.2vw;
     align-items: center;
     
     
@@ -363,11 +256,12 @@ const Wrapper1 = styled.div`
   
     img{
     width: 100%;
-    height: 30rem;
+    height: 600px;
     object-fit: cover;
     border-radius: 1.2rem;
     }
     
+  
   
  
 `;
@@ -395,7 +289,7 @@ const Wrapper2 = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    margin: 0 1.4rem;
+    
   }
   .services {
     display: flex;
