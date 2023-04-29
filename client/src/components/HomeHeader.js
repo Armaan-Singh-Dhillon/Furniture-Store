@@ -96,7 +96,7 @@ const Wrapper = styled.div`
     max-width: 100%;
   }
   .text {
- font-size: calc(.4em + 1vw);;
+ font-size: calc(.4em + 1vw);
   }
   .quotes {
     font-size: 1rem;

@@ -146,7 +146,7 @@ const Footer = () => {
 
 const Wrapper = styled.footer`
  background-color: aliceblue;
- margin-top: 1.4rem;
+ margin-top:calc(.2em + 1vw);
 padding: 1.4rem;
  .last{
   display: flex;
@@ -197,7 +197,8 @@ padding: 1.4rem;
  
 }
 .card{
-  width: 250px;
+  width: 25vw;
+  min-width: 100px;
   padding: 1.2rem;
   font-size: calc(.2em + 1vw);
  

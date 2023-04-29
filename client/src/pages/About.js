@@ -11,49 +11,49 @@ const About = () => {
             <div className="title">
               <h1>About us</h1>
             </div>
-          <div className="about">
-            <Container>
-              
-              <Paragraph>
+            <div className="about">
+
+
+              <p>
                 The Furniture Shop is a family-owned business that has been
                 providing high-quality, stylish, and affordable furniture to our
                 customers for over 30 years. We believe that everyone should
                 have access to beautiful and functional living spaces, and we
                 strive to make that a reality for our customers.
-              </Paragraph>
-              <Paragraph>
+              </p>
+              <p>
                 Our mission is to provide our customers with an unparalleled
                 shopping experience. We have a wide selection of furniture and
                 home decor products, as well as knowledgeable and friendly staff
                 who are always ready to help. We are committed to being the
                 go-to destination for all of your home furnishings needs.
-              </Paragraph>
-              <Paragraph>
+              </p>
+              <p>
                 We believe that every home is unique, and we want to help our
                 customers create living spaces that reflect their individual
                 style and personality. Whether you're looking for a new couch, a
                 dining room table, or a statement piece of decor, we have
                 something for everyone.
-              </Paragraph>
-            </Container>
-            
-          </div>
+              </p>
+
+
+            </div>
           </div>
           <div className="timeline">
             <div>
               <h1>Milestones</h1>
             </div>
-            <img src={timeline} alt="" />
+            <div className="image-conatiner">
+
+              <img src={timeline} alt="" />
+            </div>
           </div>
-          <div>
-          
-          
-          </div>
+
         </div>
-       
-        
+
+
       </Wrapper>
-     <Wrapper2>
+      <Wrapper2>
         <div className="services">
           <div className="s-text">
             <div>
@@ -99,32 +99,15 @@ const About = () => {
             </div>
           </div>
         </div>
-     </Wrapper2>
+      </Wrapper2>
     </>
   );
 };
 
-const Wrapper2=styled.div`
+const Wrapper2 = styled.div`
  display: flex;
- padding: 0 1.4rem 1.4rem 1.4rem ;
- 
-  .text {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    margin: 0 0 1.4rem 0;
-  }
-  .inner {
-    width: 47.5%;
-    display: flex;
-    padding: 1.2rem;
-    flex-direction: column;
-    align-items: center;
-    font-size: 1.35rem;
-    text-align: center;
-    line-height: 2rem;
-    background: aliceblue;
-  }
+ justify-content: center; 
+ background-color: aliceblue;
   .mission {
     width: 100%;
     display: flex;
@@ -133,47 +116,31 @@ const Wrapper2=styled.div`
   }
   .services {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
   }
 
   .s-text {
     display: flex;
     flex-direction: column;
-    background: aliceblue;
     align-items: center;
-    padding: 1.2rem;
-    width: 30.5%;
-
-    line-height: 2rem;
-    font-size: 1.35rem;
+    width:30vw ;
+    min-width: 200px;
+    font-size: calc(.4em + 1vw);
     text-align: center;
   }
 `
-const Container = styled.div`
-  
-  margin: 0 auto;
-  padding: 2rem;
-`;
-
-const Title = styled.h1`
-  text-align: center;
-  margin-bottom: 2rem;
-`;
-
-const Paragraph = styled.p`
-  line-height: 1.5;
-  margin-bottom: 1.5rem;
-  font-size: 1.6rem;
-`;
 
 const Wrapper = styled.div`
 
- 
+  .about{
+    font-size: calc(.4em + 1vw);
+  }
   .main {
    
     justify-content: space-evenly;
     padding: 1.4rem;
-    margin: 1.4rem;
+
     background: aliceblue;
     .title{
       display: flex;
@@ -185,18 +152,21 @@ const Wrapper = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-  }
-  .timeline img{
-    width: 65%;
-  }
-  .globe{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 100%;
+    
     img{
-      width: 35%;
+      width: 80vw;
+     
     }
+    
+  }
+  
+  @media only screen and (max-width:768px ) {
+    
+   .timeline{
+    img{
+      width: 95vw;
+    }
+   }
   }
  
  

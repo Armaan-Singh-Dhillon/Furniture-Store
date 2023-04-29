@@ -68,7 +68,7 @@ const Nav = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-items: center;
-  margin-bottom:1.4rem ;
+  margin-bottom:calc(.2em + 1vw);
   
   background: aliceblue;
   .body {

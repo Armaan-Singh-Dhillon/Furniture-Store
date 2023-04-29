@@ -49,6 +49,7 @@ const deleteProduct = catchAsync(async (req, res, next) => {
 const getById = catchAsync(async (req, res, next) => {
 
     const data = await productModel.findById(req.params._id)
+    console.log(data)
 
     if (!data) {
         return next(new AppError('No product found with that ID', 404))
