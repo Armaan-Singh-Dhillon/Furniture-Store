@@ -3,7 +3,7 @@ import { AiOutlineStar } from "react-icons/ai";
 import styled from "styled-components";
 
 const Star = ({ stars}) => {
-    console.log(stars)
+    
     const ratingStar = Array.from({ length: 5 }, (elem, index) => {
         let number = index + 0.5;
         
@@ -31,22 +31,19 @@ const Star = ({ stars}) => {
 };
 
 const Wrapper = styled.div`
+ 
   .icon-style {
     display: flex;
-    gap: 0.2rem;
     align-items: center;
     justify-content: flex-start;
-
+    
     .icon {
-      font-size: calc(.2em + 1vw);
+      margin: 0;
       color:#39A1AE;
+      font-size: calc(.2em + 1vw);
       
     }
 
-    .empty-icon {
-      font-size: calc(.4em + 1vw);
-    }
-    
   }
 `;
 

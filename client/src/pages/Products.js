@@ -6,18 +6,17 @@ import MyContext from "../MyContext";
 import { Link } from "react-router-dom";
 import { FaSearch } from 'react-icons/fa';
 import Star from "../components/Star";
-const itemsPerPage = 12;
+
+let itemsPerPage =8
+
 const Products = () => {
   const {
 
     data,
-    setdata,
     isLoading,
     setLoading,
     searchFunction,
-    sortname,
     setsortname,
-    sortprice,
     setsortprice
   } = useContext(MyContext);
 
@@ -29,6 +28,48 @@ const Products = () => {
   const currentItems = data.slice(startIndex, endIndex);
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
+  
+ 
+
+
+
+  const [dimensions, setDimensions] = useState({
+    height: window.innerHeight,
+    width: window.innerWidth
+  })
+  useEffect(() => {
+    function handleResize() {
+      setDimensions({
+        height: window.innerHeight,
+        width: window.innerWidth
+      })
+
+    }
+    if(dimensions.width<400) {
+       itemsPerPage=3
+    }
+    else if(dimensions.width<768) {
+       itemsPerPage=4
+    }
+    else if(dimensions.width<1366) {
+       itemsPerPage=6
+    }
+    else if(dimensions.width<1920) {
+       itemsPerPage=8
+      
+    }
+    
+
+    window.addEventListener('resize', handleResize)
+
+    return _ => {
+      window.removeEventListener('resize', handleResize)
+
+    }
+    
+  })
+  console.log(itemsPerPage)
+  
 
   const handlePageChange = (pageNumber) => {
     setLoading(true)
@@ -37,7 +78,6 @@ const Products = () => {
       setLoading(false)
     }, 500);
   };
-
 
 
   const handleSelect = (e) => {
@@ -54,9 +94,7 @@ const Products = () => {
       setsortname(0)
     }
   };
-  const clickHandler = (e) => {
 
-  };
   const [search, setSearch] = useState('')
 
   const handleSearch = (e) => {
@@ -67,7 +105,7 @@ const Products = () => {
   };
   const handleoptions = (e) => {
     e.preventDefault()
-    
+
     setSearch(e.target.value)
     searchFunction(e.target.value)
 
@@ -107,16 +145,25 @@ const Products = () => {
 
                 onChange={(e) => setSearch(e.target.value)}
               />
-              <FaSearch onClick={handleSearch} className='icon'></FaSearch>
-              <div className="view">
-                Grid Enabled
-                <TfiLayoutGrid2Alt className="icon"></TfiLayoutGrid2Alt>
+              <div>
+
+
+                <FaSearch onClick={handleSearch} className='icon'></FaSearch>
+
               </div>
+
             </div>
+            
+
 
             <div className="sort">
               <div className="inner-sort">
-                <label htmlFor="Sort">Sort By : </label>
+                <label htmlFor="Sort">
+                  <h3>
+
+                    Sort By :
+                  </h3>
+                </label>
                 <select name="Sort" className="select" onChange={(e) => handleSelect(e)}>
                   <option value={'price 1'} >
                     Price(Lowest)
@@ -184,68 +231,76 @@ const Products = () => {
 
 
               <div className="clear-cat">
-                <button
+                {/* <button
                   className="clear"
                   value="all"
                   onClick={(e) => clickHandler(e)}
                 >
                   Clear Filters
-                </button>
+                </button> */}
               </div>
             </div>
-            {isLoading ? <Loader></Loader> : <div className="products">
-              {currentItems.length == 0 ? <>
+            <div className="products">
+              {isLoading ? <Loader></Loader> : <div className="products">
+                {currentItems.length == 0 ? <>
 
-                <div className="sorry">
-                  <div>
+                  <div className="sorry">
+                    <div>
 
 
-                    <h1>{`Sorry no Products related to "${search}"`}</h1>
+                      <h1>{`Sorry no Products related to "${search}"`}</h1>
+                    </div>
                   </div>
-                </div>
-              </> : <>
+                </> : <>
 
 
-                {currentItems.map((obj) => {
+                  {currentItems.map((obj) => {
 
-                  return (
-                    <>
-                      <div className="card">
-                        <div className="image">
-                          <Link to={`/products/${obj._id}`}>
-                            <img src={obj.image} alt="" />
-                          </Link>
-                        </div>
+                    return (
+                      <>
+                        <div className="card">
+                          <div className="image">
+                            <Link to={`/products/${obj._id}`}>
+                              <img src={obj.image} alt="" />
+                            </Link>
+                          </div>
+                          <div className="info">
+                            <div className="text">
+                              <div>
+                                Rating:
+                              </div>
 
-                        <div className="text">
-                          <div>
-                            Rating:
+                              <Star className="val" stars={obj.averageRating}></Star>
+
+                            </div>
+                            <div className="text">
+                              <div>Name:</div>
+                              <div className="val">{obj.name}</div>
+                            </div>
+                            <div className="text">
+                              <div>Price:</div>
+                              <div className="val">-${obj.price}</div>
+                            </div>
+                            <div className="text">
+                              <div>Company</div>
+                              <div className="val">{obj.company}</div>
+                            </div>
                           </div>
 
-                          <Star className="val" stars={obj.averageRating}></Star>
 
                         </div>
-                        <div className="text">
-                          <div>Name:</div>
-                          <div className="val">{obj.name}</div>
-                        </div>
-                        <div className="text">
-                          <div>Price:</div>
-                          <div className="val">-${obj.price}</div>
-                        </div>
-                        <div className="text">
-                          <div>Company</div>
-                          <div className="val">{obj.company}</div>
-                        </div>
-                      </div>
 
-                    </>
-                  );
-                })}
-              </>}
-            </div>}
+                      </>
+                    );
+                  })}
+                </>}
+              </div>}
+
+            </div>
+
 
           </div>
+
 
         </div>
         <div className="pagecontainer">
@@ -262,6 +317,7 @@ const Products = () => {
 };
 
 const Wrapper = styled.div`
+
 .sorry{
   width: 100%;
   display: flex;
@@ -296,26 +352,25 @@ const Wrapper = styled.div`
 }
 
 .pagecontainer{
+  width: 100%;
   display: flex;
   justify-content: space-evenly;
   
 
 }
 .pages{
-  padding: 1.2rem;
+  font-size: calc(0.4em + 1vw);
   transition: all 0.2s;
   :hover{
     scale:1.12;
   }
 }
 .pagination{
-  width: 20%;
+  width: 50%;
   display: flex;
-  margin: 0 1.4rem;
-  margin-bottom: 3rem;
-  font-size: 1.6rem;
   justify-content: space-evenly;
   color: aliceblue;
+  flex-wrap: wrap;
   .active{
     background-color: aliceblue;
     color: #39a1ae;
@@ -334,17 +389,6 @@ const Wrapper = styled.div`
   }
 
 
-  img {
-    width: 100%;
-    height: 600px;
-    object-fit: cover;
-    border-radius: 1.2rem;
-  }
-  img:hover {
-    opacity: 80%;
-    cursor: pointer;
-  }
-
   .inner-sort {
     font-size: 1.2rem;
   }
@@ -356,31 +400,36 @@ const Wrapper = styled.div`
   }
 
   .icon {
-    font-size: 1.2rem;
-    color: #39a1ae;
+  font-size: calc(.6em + 1vw);
+  color: #39a1ae;
   }
 
-  input {
-    width: 75%;
-    border: none;
-    font-size: 1.2rem;
-    padding: 0.5rem;
-  }
+
   .sort {
-    width: 65%;
+    width: 20vw;
     display: flex;
     justify-content: right;
     align-items: center;
+    
   }
   .input {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 30%;
+    width: 50vw;
+    
+    input {
+    width: 90%;
+    border: none;
+    font-size: calc(.6em + 1vw);
+    padding: 0.5rem;
   }
+  }
+    
   .search {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 1.2rem;
   }
 
@@ -390,22 +439,20 @@ const Wrapper = styled.div`
   }
 
   .select {
-    font-size: 1.2rem;
+    font-size: calc(.2em + 1vw);
     border: none;
 
     padding: 0.3rem;
   }
 
-  .heading {
-    padding: 1.2rem;
-  }
+ 
   button {
     border: none;
     background: aliceblue;
     text-align: left;
-    margin: 0;
-    padding: 1.2rem;
-    font-size: 1.25rem;
+    font-size: calc(.4em + 1vw);
+    font-family: 'Merienda', cursive;
+    padding: 1rem;
   }
   .clear {
     color: #39a1ae;
@@ -420,6 +467,8 @@ const Wrapper = styled.div`
   .main {
     display: flex;
     flex-direction: column;
+   background-color: aliceblue;
+   padding: calc(.2em + 1vw);
 
   }
   .middle {
@@ -433,13 +482,14 @@ const Wrapper = styled.div`
     display: flex;
     background: aliceblue;
     justify-content: space-between;
+    
   }
   .category-cat {
     display: flex;
     flex-direction: column;
   }
   .inner-cat {
-    display: flex;
+  display: flex;
   }
   .products {
     display: flex;
@@ -452,13 +502,13 @@ const Wrapper = styled.div`
 
   .card {
     flex-direction: column;
-    width: 850px;
-    justify-content: space-evenly;
+    width: 30vw;
+    min-width: 200px;
+    justify-content: space-between;
     transition: all .5s;
     align-items: center;
     padding: 1.2vw;
-    margin: 1rem;
-   
+    margin: 1.4vw;
   }
   .card:hover{
     scale: 1.08;
@@ -466,27 +516,37 @@ const Wrapper = styled.div`
   .text {
     display: flex;
     justify-content: space-between;
-    font-size: 1.8rem;
-    margin: 1.2rem;
+    font-size: calc(.2em + 1vw);
+    margin: 1.2vw;
     align-items: center;
-    
-    
   }
-    @media only screen and (max-width: 1966px) {
-    .card{
-      width: 600px;
+  img{
+    width: 100%;
+    height:20vw ;
+    min-height: 150px;
+    object-fit: cover;
+    border-radius: 1.2rem;
     }
-    img{
-      height: 400px;
+
+  @media only screen and (max-width: 768px) {
+    .inner-cat{
+      flex-direction: column;
     }
+    .category{
+      width: 20vw;
+    }
+    .middle{
+      flex-direction: row;
     
-  }
-    @media only screen and (max-width: 1422px) {
-    .card{
-      width: 500px;
     }
-    
+    .view{
+      display: none;
+    }
+   
   }
+   
+
+   
  
 `;
 
