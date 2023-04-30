@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Merienda&display=swap');
 
 html{
-  zoom: 60%;
+  font-size: 62.5%;
 }
 body {
   margin: 0;

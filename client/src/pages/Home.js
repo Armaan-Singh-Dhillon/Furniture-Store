@@ -38,7 +38,7 @@ const Home = () => {
       [array[i], array[j]] = [array[j], array[i]];
     }
 
-    return array.slice(0, 4);
+    return array.slice(0, 6);
   }
   const get3products = () => {
     if (!isLoading) {
@@ -100,50 +100,53 @@ const Home = () => {
           <h1> Products of the day </h1>
 
         </div>
+        <div className="products-container">
+          {isLoading ? <Loader></Loader> : <div className="products">
 
-        {isLoading ? <Loader></Loader> : <div className="products">
+            {products.map((obj) => {
 
-          {products.map((obj) => {
+              return (
+                <>
+                  <div className="card">
+                    <div className="image">
+                      <Link to={`/products/${obj._id}`}>
+                        <img src={obj.image} alt="" />
+                      </Link>
+                    </div>
+                    <div>
+                      <div className="text">
+                        <div>
+                          Rating:
+                        </div>
 
-            return (
-              <>
-                <div className="card">
-                  <div className="image">
-                    <Link to={`/products/${obj._id}`}>
-                      <img src={obj.image} alt="" />
-                    </Link>
-                  </div>
-                  <div>
-                    <div className="text">
-                      <div>
-                        Rating:
+                        <Star className="val" stars={obj.averageRating}></Star>
+
                       </div>
+                      <div className="text">
+                        <div>Name:</div>
+                        <div className="val">{obj.name}</div>
+                      </div>
+                      <div className="text">
+                        <div>Price:</div>
+                        <div className="val">-${obj.price}</div>
+                      </div>
+                      <div className="text">
+                        <div>Company</div>
+                        <div className="val">{obj.company}</div>
+                      </div>
+                    </div>
 
-                      <Star className="val" stars={obj.averageRating}></Star>
 
-                    </div>
-                    <div className="text">
-                      <div>Name:</div>
-                      <div className="val">{obj.name}</div>
-                    </div>
-                    <div className="text">
-                      <div>Price:</div>
-                      <div className="val">-${obj.price}</div>
-                    </div>
-                    <div className="text">
-                      <div>Company</div>
-                      <div className="val">{obj.company}</div>
-                    </div>
                   </div>
 
-                 
-                </div>
+                </>
+              );
+            })}
 
-              </>
-            );
-          })}
+          </div>}
+        </div>
 
-        </div>}
+
 
 
 
@@ -206,7 +209,7 @@ const Wrapper1 = styled.div`
 
  .map{
   width: 90vw;
-  
+  height: 90vw;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -221,59 +224,65 @@ const Wrapper1 = styled.div`
     height: 80vh;
     
   }
-.products {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-    background: aliceblue;
-    justify-content: space-evenly;
-    
-  }
 
-  .card {
-    flex-direction: column;
-    width: 850px;
-    justify-content: space-between;
-    transition: all .5s;
-    align-items: center;
-    padding: 1.2vw;
-    margin: 1.4vw;
-  }
-  .card:hover{
-    scale: 1.08;
-  }
-  .text {
-    display: flex;
-    justify-content: space-between;
-    font-size: calc(.2em + 1vw);
-    margin: 1.2vw;
-    align-items: center;
-    
-    
-  }
   .val{
   color: #39a1ae;
   
   font-weight: 500;
 }
 
-    img{
+  .products-container {
+    display: grid;
+    background-color: aliceblue;
+
     width: 100%;
-    height:600px ;
+    grid-template-columns: repeat(8,minmax(min-content,1fr))  ;
+    
+    
+  }
+  .products{
+    grid-area: 1/1/-1/10;
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(35rem, 1fr) );
+    grid-auto-rows: min-content;
+    gap: 2rem;
+    
+
+  }
+ 
+  img{
+    width: 100%;
+    height: 35rem;
     object-fit: cover;
     border-radius: 1.2rem;
-    }
+   
+  }
+  display: grid;
+ 
+   .card {
+    padding: 1.4rem;
+    flex-direction: column;
+    font-size: calc(.4em + 1vw);
+    justify-content: space-between;
+    transition: all .5s;
+    align-items: center;
     
-@media screen and (max-width: 1366px) {
-   img{
-    height: 400px;
-   }
+    transition: all .4s;
+   
   }
-@media screen and (max-width: 768px) {
-   img{
-    height: 250px;
-   }
+  .card:hover{
+    scale: 1.08;
   }
+ 
+
+ @media only screen and (max-width:768px) {
+  img{
+    height: 20rem;
+  }
+  .products{
+     grid-template-columns: repeat( auto-fit, minmax(25rem, 1fr) );
+  }
+ }
  
 `;
 

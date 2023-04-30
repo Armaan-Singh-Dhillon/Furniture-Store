@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { FaSearch } from 'react-icons/fa';
 import Star from "../components/Star";
 
-let itemsPerPage =8
+let itemsPerPage =9
 
 const Products = () => {
   const {
@@ -55,7 +55,7 @@ const Products = () => {
        itemsPerPage=6
     }
     else if(dimensions.width<1920) {
-       itemsPerPage=8
+       itemsPerPage=9
       
     }
     
@@ -240,8 +240,8 @@ const Products = () => {
                 </button> */}
               </div>
             </div>
-            <div className="products">
-              {isLoading ? <Loader></Loader> : <div className="products">
+            
+              {isLoading ? <Loader></Loader> : <div className="products-container">
                 {currentItems.length == 0 ? <>
 
                   <div className="sorry">
@@ -251,7 +251,7 @@ const Products = () => {
                       <h1>{`Sorry no Products related to "${search}"`}</h1>
                     </div>
                   </div>
-                </> : <>
+                </> : <div className="products">
 
 
                   {currentItems.map((obj) => {
@@ -293,10 +293,10 @@ const Products = () => {
                       </>
                     );
                   })}
-                </>}
+                </div>}
               </div>}
 
-            </div>
+            
 
 
           </div>
@@ -491,60 +491,58 @@ const Wrapper = styled.div`
   .inner-cat {
   display: flex;
   }
-  .products {
-    display: flex;
-    flex-wrap: wrap;
+  .products-container {
+    display: grid;
+    background-color: aliceblue;
+
     width: 100%;
-    background: aliceblue;
-    justify-content: space-evenly;
+    grid-template-columns: repeat(8,minmax(min-content,1fr))  ;
+    
     
   }
+  .products{
+    grid-area: 1/1/-1/10;
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(35rem, 1fr) );
+    grid-auto-rows: min-content;
+    gap: 2rem;
+    
 
-  .card {
+  }
+ 
+  img{
+    width: 100%;
+    height: 35rem;
+    object-fit: cover;
+    border-radius: 1.2rem;
+   
+  }
+  display: grid;
+ 
+   .card {
+    padding: 1.4rem;
     flex-direction: column;
-    width: 30vw;
-    min-width: 200px;
+    font-size: calc(.4em + 1vw);
     justify-content: space-between;
     transition: all .5s;
     align-items: center;
-    padding: 1.2vw;
-    margin: 1.4vw;
+    
+    transition: all .4s;
+   
   }
   .card:hover{
     scale: 1.08;
   }
-  .text {
-    display: flex;
-    justify-content: space-between;
-    font-size: calc(.2em + 1vw);
-    margin: 1.2vw;
-    align-items: center;
-  }
-  img{
-    width: 100%;
-    height:20vw ;
-    min-height: 150px;
-    object-fit: cover;
-    border-radius: 1.2rem;
-    }
+ 
 
-  @media only screen and (max-width: 768px) {
-    .inner-cat{
-      flex-direction: column;
-    }
-    .category{
-      width: 20vw;
-    }
-    .middle{
-      flex-direction: row;
-    
-    }
-    .view{
-      display: none;
-    }
-   
+ @media only screen and (max-width:768px) {
+  img{
+    height: 20rem;
   }
-   
+  .products{
+     grid-template-columns: repeat( auto-fit, minmax(25rem, 1fr) );
+  }
+ }
 
    
  
