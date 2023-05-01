@@ -121,14 +121,15 @@ const ProductPage = (data) => {
                   </div>
                 </div>
              
-                <div className="properites"> Price : -${price}</div>
+                <div className="properites"> <span className="label">Price</span> : -${price}</div>
                 <div className="properites">
                  {offers.map((el)=>{
                   console.log(el)
                   return <>
                     <div className="price ">
                       <div>
-                        {el.offerName}
+                        <span className="label">{el.offerName} :</span>
+                        
                       </div>
                       <div>
 
@@ -144,12 +145,12 @@ const ProductPage = (data) => {
                 </div>
 
                 <div className="properites">
-                  Product Desciption: {description}
+                  <span className="label">Product Description</span>: {description}
                   </div>
 
                 
                 
-                <div className="properites">Company : {company}</div>
+                <div className="properites"><span className="label">Company</span> : {company}</div>
                 <div className="properites">
                   Quantitiy
                   <div className="counter">
@@ -212,11 +213,11 @@ const ProductPage = (data) => {
                   </div>
                 </div>
                 <div className="btn-section">
-                  <button className="btn" onClick={addCart}>
+                  <button className="btntext" onClick={addCart}>
                     Add to Cart
                   </button>
                   <Link to="/cart">
-                    <button className="btn">Check Out Cart</button>
+                    <button className="btntext">Check Out Cart</button>
                   </Link>
                 </div>
               </div>
@@ -256,7 +257,7 @@ const ProductPage = (data) => {
                     <div>
 
                     </div>
-                    <button value={el._id} className="btn" onClick={(e) => deleteHandler(e)}>Delete</button>
+                    
                   </div>
                 </>
               })}
@@ -329,16 +330,25 @@ const ProductPage = (data) => {
 };
 
 const Wrapper = styled.div`
+background-color: aliceblue;
+.label{
+  color: #39A1AE;
+  font-weight: bold;
+}
 .stickers{
-  display: flex;
- 
- justify-content: left;
+  display: grid;
+   width: 80%;
+   max-width: 25rem;
+  grid-template-columns: repeat(auto-fit,minmax(2rem,1fr));
+  gap: 1rem;
+
 }
 
 
 .btn-section{
-  display: flex;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(2,10vw);
+  gap: 1rem;
 }
 
 h2{
@@ -346,15 +356,7 @@ h2{
   padding: 0;
 }
 
-.properites{
-  font-size: 1.6rem;
-  margin: 1.4rem ;
-}
-.price{
-    display: flex;
-  width: 30%;
-  justify-content: space-between;
-}
+
 .stars{
   display: flex;
   width: 20%;
@@ -373,17 +375,7 @@ h2{
   font-size: 1.6rem;
 }
 
-.btntext{
-  background: none;
-  color: #39A1AE;
-  border: none;
-  font-size: 1.2rem;
-  padding-top:1.2rem;
-  margin: 1.2rem;
-  :hover{
-    cursor: pointer;
-  }
-}
+
 .main{
   position:fixed;
   top: 15%;
@@ -393,8 +385,6 @@ h2{
   flex-direction: column;
   width: 50%;
 
-  
-  
   
 }
 .review-card{
@@ -419,29 +409,33 @@ h2{
   padding: 1.4rem;
 }
 .upper{
-    display: flex;
-   
-    margin: 1.2rem;
-    background: aliceblue;
-}
+  display: grid;
+  padding: 1.4rem;
+ justify-items: center;
   
-  .product-info {
-    padding: 1.8rem;
-    display: flex;
-    width: 60%;
-   
-    flex-direction: column;
-    justify-content: space-evenly;
-    font-size: 1.4rem;
-    margin: 1.2rem;
-  }
-  .product-page {
-    display: flex;
-    flex-direction: column;
-    margin: 1.2rem;
-    background: aliceblue;
-    
-  }
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  
+  gap: 2rem;
+}
+.product-image{
+  width: 85%;
+}
+img{
+  width: 100%;
+  border-radius: 1.2rem;
+
+}
+.product-info{
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  align-items: center;
+  gap: 1.5rem;
+  font-size: calc(0.35em + 1vw);
+
+}
+
+
+
   .transparent{
     opacity: 0.2;
   }
@@ -465,30 +459,24 @@ form{
    align-items: center; 
    margin: 1.2rem;
 }
-img {
-    width: 100%;
-    height: 40rem;
-    object-fit: cover;
-    border-radius: 1.2rem;
-  }
-  img:hover {
-    opacity: 80%;
-    cursor: pointer;
-  }
-.product-image{
-  width: 50%;
-  position: sticky;
-  top: 0;
-}
-.props{
-    height: 8rem;
-    object-fit: contain;
-    border-radius: 1.2rem;
-}
+
+
+
 .contain{
  margin-right: 1.8rem;
  margin-top: 1.2rem;
 }
+.btntext{
+  background: none;
+  color: #39A1AE;
+border: none;
+  font-size: calc(0.2em + 1vw);
+  :hover{
+    cursor: pointer;
+  }
+}
+
+
 `;
 
 export default ProductPage;
