@@ -16,6 +16,9 @@ import norefund from '../assets/refund.png'
 import refund from '../assets/refund.svg'
 import termite from '../assets/termite.png'
 
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const ProductPage = (data) => {
   const navigate = useNavigate()
@@ -72,11 +75,44 @@ const ProductPage = (data) => {
     fetchData()
   }
   const addCart = () => {
+
     product["quantity"] = quantity
     product["subtotal"] = quantity * product.price
+    let condition = cartItems.filter((el) => el._id == product._id)
 
+    if (condition.length != 0) {
+      toast.warn('item already in the cart', {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+    }
+    else {
+      toast.success('item added successfuly! checkout the cart', {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "dark",
+      });
+      
+      setCartItems([...cartItems, product])
     
-    setCartItems([...cartItems, product])
+ 
+
+
+    }
+
+
+
     // navigate('/cart')
   }
   const add = () => {
@@ -97,10 +133,11 @@ const ProductPage = (data) => {
 
   if (loading) {
     return <Loader></Loader>
+
   }
   else {
-    const { image, description, price, name, company, averageRating, offers, termiteResistant, refundable ,used } = product
-    
+    const { image, description, price, name, company, averageRating, offers, termiteResistant, refundable, used } = product
+
     return (
       <>
         <Wrapper>
@@ -115,41 +152,41 @@ const ProductPage = (data) => {
                 <h2 className="product-name">{name}</h2>
                 <div className="stars properites">
                   <Star stars={averageRating}></Star>
-                <div>
+                  <div>
 
-                  {averageRating}
+                    {averageRating}
                   </div>
                 </div>
-             
+
                 <div className="properites"> <span className="label">Price</span> : -${price}</div>
                 <div className="properites">
-                 {offers.map((el)=>{
-                  console.log(el)
-                  return <>
-                    <div className="price ">
-                      <div>
-                        <span className="label">{el.offerName} :</span>
-                        
-                      </div>
-                      <div>
+                  {offers.map((el) => {
+                    console.log(el)
+                    return <>
+                      <div className="price ">
+                        <div>
+                          <span className="label">{el.offerName} :</span>
 
-                        -{el.discount}
+                        </div>
+                        <div>
+
+                          -{el.discount}
+                        </div>
+                        <div>
+                          Available
+                        </div>
                       </div>
-                      <div>
-                        Available
-                      </div>
-                    </div>
-                 
-                  </>
-                 })}
+
+                    </>
+                  })}
                 </div>
 
-                <div className="properites">
+                <div className="properites description">
                   <span className="label">Product Description</span>: {description}
-                  </div>
+                </div>
 
-                
-                
+
+
                 <div className="properites"><span className="label">Company</span> : {company}</div>
                 <div className="properites">
                   Quantitiy
@@ -167,48 +204,48 @@ const ProductPage = (data) => {
                   </div>
                   <div className="stickers">
 
-                  {termiteResistant == "Yes" ? <>
-                    <div className="contain">
+                    {termiteResistant == "Yes" ? <>
+                      <div className="contain">
 
-                      <img className="props" src={no_termite} alt="" />
+                        <img className="props" src={no_termite} alt="" />
 
-                    </div>
-                  </> : <>
-                  <div className="contain">
-                          <img className="props" src={termite} alt="" />
-                  </div>
-                  
-                       
-                  </>}
-                  {refundable == "true" ? <>
-                    <div className="contain">
+                      </div>
+                    </> : <>
+                      <div className="contain">
+                        <img className="props" src={termite} alt="" />
+                      </div>
+
+
+                    </>}
+                    {refundable == "true" ? <>
+                      <div className="contain">
 
                         <img className="props" src={refund} alt="" />
 
-                    </div>
-                  </> : <>
-                  <div className="contain">
+                      </div>
+                    </> : <>
+                      <div className="contain">
 
-                          <img className="props" src={norefund}
-                            alt="" />
-                  </div>
-                  
-                  </>}
-                  {used == "false" ? <>
-                    <div className="contain">
+                        <img className="props" src={norefund}
+                          alt="" />
+                      </div>
+
+                    </>}
+                    {used == "false" ? <>
+                      <div className="contain">
 
                         <img className="props" src={newsvg} alt="" />
 
-                    </div>
-                  </> : <>
-                  <div className="contain">
-                          <img className="props" src={refurbished}
-                            alt="" />
+                      </div>
+                    </> : <>
+                      <div className="contain">
+                        <img className="props" src={refurbished}
+                          alt="" />
 
-                  </div>
-                  
-                        
-                  </>}
+                      </div>
+
+
+                    </>}
 
                   </div>
                 </div>
@@ -232,7 +269,7 @@ const ProductPage = (data) => {
 
 
               {reviews.map((el) => {
-               
+
                 return <>
                   <div className="review-card">
                     <div className="review-head">
@@ -257,7 +294,7 @@ const ProductPage = (data) => {
                     <div>
 
                     </div>
-                    
+
                   </div>
                 </>
               })}
@@ -323,6 +360,19 @@ const ProductPage = (data) => {
 
 
         </Wrapper>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover
+          theme="light"
+
+        />
       </>
     );
   }
@@ -331,6 +381,7 @@ const ProductPage = (data) => {
 
 const Wrapper = styled.div`
 background-color: aliceblue;
+
 .label{
   color: #39A1AE;
   font-weight: bold;
@@ -392,12 +443,13 @@ h2{
   
 }
 .review-comment{
-  font-size: 1.4rem;
+  font-size: calc(0.35em + 1vw);
 }
 .review-head{
   display: flex;
   align-items: center;
   width: 55%;
+  flex-wrap:wrap;
   justify-content: space-between;
 }
 .title{
@@ -407,6 +459,7 @@ h2{
 .reviews{
   background-color: aliceblue;
   padding: 1.4rem;
+  
 }
 .upper{
   display: grid;
@@ -427,7 +480,8 @@ img{
 }
 .product-info{
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+  /* grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); */
+  grid-template-columns: repeat(2,1fr);
   align-items: center;
   gap: 1.5rem;
   font-size: calc(0.35em + 1vw);

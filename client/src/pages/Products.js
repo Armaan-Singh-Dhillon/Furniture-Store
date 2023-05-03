@@ -512,7 +512,7 @@ const Wrapper = styled.div`
  
   img{
     width: 100%;
-    height: 35rem;
+    height: 30rem;
     object-fit: cover;
     border-radius: 1.2rem;
    
@@ -527,6 +527,7 @@ const Wrapper = styled.div`
     transition: all .5s;
     align-items: center;
     
+    
     transition: all .4s;
    
   }
@@ -537,10 +538,13 @@ const Wrapper = styled.div`
 
  @media only screen and (max-width:768px) {
   img{
-    height: 20rem;
+    width: 45vw;
+    height: 25vw;
   }
+  
   .products{
      grid-template-columns: repeat( auto-fit, minmax(25rem, 1fr) );
+     justify-items: center;
   }
  }
 

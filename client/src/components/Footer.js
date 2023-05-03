@@ -10,7 +10,7 @@ import insta from '../assets/instagram-1-svgrepo-com.svg'
 import facebook from '../assets/facebook-svgrepo-com.svg'
 import youtube from '../assets/youtube-svgrepo-com.svg'
 import twitter from '../assets/twitter-svgrepo-com.svg'
-import linkdin from '../assets/linkedin-svgrepo-com.svg'
+
 const Footer = () => {
   return <>
     <Wrapper>
@@ -225,14 +225,14 @@ const Wrapper3 = styled.div`
   }
 
   .text1 {
-    width: calc(100 -50vw);
+    width: calc(100 - 50vw);
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     text-align: center;
      font-size: calc(.2em + 1vw);
-    line-height: 2rem;
+ 
     padding: 1.2rem;
   }
 

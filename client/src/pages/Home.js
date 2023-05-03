@@ -96,7 +96,7 @@ const Home = () => {
           </MapContainer>
         </div>
 
-        <div>
+        <div className="center">
           <h1> Products of the day </h1>
 
         </div>
@@ -200,6 +200,10 @@ const Home = () => {
 
 
 const Wrapper1 = styled.div`
+.center{
+  display: flex;
+  justify-content: space-evenly;
+}
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -209,7 +213,7 @@ const Wrapper1 = styled.div`
 
  .map{
   width: 90vw;
-  height: 90vw;
+
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -221,7 +225,7 @@ const Wrapper1 = styled.div`
  }
   .leaflet-container{
     width: 100%;
-    height: 80vh;
+    height: 80vw;
     
   }
 

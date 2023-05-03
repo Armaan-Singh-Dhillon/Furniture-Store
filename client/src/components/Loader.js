@@ -29,11 +29,21 @@ const Loader = styled.div`
 `;
 
 const LoaderComponent = () => {
+  window.scrollTo(0, 0)
   return (
-    <LoaderContainer>
-      <Loader />
-    </LoaderContainer>
+    <Wrapper>
+
+      <div className="loader-container">
+        <Loader />
+      </div>
+    </Wrapper>
   );
 };
-
+const Wrapper = styled.div`
+.loader-container{
+  background-color: aliceblue;
+  display: flex;
+  justify-content: space-evenly;
+}
+`
 export default LoaderComponent;

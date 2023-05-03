@@ -1,22 +1,38 @@
 import styled from "styled-components";
 import { useContext, useEffect } from "react";
 import MyContext from "../MyContext";
-import { BsTrashFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const Cart = () => {
-  const { cartItems, setCartItems} = useContext(MyContext);
+  const { cartItems, setCartItems } = useContext(MyContext);
   useEffect(() => {
-    console.log(cartItems);
+   
   }, [cartItems.length]);
 
   const clickHandler = (e) => {
     e.preventDefault()
-    const elId= e.target.value
+    toast.success('item deleted successfully', {
+      position: "bottom-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+    const elId = e.target.value
     setCartItems(
       cartItems.filter(({ _id }) => {
-        return  _id!= elId;
+
+        return _id != elId;
       })
+      
     );
+   
   };
   let total = 0
 
@@ -25,7 +41,7 @@ const Cart = () => {
       <>
         <Wrapper1>
           <div className="main">
-            <div>Your Cart IS Empty</div>
+            <div>Your Cart is Empty</div>
             <div>
               <Link to="/products">
                 <button className="btn">Fill it</button>
@@ -33,6 +49,19 @@ const Cart = () => {
             </div>
           </div>
         </Wrapper1>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover
+          theme="light"
+
+        />
       </>
     );
   } else {
@@ -43,12 +72,12 @@ const Cart = () => {
             <div className="head">
               <h1>Your Cart</h1>
             </div>
-          {cartItems.map(
-            ({ _id, name, price, image,quantity ,subtotal }) => {
-              total=total+subtotal
-              return (
-                <>
-                  
+            {cartItems.map(
+              ({ _id, name, price, image, quantity, subtotal }) => {
+                total = total + subtotal
+                return (
+                  <>
+
                     <div className="category">
                       <div className="holders">
                         <h3>Items</h3>
@@ -56,7 +85,7 @@ const Cart = () => {
                           <Link to={`/products/${_id}`}>
                             <img src={image} alt="" />
                           </Link>
-                          
+
                         </div>
                         <div>{name}</div>
                       </div>
@@ -76,26 +105,43 @@ const Cart = () => {
                       <div className="holders">
                         <h3>Remove-item</h3>
                         <div className="inner-holder">
-                          <button className="btn" value={_id} onClick={(e)=>clickHandler(e)}>
+                          <button className="btn" value={_id} onClick={(e) => clickHandler(e)}>
                             Delete
                           </button>
                         </div>
                       </div>
                     </div>
-                  
-                  ;
-                </>
-              );
-            }
-          )}
-        </div>
+
+                    ;
+                  </>
+                );
+              }
+            )}
+          </div>
         </Wrapper>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={3000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss={false}
+          draggable
+          pauseOnHover
+          theme="light"
+
+        />
       </>
     );
   }
 };
 
 const Wrapper = styled.div`
+.inner-holder{
+  font-size: calc(0.4em + 1vw);
+}
+
 .head{
   display: flex;
   justify-content: space-evenly;
@@ -108,41 +154,23 @@ const Wrapper = styled.div`
     background: aliceblue;
     color: #39a1ae;
   }
-  .inner-holder {
-    margin: 1.2rem;
-  }
-  .holders {
-    display: flex;
-    flex-direction: column;
-    font-size: 1.2rem;
-    align-items: center;
-    width: 25%;
-  }
-  .image-container {
-    overflow: hidden;
-    width: 100%;
-  }
+  
 
-  .image-container img {
+   img {
     width: 100%;
-    height: 20rem;
-    object-fit: cover;
-    border-radius: 1.2rem;
-    transition: all 0.2s;
-    :hover{
-      opacity: 0.5;
-      scale: 1.05;
-    }
+    height: 95%;
+  
   }
   
   .category {
-    display: flex;
-    justify-content: space-between;
-    padding: 1.2rem;
+    display: grid;
+    gap: 2rem;
+    justify-items: space-evenly;
+    grid-template-columns: repeat(auto-fit,minmax(100px,1fr));
+    padding: 2rem;
   }
   .container {
     display: flex;
-    margin: 1.4rem;
     background: aliceblue;
     flex-direction: column;
   }
@@ -150,7 +178,7 @@ const Wrapper = styled.div`
 const Wrapper1 = styled.div`
   .main {
     display: flex;
-    margin: 1.4rem;
+   
     background: aliceblue;
     height: 30vh;
     flex-direction: column;
