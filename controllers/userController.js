@@ -6,6 +6,7 @@ const register = catchAsync(async (req, res,next) => {
 
     const user = await User.create(req.body)
     const token = user.createJWT()
+    console.log('hi')
     const url=`${req.protocol}://3000/`
     await new Email(user ,url).sendWelcome()
     res.send({

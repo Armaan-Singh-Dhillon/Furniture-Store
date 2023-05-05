@@ -44,7 +44,7 @@ const ProductPage = (data) => {
     setModal(!showModal)
   }
   const [formData, setFormData] = useState({
-    username: '' || user.name,
+    username: '' ,
     rating: '',
     comment: '',
   });

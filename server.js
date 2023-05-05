@@ -46,9 +46,7 @@ const start = async () => {
         })
     } catch (error) {
         console.log('Unhandled Rejection')
-        server.close(()=>{
-            process.exit(1)
-        })
+       
     }
 }
 start()

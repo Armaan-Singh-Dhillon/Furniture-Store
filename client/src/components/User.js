@@ -10,7 +10,12 @@ const User = () => {
   
   const navigate =useNavigate()
   useEffect(()=>{
-    if(!token){
+    
+    if(!token ){
+      navigate('/login')
+    }
+    console.log(user)
+    if(!user ){
       navigate('/login')
     }
   },[])

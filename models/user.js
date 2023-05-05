@@ -50,7 +50,7 @@ const userSchema = new mongoose.Schema({
     products:{
          type:Array,
          default:[],
-         unique: true
+  
     },
     passwordResetToken:String,
     passwordResetExpires :Date

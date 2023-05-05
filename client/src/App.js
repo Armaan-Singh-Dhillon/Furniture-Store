@@ -24,24 +24,17 @@ function App() {
   const [loader, setloader] = useState(true);
   const [data, setdata] = useState([]);
 
-  const [token, setToken] = useState('' || localStorage.getItem('token'))
-
+  
   const [isLoading ,setLoading] = useState(true)
   const [sortname,setsortname]=useState(1)
   const [sortprice,setsortprice]=useState(1)
-  
-  const [user, setUser] = useState({
-    _id: '' || localStorage.getItem('_id'),
-    name: '' || localStorage.getItem('name'),
-    email: '' || localStorage.getItem('email'),
-    address1: '' || localStorage.getItem('address1'),
-    address2: '' || localStorage.getItem('address2'),
-    phone: '' || localStorage.getItem('phone'),
-    orders: '' || localStorage.getItem('orders'),
-    offers: '' || localStorage.getItem('offers'),
-    products: '' || localStorage.getItem('products'),
-  })
+  const localStorageUserData = localStorage.getItem('userData')
+  const objectData = JSON.parse(localStorageUserData) || {token:null,user:null}
 
+  
+  const [token, setToken] = useState(objectData.token)
+  const [user, setUser] = useState(objectData.user)
+  console.log(user,token)
 
 
   const fetchdata = async () => {

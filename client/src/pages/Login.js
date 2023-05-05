@@ -9,63 +9,57 @@ const Login = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    const { token,setToken ,setUser } = useContext(MyContext);
-    const navigate=useNavigate()
+    const { token, setToken, setUser } = useContext(MyContext);
+    const navigate = useNavigate()
 
-    const submitHandler = async() => {
-        const {data} = await axios.post('http://localhost:2000/api/v1/user/login',{email,password})
-        
-        const token =data.token
+    const submitHandler = async () => {
+        const { data } = await axios.post('http://localhost:2000/api/v1/user/login', { email, password })
+
+        const token = data.token
         const user = data.user
-        
-        localStorage.setItem('token',token)
-        localStorage.setItem('_id',user._id)
-        localStorage.setItem('name',user.name)
-        localStorage.setItem('email',user.email)
-        localStorage.setItem('address1',user.address1)
-        localStorage.setItem('address2',user.address2)
-        localStorage.setItem('phone',user.phone)
-        localStorage.setItem('orders',user.orders)
-        localStorage.setItem('offers',user.offers)
-        localStorage.setItem('products',user.products)
+
+        const objectData = { token, user }
+        const jsonData = JSON.stringify(objectData)
+        localStorage.setItem('userData', jsonData)
+
         setUser(user)
         setToken(token)
         navigate('/user')
+
+
     }
     return (
         <Wrapper>
 
             <div className='main'>
                 <div className='card'>
-                    <div className='title'>
-                        Login
-                        
-                    </div>
-                 
+                  
+
                     <div className='text' >
                         Email
+                        <div className='input text'>
+                            <input type="text" onChange={(e) => setEmail(e.target.value)} />
+                        </div>
                     </div>
-                    <div className='input text'>
-                        <input type="text" onChange={(e) => setEmail(e.target.value)} />
-                    </div>
+                    
                     <div className='text'>
                         Password
+                        <div className='input text'>
+                            <input type="text" onChange={(e) => setPassword(e.target.value)} />
+                        </div>
                     </div>
 
-                    <div className='input text'>
-                        <input type="text" onChange={(e) => setPassword(e.target.value)} />
-                    </div>
                     <div>
-                        <button className='toggle'>
+                       
                             <Link to='/register' className='link'>
-                            Don't have an account ?
+                                Don't have an account ?
                             </Link>
-                            </button>
+                       
                     </div>
-                    <div className='input text'>
+                    
 
-                        <button className='btn' onClick={submitHandler}>Submit</button>
-                    </div>
+                        <button  onClick={submitHandler} className='btn'>Submit</button>
+                   
                 </div>
             </div>
         </Wrapper>
@@ -73,60 +67,33 @@ const Login = () => {
 }
 
 const Wrapper = styled.div`
+background-color: aliceblue;
+font-size: calc(0.4em + 1vw);;
 .link{
     text-decoration: none;
     color: #39A1AE;
 }
-
-.text{
-    margin-top: 1.2rem;
-}
-.btn{
-    padding: 1.4rem;
-    font-size: 1.2rem;
-    background-color: #39A1AE;
-    color: white;
-    border: none;
-    border-radius: 1rem;
-}
-.input{
-    display: flex;
-    justify-content: space-evenly;
-}
-input{
-    padding: 1.2rem;
-    width: 100%;
-    font-size: 1.4rem;
-}
-.title{
-    display: flex;
-    justify-content: space-evenly;
-}
 .main{
-   
-    margin: 1.4rem;
-    font-size: 1.8rem;
-    height: 75vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    display: grid;
+    justify-items: center;
+ 
 }
 .card{
+    width: 40vw;
+    display: grid;
+    padding: 2rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: center;
     
-    width: 30%;
-     background-color: aliceblue;
-     padding: 1.4rem;
-
 }
-.toggle{
-    color: #39A1AE;
-    background: none;
-    border: none;
-    font-size: 1.2rem;
-
+button{
+    width: 20%;
+    
 }
-.toggle:hover{
-    cursor: pointer;
+input{
+    width: 60%;
+    padding: calc(0.1em + 1vw);
 }
 
 `
