@@ -110,7 +110,7 @@ const Home = () => {
                   <div className="card">
                     <div className="image">
                       <Link to={`/products/${obj._id}`}>
-                        <img src={obj.image} alt="" />
+                        <img src={`/products/${obj.image}`} alt="" />
                       </Link>
                     </div>
                     <div>
@@ -247,7 +247,8 @@ const Wrapper1 = styled.div`
   .products{
     grid-area: 1/1/-1/10;
     display: grid;
-    grid-template-columns: repeat( auto-fit, minmax(35rem, 1fr) );
+    grid-template-columns: repeat( auto-fit, minmax(35rem, 550px) );
+    justify-content: space-evenly;
     grid-auto-rows: min-content;
     gap: 2rem;
     

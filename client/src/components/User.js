@@ -6,19 +6,16 @@ import { Link, useNavigate } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 import { useEffect } from "react";
 const User = () => {
-  const { user ,token } = useContext(MyContext);
-  
-  const navigate =useNavigate()
-  useEffect(()=>{
-    
-    if(!token ){
+  const { user, token } = useContext(MyContext);
+
+  const navigate = useNavigate()
+  useEffect(() => {
+
+    if (!token || !user) {
       navigate('/login')
     }
-    console.log(user)
-    if(!user ){
-      navigate('/login')
-    }
-  },[])
+
+  }, [])
   return (
     <>
       <Wrapper>
@@ -27,57 +24,57 @@ const User = () => {
           <div className="photo">
             <img src={userImage} alt="" />
           </div>
-          <div className="address-section">
-            <div className="name">
-              <div>
-                Name: {user.name}
-              </div>
-              <div>
-                Email: {user.email}
-              </div>
-              <div>
-                Mobile: {user.phone}
-              </div>
-            </div>
-            <div className="address">
-              <div>
-                address 1: {user.address1}
-              </div>
-              <div>
-                address 2 {user.address2 }
-              </div>
 
 
-
-            </div>
+          <div className="span2">
+            Name : {user.name}
           </div>
+          <div className="span2">
+            Email : {user.email}
+          </div>
+          <div>
+            Mobile: {user.phone}
+          </div>
+
+
+          <div className="span2">
+            address 1 : {user.address1}
+          </div>
+          <div className="span2">
+            address 2 :{user.address2}
+          </div>
+
+
+
+
+
 
         </div>
         <div className="lower">
           <div className="section">
             <div className="links" >
               <Link to='/user/product' className="links">
-              Your Products/Furniture
+                Your Products/Furniture
               </Link>
             </div>
             <div className="links">
               <Link to='/user/addyourproduct' className="links">
-              Sell Products/Furniture
+                Sell Products/Furniture
               </Link>
             </div>
             <div className="links">
               <Link to='/user/order' className="links">
-              Orders
+                Orders
               </Link>
             </div>
             <div className="links">
               <Link to='/user/offer' className="links">
-              Offers And Coupons
+                Offers And Coupons
               </Link>
             </div>
             <div className="links">
               <Link to='/user/edit' className="links">
-              Edit Profile
+                Edit Profile
               </Link>
             </div>
             <div className="links" >
@@ -85,65 +82,44 @@ const User = () => {
             </div>
           </div>
           <div className="outlet">
-           <Outlet/>
+         
+            <Outlet />
           </div>
         </div>
+
       </Wrapper>
     </>
   )
 }
 const Wrapper = styled.div`
+background-color: aliceblue;
+padding: 2rem;
+font-size: calc(0.4em + 1vw);
 .links{
-  color:#39A1AE ;
-  margin: 1rem;
   text-decoration: none;
+  margin-top: 1rem;
+  color: #39a1ae;
 }
-.links:hover{
-  cursor: pointer;
-}
-.outlet{
-  width: 80%;
-}
-.section{
-  width:20%
+.main{
   
-}
-.lower{
-    background-color: aliceblue;
-    opacity: 0.8;
-  font-size: 1.8rem;
-  display: flex;
-  margin: 0 1.4rem ;
-  padding: 1.4rem;
-}
-.address{
-  width: 45%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-.name{
-  width: 45%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-}
-
-.address-section{
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  align-items: center;
+  
+  gap: 2rem;
 }
 img{
-  width: 60%;
+  width: 12vw;
+
+}
+.span2{
+  grid-column: span 2;
+}
+.lower{
+  display: grid;
+  grid-template-columns: 0.3fr 1fr;
+  gap: 2rem;
 }
 
-.main{
-  background-color: aliceblue;
-  font-size: 1.8rem;
-  display: flex;
-  margin: 1.4rem 1.4rem 0 1.4rem;
-  padding: 1.4rem;
-}
 `
 export default User

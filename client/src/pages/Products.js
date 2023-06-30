@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import { FaSearch } from 'react-icons/fa';
 import Star from "../components/Star";
 
-let itemsPerPage =9
+let itemsPerPage = 9
 
 const Products = () => {
   const {
@@ -28,8 +28,8 @@ const Products = () => {
   const currentItems = data.slice(startIndex, endIndex);
 
   const totalPages = Math.ceil(data.length / itemsPerPage);
-  
- 
+
+
 
 
 
@@ -45,20 +45,20 @@ const Products = () => {
       })
 
     }
-    if(dimensions.width<400) {
-       itemsPerPage=3
+    if (dimensions.width < 400) {
+      itemsPerPage = 3
     }
-    else if(dimensions.width<768) {
-       itemsPerPage=4
+    else if (dimensions.width < 768) {
+      itemsPerPage = 4
     }
-    else if(dimensions.width<1366) {
-       itemsPerPage=6
+    else if (dimensions.width < 1366) {
+      itemsPerPage = 6
     }
-    else if(dimensions.width<1920) {
-       itemsPerPage=9
-      
+    else if (dimensions.width < 1920) {
+      itemsPerPage = 9
+
     }
-    
+
 
     window.addEventListener('resize', handleResize)
 
@@ -66,10 +66,10 @@ const Products = () => {
       window.removeEventListener('resize', handleResize)
 
     }
-    
+
   })
   console.log(itemsPerPage)
-  
+
 
   const handlePageChange = (pageNumber) => {
     setLoading(true)
@@ -153,7 +153,7 @@ const Products = () => {
               </div>
 
             </div>
-            
+
 
 
             <div className="sort">
@@ -240,63 +240,63 @@ const Products = () => {
                 </button> */}
               </div>
             </div>
-            
-              {isLoading ? <Loader></Loader> : <div className="products-container">
-                {currentItems.length == 0 ? <>
 
-                  <div className="sorry">
-                    <div>
+            {isLoading ? <Loader></Loader> : <div className="products-container">
+              {currentItems.length == 0 ? <>
+
+                <div className="sorry">
+                  <div>
 
 
-                      <h1>{`Sorry no Products related to "${search}"`}</h1>
-                    </div>
+                    <h1>{`Sorry no Products related to "${search}"`}</h1>
                   </div>
-                </> : <div className="products">
+                </div>
+              </> : <div className="products">
 
 
-                  {currentItems.map((obj) => {
+                {currentItems.map((obj) => {
 
-                    return (
-                      <>
-                        <div className="card">
-                          <div className="image">
-                            <Link to={`/products/${obj._id}`}>
-                              <img src={obj.image} alt="" />
-                            </Link>
+                  return (
+                    <>
+                      <div className="card">
+                        <div className="image">
+                          <Link to={`/products/${obj._id}`}>
+                            <img src={`/products/${obj.image}`} alt="" />
+                          </Link>
+                        </div>
+                        <div className="info">
+                          <div className="text">
+                            <div>
+                              Rating:
+                            </div>
+
+                            <Star className="val" stars={obj.averageRating}></Star>
+
                           </div>
-                          <div className="info">
-                            <div className="text">
-                              <div>
-                                Rating:
-                              </div>
-
-                              <Star className="val" stars={obj.averageRating}></Star>
-
-                            </div>
-                            <div className="text">
-                              <div>Name:</div>
-                              <div className="val">{obj.name}</div>
-                            </div>
-                            <div className="text">
-                              <div>Price:</div>
-                              <div className="val">-${obj.price}</div>
-                            </div>
-                            <div className="text">
-                              <div>Company</div>
-                              <div className="val">{obj.company}</div>
-                            </div>
+                          <div className="text">
+                            <div>Name:</div>
+                            <div className="val">{obj.name}</div>
                           </div>
-
-
+                          <div className="text">
+                            <div>Price:</div>
+                            <div className="val">-${obj.price}</div>
+                          </div>
+                          <div className="text">
+                            <div>Company</div>
+                            <div className="val">{obj.company}</div>
+                          </div>
                         </div>
 
-                      </>
-                    );
-                  })}
-                </div>}
-              </div>}
 
-            
+                      </div>
+
+                    </>
+                  );
+                })}
+              </div>}
+            </div>}
+
+
 
 
           </div>
