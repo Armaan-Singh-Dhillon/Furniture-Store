@@ -31,7 +31,7 @@ const Register = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
 
-        const { data } = await axios.post('http://localhost:2000/api/v1/user/register', { ...formData })
+        const { data } = await axios.post('/api/v1/user/register', { ...formData })
 
         const token = data.token
         const user = data.user

@@ -13,7 +13,7 @@ const Login = () => {
     const navigate = useNavigate()
 
     const submitHandler = async () => {
-        const { data } = await axios.post('http://localhost:2000/api/v1/user/login', { email, password })
+        const { data } = await axios.post('/api/v1/user/login', { email, password })
 
         const token = data.token
         const user = data.user
@@ -33,7 +33,7 @@ const Login = () => {
 
             <div className='main'>
                 <div className='card'>
-                  
+
 
                     <div className='text' >
                         Email
@@ -41,7 +41,7 @@ const Login = () => {
                             <input type="text" onChange={(e) => setEmail(e.target.value)} />
                         </div>
                     </div>
-                    
+
                     <div className='text'>
                         Password
                         <div className='input text'>
@@ -50,16 +50,16 @@ const Login = () => {
                     </div>
 
                     <div>
-                       
-                            <Link to='/register' className='link'>
-                                Don't have an account ?
-                            </Link>
-                       
-                    </div>
-                    
 
-                        <button  onClick={submitHandler} className='btn'>Submit</button>
-                   
+                        <Link to='/register' className='link'>
+                            Don't have an account ?
+                        </Link>
+
+                    </div>
+
+
+                    <button onClick={submitHandler} className='btn'>Submit</button>
+
                 </div>
             </div>
         </Wrapper>

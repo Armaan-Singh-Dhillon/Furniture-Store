@@ -9,32 +9,32 @@ const YourProducts = () => {
   const { user } = useContext(MyContext);
   let [products, setproducts] = useState([])
   const [loading, setLoading] = useState(true)
-  const {_id}=user
-  
-  const fetchData = async() => {
-    const { data } = await axios.post('http://localhost:2000/api/v1/user/getbyid',{_id})
-    
-   
+  const { _id } = user
+
+  const fetchData = async () => {
+    const { data } = await axios.post('/api/v1/user/getbyid', { _id })
+
+
     setproducts(data.user.products)
     setLoading(false)
 
   }
-  useEffect(()=>{
-       fetchData()
-  },[user])
-  
+  useEffect(() => {
+    fetchData()
+  }, [user])
 
-  const clickHandler = async(e) => {
-    const id=e.target.value
-    
-    products=products.filter((obj)=>{
+
+  const clickHandler = async (e) => {
+    const id = e.target.value
+
+    products = products.filter((obj) => {
       return obj._id != id
     })
-     
-    const res = await axios.post('http://localhost:2000/api/v1/products/delete', { id })
-    
 
-    const { data }=await axios.post('http://localhost:2000/api/v1/user/update', { _id, products }); 
+    const res = await axios.post('/api/v1/products/delete', { id })
+
+
+    const { data } = await axios.post('/api/v1/user/update', { _id, products });
     setproducts(data.user.products)
     setLoading(false)
 
@@ -43,7 +43,7 @@ const YourProducts = () => {
   if (loading) {
     return <Loader></Loader>
   }
-  else if(products.length==0){
+  else if (products.length == 0) {
     return <h4> You Have No Products to sell</h4>
   }
 
@@ -51,7 +51,7 @@ const YourProducts = () => {
 
     return (
       <>
-         <Wrapper>
+        <Wrapper>
 
           <div className="">
             <div className="products">
@@ -87,7 +87,7 @@ const YourProducts = () => {
               })}
             </div>
           </div>
-        </Wrapper> 
+        </Wrapper>
 
       </>
     )

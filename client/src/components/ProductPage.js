@@ -31,7 +31,7 @@ const ProductPage = (data) => {
   const [quantity, setQuantity] = useState(1)
   const fetchData = async () => {
     console.log(_id)
-    const { data } = await axios.get(`http://localhost:2000/api/v1/products/${_id}`)
+    const { data } = await axios.get(`/api/v1/products/${_id}`)
     setproduct(data.data)
     setLoading(false)
     setReviews(data.data.reviews)
@@ -44,7 +44,7 @@ const ProductPage = (data) => {
     setModal(!showModal)
   }
   const [formData, setFormData] = useState({
-    username: '' ,
+    username: '',
     rating: '',
     comment: '',
   });
@@ -60,7 +60,7 @@ const ProductPage = (data) => {
     event.preventDefault();
     let { reviews } = product
     reviews = [...reviews, formData]
-    await axios.post('http://localhost:2000/api/v1/products/reviews', { _id, reviews })
+    await axios.post('/api/v1/products/reviews', { _id, reviews })
     setModal(!showModal)
     fetchData()
 
@@ -71,7 +71,7 @@ const ProductPage = (data) => {
     reviews = reviews.filter((el) => {
       return el._id != e.target.value
     })
-    await axios.post('http://localhost:2000/api/v1/products/reviews', { _id, reviews })
+    await axios.post('/api/v1/products/reviews', { _id, reviews })
     fetchData()
   }
   const addCart = () => {
@@ -103,10 +103,10 @@ const ProductPage = (data) => {
         progress: undefined,
         theme: "dark",
       });
-      
+
       setCartItems([...cartItems, product])
-    
- 
+
+
 
 
     }

@@ -14,7 +14,7 @@ const AddYourProduct = () => {
         description: '',
         category: '',
         shipping: false,
-        used: true,    
+        used: true,
     });
 
     const handleChange = (e) => {
@@ -27,17 +27,17 @@ const AddYourProduct = () => {
     };
 
 
-    
-    const handleSubmit = async(e) => {
-       e.preventDefault();
-       let { _id}=user
-       
-       const {data} =await axios.post('http://localhost:2000/api/v1/products/create',{...formData,user}); 
-       
-       user.products = [...user.products, data.data]
-       const {products} = user
-       await axios.post('http://localhost:2000/api/v1/user/update',{_id,products}); 
-       
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        let { _id } = user
+
+        const { data } = await axios.post('/api/v1/products/create', { ...formData, user });
+
+        user.products = [...user.products, data.data]
+        const { products } = user
+        await axios.post('/api/v1/user/update', { _id, products });
+
     };
     return (
         <Wrapper>
@@ -45,7 +45,7 @@ const AddYourProduct = () => {
                 <div className="box">
 
                     <form >
-                        
+
                         <div className="items">
 
                             <label>
@@ -83,31 +83,31 @@ const AddYourProduct = () => {
 
                         <div className="items">
 
-                        
-                        <label>
-                            Description:
+
+                            <label>
+                                Description:
                                 <input name="description" value={formData.description} onChange={handleChange} placeholder={'Add Your Decription'} />
-                        </label>
+                            </label>
                         </div>
 
                         <div className="items">
-                        <label>
-                            Category:
+                            <label>
+                                Category:
                                 <input type="text" name="category" value={formData.category} onChange={handleChange} placeholder={'Category'} />
-                        </label>
+                            </label>
                         </div>
                         <div className="items">
-                        <label>
-                            Shipping:
+                            <label>
+                                Shipping:
                                 <input type="text" name="shipping" checked={formData.shipping} onChange={handleChange} placeholder={'True/False'} />
-                        </label>
+                            </label>
                         </div>
 
                         <div className="items">
-                        <label>
-                            Used:
+                            <label>
+                                Used:
                                 <input type="text" name="used" checked={formData.used} onChange={handleChange} placeholder={'True/False or Time Period'} />
-                        </label>
+                            </label>
                         </div>
                     </form>
                     <div>
