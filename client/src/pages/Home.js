@@ -26,7 +26,7 @@ const Home = () => {
   const [cities, setCities] = useState([])
   const [products, setProducts] = useState([])
   const fetchData = async () => {
-    const { data } = await axios.get('http://localhost:2000/api/v1/cities/getAll')
+    const { data } = await axios.get('/api/v1/cities/getAll')
 
     setCities(data.cities)
     setLoadinglocal(false)
