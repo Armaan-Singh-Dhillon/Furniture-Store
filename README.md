@@ -72,4 +72,4 @@ To access this project
 
 ## Support
 
-For support, email dhillonarmaan2004@mail.com
+For support, email dhillonarmaan2004@gmail.com
