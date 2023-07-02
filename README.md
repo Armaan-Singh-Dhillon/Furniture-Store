@@ -36,17 +36,17 @@ To access this project
 
 ## Screenshots
 
-![The Furniture Shop](client\src\logos\furniture_shop_liscard_logo.png)
+![The Furniture Shop](client/src/logos/furniture_shop_liscard_logo.png)
 
-![The Furniture Shop](client\src\logos\navbar.PNG)
-![The Furniture Shop](client\src\logos\customizable.PNG)
-![The Furniture Shop](client\src\logos\singleproduct.PNG)
-![The Furniture Shop](client\src\logos\products.PNG)
-![The Furniture Shop](client\src\logos\milestones.PNG)
+![The Furniture Shop](client/src/logos/navbar.PNG)
+![The Furniture Shop](client/src/logos/customizable.PNG)
+![The Furniture Shop](client/src/logos/singleproduct.PNG)
+![The Furniture Shop](client/src/logos/products.PNG)
+![The Furniture Shop](client/src/logos/milestones.PNG)
 
-![Popular Category](client\src\logos\popularcategories.PNG)
+![Popular Category](client/src/logos/popularcategories.PNG)
 
-![The Furniture Shop](client\src\logos\footer.PNG)
+![The Furniture Shop](client/src/logos/footer.PNG)
 
 ## Color Reference
 
