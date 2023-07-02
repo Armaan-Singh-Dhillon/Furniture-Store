@@ -1,70 +1,75 @@
-# Getting Started with Create React App
+# The Furniture Shop
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to The Furniture Shop, a personal MERN (MongoDB, Express, React, Node.js) project designed to provide you with a unique online furniture shopping experience. The Furniture Shop combines the power of modern web technologies with the beauty and functionality of exquisite furniture, all in one convenient platform.
 
-## Available Scripts
+## Tech Stack
 
-In the project directory, you can run:
+**Client:** React, Styled-Components
 
-### `npm start`
+**Server:** Node, Express ,MongoDB
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Run Locally
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Clone the project
 
-### `npm test`
+```bash
+  git clone git@github.com:Armaan-Singh-Dhillon/Furniture-Store.git
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Go to the project directory
 
-### `npm run build`
+```bash
+  npm run vercel-postbuild
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Start the server
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+ nodemon server.js
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Project Deployed On Vercel
 
-### `npm run eject`
+To access this project
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+[Click Here To See The Deployed Project](https://furniture-store-96m5vuu9v-armaan-singh-dhillon.vercel.app/products/)
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Screenshots
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+![The Furniture Shop](client\src\logos\furniture_shop_liscard_logo.png)
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+![The Furniture Shop](client\src\logos\navbar.PNG)
+![The Furniture Shop](client\src\logos\customizable.PNG)
+![The Furniture Shop](client\src\logos\singleproduct.PNG)
+![The Furniture Shop](client\src\logos\products.PNG)
+![The Furniture Shop](client\src\logos\milestones.PNG)
 
-## Learn More
+![Popular Category](client\src\logos\popularcategories.PNG)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+![The Furniture Shop](client\src\logos\footer.PNG)
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## Color Reference
 
-### Code Splitting
+| Color            | Hex                                                              |
+| ---------------- | ---------------------------------------------------------------- |
+| Background Color | ![#F0F8FF](https://via.placeholder.com/10/F0F8FF?text=+) #F0F8FF |
+| Borders          | ![#39A1AE](https://via.placeholder.com/10/39A1AE?text=+) #39A1AE |
+| Text Color       | ![#000](https://via.placeholder.com/10/000?text=+) #000          |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Features
 
-### Analyzing the Bundle Size
+- Authentication: Implement user authentication to allow secure access to the application using features such as sign-up, login, and logout functionality.
+- JWT Tokens: Utilize JSON Web Tokens (JWT) for authentication and authorization, ensuring secure and stateless communication between the client and server.
+- Express for Routing Middlewares: Utilize Express.js, a flexible Node.js web application framework, to define and handle routes and middleware functions for authentication, authorization, and data validation.
+- Context API: Utilize React's Context API to manage and share application state across components, enabling efficient data flow and reducing prop drilling.
+- State for Loading: Implement state management to handle loading states, ensuring a seamless user experience by displaying loading indicators during data fetching or processing.
+- Axios: Use Axios, a popular JavaScript library, to send HTTP requests from the client-side application to the server, facilitating seamless communication and data retrieval.
+- Request and CRUD: Implement Create, Read, Update, and Delete (CRUD) operations to interact with the MongoDB Atlas database. This allows for efficient data management and manipulation within the application.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Developer
 
-### Making a Progressive Web App
+- [@Armaan-Singh-Dhillon](https://github.com/Armaan-Singh-Dhillon)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Support
 
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+For support, email dhillonarmaan2004@mail.com
