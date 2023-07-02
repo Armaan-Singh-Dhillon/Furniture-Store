@@ -3,15 +3,13 @@ import { Link } from "react-router-dom";
 import Loader from '../components/Loader.js'
 import { useContext } from "react";
 import MyContext from "../MyContext.js";
-
-import axios from "axios";
+import cities from '../localData/cities.js'
 import { MapContainer, TileLayer, Marker, Popup, useMap } from 'react-leaflet'
 import 'leaflet/dist/leaflet.css';
 import { useState } from "react";
 import { useEffect } from "react";
 import { Icon } from 'leaflet'
 import Star from "../components/Star.js";
-
 import HomeHeader from "../components/HomeHeader.js";
 
 const customIcon = new Icon({
@@ -22,15 +20,8 @@ const Home = () => {
 
 
   const { data, isLoading } = useContext(MyContext);
-  const [isLoadinglocal, setLoadinglocal] = useState(true)
-  const [cities, setCities] = useState([])
   const [products, setProducts] = useState([])
-  const fetchData = async () => {
-    const { data } = await axios.get('/api/v1/cities/getAll')
 
-    setCities(data.cities)
-    setLoadinglocal(false)
-  }
   function selectThreeRandomItems(array) {
 
     for (let i = array.length - 1; i > 0; i--) {
@@ -41,19 +32,16 @@ const Home = () => {
     return array.slice(0, 6);
   }
   const get3products = () => {
-    if (!isLoading) {
 
-      setProducts(selectThreeRandomItems(data))
+    setProducts(selectThreeRandomItems(data))
 
-    }
 
   }
   useEffect(() => {
-    fetchData()
     get3products()
-  }, [isLoading])
+  }, [])
 
-  if (isLoadinglocal) {
+  if (isLoading) {
     return <Loader></Loader>
   }
   return (

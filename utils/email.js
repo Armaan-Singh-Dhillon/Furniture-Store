@@ -33,7 +33,6 @@ class Email {
         })
     }
     async send(template, subject) {
-        console.log(`${__dirname}/../views/${template}.pug`)
         const html = pug.renderFile(`${__dirname}/../views/${template}.pug`, {
             firstName: this.firstName,
             url: this.url,

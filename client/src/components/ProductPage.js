@@ -30,7 +30,6 @@ const ProductPage = (data) => {
   const [showModal, setModal] = useState(false)
   const [quantity, setQuantity] = useState(1)
   const fetchData = async () => {
-    console.log(_id)
     const { data } = await axios.get(`/api/v1/products/${_id}`)
     setproduct(data.data)
     setLoading(false)
@@ -161,7 +160,6 @@ const ProductPage = (data) => {
                 <div className="properites"> <span className="label">Price</span> : -${price}</div>
                 <div className="properites">
                   {offers.map((el) => {
-                    console.log(el)
                     return <>
                       <div className="price ">
                         <div>

@@ -23,7 +23,6 @@ const AddYourProduct = () => {
             ...prevState,
             [name]: value
         }));
-        console.log(formData)
     };
 
 

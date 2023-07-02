@@ -18,7 +18,6 @@ const getAll = catchAsync(async (req, res, next) => {
 
 
     const { sortname, sortprice } = req.query
-    console.log(sortname, sortprice)
     if (sortname == 0) {
 
         const products = await productModel.find({}).sort({ price: sortprice })
@@ -49,7 +48,6 @@ const deleteProduct = catchAsync(async (req, res, next) => {
 const getById = catchAsync(async (req, res, next) => {
 
     const data = await productModel.findById(req.params._id)
-    console.log(data)
 
     if (!data) {
         return next(new AppError('No product found with that ID', 404))
@@ -82,9 +80,6 @@ const search = catchAsync(async (req, res, next) => {
         totalPages: Math.ceil(await productModel.countDocuments({}) / limit),
     })
 })
-const update = (req, res) => {
-    console.log('i do nothing');
-}
 
 
-export { create, update, deleteProduct, getAll, getById, updateReviews, search }
+export { create, deleteProduct, getAll, getById, updateReviews, search }

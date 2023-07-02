@@ -55,13 +55,12 @@ The Furniture Shop`
 })
 const resetPassword = catchAsync(async (req, res, next) => {
     const hashedToken = crypto.createHash('sha256').update(req.params.token).digest('hex')
-    console.log(hashedToken)
     const user = await User.findOne({ passwordResetToken: hashedToken, passwordResetExpires: { $gt: Date.now() } })
-    
-    if(!user){
+
+    if (!user) {
         return next(new AppError('Token is invalid or has expired'))
     }
-    user.password= req.body.password
+    user.password = req.body.password
     user.passwordResetToken = undefined
     user.passwordResetExpires = undefined
     await user.save()

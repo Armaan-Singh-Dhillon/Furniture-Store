@@ -68,7 +68,6 @@ const Products = () => {
     }
 
   })
-  console.log(itemsPerPage)
 
 
   const handlePageChange = (pageNumber) => {

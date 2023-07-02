@@ -34,7 +34,6 @@ function App() {
 
   const [token, setToken] = useState(objectData.token)
   const [user, setUser] = useState(objectData.user)
-  console.log(user, token)
 
 
   const fetchdata = async () => {
@@ -56,7 +55,6 @@ function App() {
       return fetchdata()
     }
     const { data } = await axios.post(`/api/v1/products/search`, { search });
-    console.log(data.data)
     setdata(data.data);
 
     setLoading(false);

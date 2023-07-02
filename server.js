@@ -3,7 +3,6 @@ import dotenv from 'dotenv'
 import connectDB from './utils/connectDB.js'
 import productRoute from './Routes/products.js'
 import userRoute from './Routes/user.js'
-import cityRoute from './Routes/cities.js'
 import cors from 'cors'
 import AppError from './utils/appError.js'
 import globalErrorHandler from './controllers/errorController.js'
@@ -29,15 +28,16 @@ app.use(express.json())
 
 app.use('/api/v1/products', productRoute)
 app.use('/api/v1/user', userRoute)
-app.use('/api/v1/cities', cityRoute)
+
+app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, './client/build', 'index.html'))
+})
 app.all('*', (req, res, next) => {
     const err = new AppError(`Cannot find ${req.originalUrl} on this server`, 404)
     next(err)
 })
 
-app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './client/build', 'index.html'))
-})
+
 app.use(globalErrorHandler)
 const port = process.env.PORT || 5000
 
