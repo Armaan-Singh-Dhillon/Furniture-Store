@@ -18,7 +18,9 @@ Clone the project
 
 Go to the project directory
 
+
 ```bash
+  npm install
   npm run vercel-postbuild
 ```
 
